@@ -11,6 +11,8 @@ from ..file_io import read_text
 from ..json_contract import loads
 from ..storage.meal_store import MealStore
 from .home import welcome, home
+from .lunchbox_flow import lunchbox_flow
+from ..services.friend_pack import load_friend_pack, save_friend_pack
 from .meal_flow import choose_meal
 from .saved_flow import manage_choices
 from ..extraction import ExtractionError
@@ -35,6 +37,8 @@ class Session:
         self.meals = MealStore(None if demo else path.with_name(path.stem + '-meals.sqlite3'))
         self.demo_meals_loaded = False
         self.catalog = Catalog()
+        self.lunchbox_path = path.with_name(path.stem + '-lunchbox.json')
+        self.lunchbox = load_friend_pack(ROOT/'examples/friend-pack-v1.json') if demo else (load_friend_pack(self.lunchbox_path) if self.lunchbox_path.exists() else None)
 
     def meal_store(self):
         if self.synthetic and not self.demo_meals_loaded:
@@ -66,6 +70,11 @@ class Session:
                              progress=lambda n, total, msg: self.screen.say(f'{n}/{total} {msg}'))
         self.last, self.lines = result.report, result.lines
         show_report(self.screen, self.last, self.lines)
+
+    def save_lunchbox(self, pack):
+        if not self.synthetic:
+            save_friend_pack(self.lunchbox_path, pack)
+        self.lunchbox = pack
 
     def discovery_notes(self):
         self.preferences()
@@ -167,7 +176,7 @@ class Session:
                 self.screen.paragraph("This session's idea: " + self.selected_meal['name'])
             try:
                 command = self.screen.ask('Choose', 'today').lower().lstrip('/')
-                command = {'1':'today', '2':'usuals'}.get(command, command)
+                command = {'1':'today', '2':'lunchbox'}.get(command, command)
                 if command == 'quit':
                     return 0
                 if command == 'today':
@@ -181,6 +190,8 @@ class Session:
                         edit_notes=self.discovery_notes)
                     if self.selected_meal:
                         self.last = None
+                elif command == 'lunchbox':
+                    lunchbox_flow(self.screen, self.lunchbox, self.save_lunchbox, self.synthetic)
                 elif command == 'usuals':
                     self.last = None
                     self.selected_meal = None

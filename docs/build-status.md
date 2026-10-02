@@ -106,3 +106,13 @@ command provides confirmation/edit and recomputes guard reminders in the flow.
 New local Gemma synthetic query smoke: docs/query-smoke-v1.json, two validated
 queries including a negated egg phrase. Offline terminal tests forbid socket calls
 and verify empty-account selection creates no private files. Next: text lunchbox.
+
+## Companion step 3 — text lunchbox
+
+Added strict bounded friend-pack v1, explicit local file preview/import/confirmation,
+owner-only atomic storage and a dedicated cafeteria corner. Sender attribution is
+file-supplied, never a verified identity. Imported control characters are removed
+on display; no URLs are fetched and no gift becomes a dietary memory. Synthetic
+gift text is labeled and demo import never writes real files. 108 tests passed,
+plus pytest, provenance verification and all four mock dry runs. Next: check-ins.
+User requested final copy/low-friction walkthrough; added as step 6.

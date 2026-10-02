@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "sender": "Example friend (synthetic)",
+  "recipient": "Example roommate (synthetic)",
+  "messages": [
+    "Synthetic example: Different campuses, same seat saved for you. Hope you find something you enjoy today.",
+    "Synthetic example: Next time we meet, let's have lunch together."
+  ],
+  "shared_dishes": [
+    {"name": "Soup and bread — synthetic", "note": "Example shared dish only; replace with your own words and real memory."}
+  ]
+}

@@ -195,3 +195,13 @@ and optional confirmed local query spans are implemented. Guard-aware notes and
 actual-menu review provide confirmation/recomputation; personalized ranking awaits
 actual menu facts. No catalog result implies an ingredient or preference clearance.
 These conservative boundaries are deliberate, and described in README/build status.
+
+### 6. Final user-facing copy and low-friction walkthrough
+
+Walk the entire app from the perspective of a hungry friend. Keep the primary meal
+route prominent, optional steps skippable and each next action clear. Use short,
+warm language; move technical detail to inspectable detail views. Retain essential
+ingredient/allergy uncertainty at the decision point without repeating paragraphs.
+Check empty account, demo, cancellation, narrow terminal and unsupported queries.
+Acceptance: a first-time user can pick a food idea without profile setup, import,
+logging, AI setup or knowing command names; optional destinations stay parallel.
