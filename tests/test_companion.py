@@ -81,3 +81,29 @@ class JournalTests(unittest.TestCase):
             with patch('builtins.input',side_effect=['checkin','log','back','quit']),redirect_stdout(StringIO()):
                 main(['--profile',str(Path(work)/'f.json'),'--plain'])
             self.assertEqual(list(Path(work).iterdir()),[])
+
+class PostcardTests(unittest.TestCase):
+    def test_preview_export_contains_only_explicit_fields(self):
+        from src.services.postcard import render_postcard,validate_postcard
+        card={'schema_version':1,'sender':'Me','recipient':'Bro','message':'Lunch next week?','dish':'Soup'}
+        self.assertIn('Lunch next week?',render_postcard(card))
+        card['comfort']='uncomfortable'
+        with self.assertRaises(ValidationError):validate_postcard(card)
+        with tempfile.TemporaryDirectory() as work:
+            path=Path(work)/'note.txt'
+            with patch('builtins.input',side_effect=['postcard','Me','Bro','See you soon','yes',str(path),'quit']),redirect_stdout(StringIO()):
+                main(['--profile',str(Path(work)/'friend.json'),'--plain'])
+            text=path.read_text();self.assertIn('See you soon',text)
+            self.assertNotIn('comfort',text);self.assertNotIn('permission',text)
+            self.assertEqual(path.stat().st_mode&0o777,0o600)
+
+    def test_declined_export_demo_and_overwrite_refusal_do_not_write(self):
+        with tempfile.TemporaryDirectory() as work:
+            profile=Path(work)/'friend.json';target=Path(work)/'note.txt';target.write_text('original')
+            with patch('builtins.input',side_effect=['postcard','Me','Bro','Hello','yes',str(target),'no','quit']),redirect_stdout(StringIO()):
+                main(['--profile',str(profile),'--plain'])
+            self.assertEqual(target.read_text(),'original')
+            for args,answers in [([],['postcard','Me','Bro','Hello','no','quit']),(['--demo'],['postcard','Me','Bro','Hello','yes','quit'])]:
+                with patch('builtins.input',side_effect=answers),redirect_stdout(StringIO()):
+                    main(['--profile',str(profile),'--plain',*args])
+            self.assertEqual(list(Path(work).iterdir()),[target])

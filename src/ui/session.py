@@ -12,6 +12,7 @@ from ..json_contract import loads
 from ..storage.meal_store import MealStore
 from ..storage.journal_store import JournalStore
 from .checkin_flow import checkin_flow
+from .postcard_flow import postcard_flow
 from .home import welcome, home
 from .lunchbox_flow import lunchbox_flow
 from ..services.friend_pack import load_friend_pack, save_friend_pack
@@ -180,7 +181,7 @@ class Session:
                 self.screen.paragraph("This session's idea: " + self.selected_meal['name'])
             try:
                 command = self.screen.ask('Choose', 'today').lower().lstrip('/')
-                command = {'1':'today', '2':'lunchbox', '3':'checkin'}.get(command, command)
+                command = {'1':'today', '2':'lunchbox', '3':'checkin', '4':'postcard'}.get(command, command)
                 if command == 'quit':
                     return 0
                 if command == 'today':
@@ -194,6 +195,8 @@ class Session:
                         edit_notes=self.discovery_notes)
                     if self.selected_meal:
                         self.last = None
+                elif command == 'postcard':
+                    postcard_flow(self.screen, self.path.parent/'postcards', self.selected_meal, self.synthetic)
                 elif command == 'checkin':
                     checkin_flow(self.screen, self.journal, self.selected_meal)
                 elif command == 'lunchbox':

@@ -125,3 +125,11 @@ edit/delete/history. A selected idea only provides an editable dish-name default
 save requires actual-meal confirmation. Null fields stay null. No preferences or
 model inputs are derived from observations. 110 tests and 72 subtests passed,
 provenance verification and four mock scenarios passed. Next: local postcard.
+
+## Companion step 5 — until our next meal
+
+Added postcard composition from explicit names/message and opt-in selected dish,
+preview then local text export, owner-only file permissions, overwrite refusal
+and demo preview without real writes. Export schema excludes journal/symptoms/
+permission/history by construction. No message is sent. 112 tests and 72 subtests
+passed, provenance and mock scenarios passed. Next: user-facing copy and walkthrough.
