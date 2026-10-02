@@ -25,7 +25,7 @@ I can remember something correctly and still use it at the wrong time. A weekday
 habit may not apply on Saturday. An old note may need another conversation. A
 keyword match alone cannot settle either question.
 
-Plate Memory is a Python CLI with a local open-weight model and a deterministic
+Plate Memory is a guided Python terminal app with a local open-weight model and a deterministic
 guard. It returns the memory action—`USE`, `IGNORE`, or `ASK`—along with a verdict
 and a reason. It never certifies a dish as safe.
 
@@ -48,11 +48,11 @@ guard's context, not from asking the model to change its mind.
 ```sh
 git clone https://github.com/Jesse-Zeng423/plate-memory.git
 cd plate-memory
-python3 -m src.cli --menu examples/weekend.txt --date 2026-10-03 \
-  --offline --demo-extraction examples/weekend.extraction.json
+python3 -m src.terminal --demo
+# Choose demo, then weekend.
 ```
 
-This command uses a **canned extraction fixture**, clearly labeled in the output,
+This interface uses a **canned extraction fixture**, clearly labeled in the output,
 so someone can inspect the full flow without downloading a model. For actual AI:
 
 ```sh
@@ -77,7 +77,7 @@ That is a small integration check, not an accuracy benchmark.
 I started this new project during the challenge window. The generic guard is
 reused from my earlier [Memory Applicability Guard](https://github.com/Jesse-Zeng423/memory-applicability-guard)
 under MIT, with its exact commit and fingerprint recorded in the new repository.
-The food adapter, local model integration, CLI, examples and integration tests
+The food adapter, local model integration, guided terminal, CLI, examples and integration tests
 are the work for this challenge.
 
 ## How I Built It
@@ -113,10 +113,22 @@ with the guard. It does not mean dinner is safe. A synthetic allergy record
 escalates even when the model finds no matching ingredient: missing a match is
 not proof that an allergen is absent.
 
+I kept the interface in the terminal so the whole workflow stays in one place:
+a guided form creates a local note, `/done` finishes a pasted menu, and the review
+shows each dish with the relevant advice. Allergy review remains prominent;
+the technical `IGNORE` label is not presented as reassurance. The raw rule trace
+is still available through `details`.
+
+The friend can confirm, edit or revoke a note through the same interface. Every
+saved change keeps a private revision, and changing a note or meal date clears
+the old report. Confirmation updates the actual confirmation date but cannot
+grant permission. Repeated menus cache only validated food phrases, so a new
+date or revoked permission still runs through the adapter and guard again.
+
 The tests cover those boundaries, including invalid metadata and a simulated
 model response trying to inject a guard verdict. The canned examples also run
-from an unrelated working directory. Locally, 69 unittest tests passed, and
-pytest reported 69 tests plus 43 subtests passed. The package fingerprint check
+from an unrelated working directory. The initial CLI passed 69 unittest tests and 43 pytest subtests.
+The expanded terminal checks are recorded separately in the validation document. The package fingerprint check
 and all four canned examples also passed. CI status is linked in the repository's
 [validation record](https://github.com/Jesse-Zeng423/plate-memory/blob/main/docs/validation.md).
 These checks establish the behavior

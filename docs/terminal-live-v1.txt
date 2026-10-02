@@ -1,0 +1,105 @@
+date
+2026-10-03
+review
+Grilled chicken bowl — chicken, rice, broccoli
+Vegetable rice — rice, broccoli
+/done
+date
+2026-10-02
+review
+Grilled chicken bowl — chicken, rice, broccoli
+Vegetable rice — rice, broccoli
+/done
+quit
+
+╭─ Plate Memory ───────────────────────────╮
+│  Plan a meal with someone you know.      │
+╰─────────────────────────────────────────╯
+A menu, a friend, and notes you can trust. Local food extraction; explicit rules
+decide when a note applies.
+
+Synthetic example — not Harold’s actual preferences | 2026-10-02
+review  Paste a menu       preferences  Manage notes
+demo    Try a sample      date         Change meal date
+details View rule trace   quit         Exit
+Choose [review]: Meal date YYYY-MM-DD [2026-10-02]: 
+Synthetic example — not Harold’s actual preferences | 2026-10-03
+review  Paste a menu       preferences  Manage notes
+demo    Try a sample      date         Change meal date
+details View rule trace   quit         Exit
+Choose [review]: Paste one dish per line (up to 16). Finish with a line containing /done. /cancel cancels.
+Local extraction started. The first line can take longer while weights load; Ctrl+C cancels this review.
+  0/2  Reading menu line
+  1/2  Reading menu line
+  2/2  Extraction complete; applying guard rules
+
+Menu review
+Synthetic example — not Harold’s actual preferences | Meal date 2026-10-03
+Local model: gemma3:4b
+Decision support only. No dish is certified safe. Extraction may omit ingredients or
+misread menus; cross-contact is not assessed.
+
+! Allergy: confirm ingredients and cross-contact with the preparer
+Avoid peanuts — synthetic allergy record
+
+L1
+Grilled chicken bowl — chicken, rice, broccoli
+Preference does not apply on this meal date: Vegetarian on weekdays — synthetic
+preference
+
+L2
+Vegetable rice — rice, broccoli
+No matching note detected for this line. Missing ingredients and cross-contact are not
+checked.
+
+Notes for this meal
+  peanut-allergy | Allergy: confirm ingredients and cross-contact with the preparer
+  weekday-vegetarian | Preference does not apply on this meal date
+  old-spice | No relevant ingredient detected; this is not clearance
+  cilantro | No relevant ingredient detected; this is not clearance
+Use preferences to confirm, edit or revoke a note; details shows the rule trace.
+
+Synthetic example — not Harold’s actual preferences | 2026-10-03
+review  Paste a menu       preferences  Manage notes
+demo    Try a sample      date         Change meal date
+details View rule trace   quit         Exit
+Choose [review]: Meal date YYYY-MM-DD [2026-10-03]: 
+Synthetic example — not Harold’s actual preferences | 2026-10-02
+review  Paste a menu       preferences  Manage notes
+demo    Try a sample      date         Change meal date
+details View rule trace   quit         Exit
+Choose [review]: Paste one dish per line (up to 16). Finish with a line containing /done. /cancel cancels.
+Local extraction started. The first line can take longer while weights load; Ctrl+C cancels this review.
+  2/2  Using validated food extraction cache; recomputing decisions
+
+Menu review
+Synthetic example — not Harold’s actual preferences | Meal date 2026-10-02
+Validated cached extraction: gemma3:4b
+Decision support only. No dish is certified safe. Extraction may omit ingredients or
+misread menus; cross-contact is not assessed.
+
+! Allergy: confirm ingredients and cross-contact with the preparer
+Avoid peanuts — synthetic allergy record
+
+L1
+Grilled chicken bowl — chicken, rice, broccoli
+Preference applies: request a change or choose another dish: Vegetarian on weekdays —
+synthetic preference
+
+L2
+Vegetable rice — rice, broccoli
+No matching note detected for this line. Missing ingredients and cross-contact are not
+checked.
+
+Notes for this meal
+  peanut-allergy | Allergy: confirm ingredients and cross-contact with the preparer
+  weekday-vegetarian | Preference applies: request a change or choose another dish
+  old-spice | No relevant ingredient detected; this is not clearance
+  cilantro | No relevant ingredient detected; this is not clearance
+Use preferences to confirm, edit or revoke a note; details shows the rule trace.
+
+Synthetic example — not Harold’s actual preferences | 2026-10-02
+review  Paste a menu       preferences  Manage notes
+demo    Try a sample      date         Change meal date
+details View rule trace   quit         Exit
+Choose [review]: 

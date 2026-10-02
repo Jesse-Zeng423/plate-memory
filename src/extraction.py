@@ -47,10 +47,21 @@ def model_name(value: str) -> str:
     return value
 
 
-def local_extract(lines: list[dict], allowed: list[dict], model: str, timeout: float = 180) -> dict:
+def local_extract(lines: list[dict], allowed: list[dict], model: str, timeout: float = 180,
+                  progress=None, cache_path=None) -> dict:
     model_name(model)
     if not allowed:
         return {"candidates": []}
+    if cache_path is not None:
+        from .food_cache import read_cache
+        cached = read_cache(cache_path, lines, model)
+        if cached is not None:
+            if progress:
+                progress(len(lines), len(lines), "Using validated food extraction cache; recomputing decisions")
+            candidates = []
+            for line, value in zip(lines, cached):
+                candidates.extend(candidates_from_foods(value, line, allowed))
+            return validate_candidates({"candidates": candidates}, lines, allowed)
     opener = build_opener(ProxyHandler({}), NoRedirect())
 
     def request(path: str, body: dict | None = None) -> dict:
@@ -90,7 +101,10 @@ def local_extract(lines: list[dict], allowed: list[dict], model: str, timeout: f
             raise ExtractionError("Menu line exceeds the bounded local context; shorten the input.")
         jobs.append((line, prompt))
     candidates = []
-    for line, prompt in jobs:
+    food_values = []
+    for index, (line, prompt) in enumerate(jobs):
+        if progress:
+            progress(index, len(jobs), "Reading menu line")
         result = request("/api/generate", {
             "model": model, "system": SYSTEM, "prompt": prompt,
             "format": LABEL_SCHEMA, "stream": False, "keep_alive": "1m",
@@ -98,7 +112,15 @@ def local_extract(lines: list[dict], allowed: list[dict], model: str, timeout: f
         if result.get("done") is not True or result.get("done_reason") == "length":
             raise ExtractionError("Ollama output was incomplete; no guard report produced.")
         try:
-            candidates.extend(candidates_from_foods(loads(result["response"]), line, allowed))
+            value = loads(result["response"])
+            candidates.extend(candidates_from_foods(value, line, allowed))
+            food_values.append(value)
         except (KeyError, TypeError, json.JSONDecodeError, JsonContractError, ValidationError) as exc:
             raise ExtractionError(f"Rejected model extraction: {exc}", raw_response=result.get("response")) from exc
-    return validate_candidates({"candidates": candidates}, lines, allowed)
+    output = validate_candidates({"candidates": candidates}, lines, allowed)
+    if cache_path is not None:
+        from .food_cache import write_cache
+        write_cache(cache_path, lines, model, food_values)
+    if progress:
+        progress(len(lines), len(lines), "Extraction complete; applying guard rules")
+    return output

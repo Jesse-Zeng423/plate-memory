@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "input": "public synthetic weekend menu and profile only",
+  "interface": "real pseudo-terminal process, ANSI enabled",
+  "model": "gemma3:4b",
+  "checks": {
+    "exit_zero": true,
+    "repeat_menu_uses_food_cache": true,
+    "date_change_recomputes_guard": true,
+    "allergy_reminder_preserved": true
+  },
+  "real_friend_trial": false,
+  "transcript": "docs/terminal-live-v1.txt"
+}

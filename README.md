@@ -4,7 +4,7 @@
 
 **Remember the preference. Check whether it applies today.**
 
-A small local CLI built for Harold, Jesse's friend and roommate from high school,
+A guided local terminal app built for Harold, Jesse's friend and roommate from high school,
 and a big foodie. Before planning a meal, it checks remembered preferences against
 the meal's actual context. Harold's specific preferences and trial feedback are
 still to be supplied; every profile and menu committed here is explicitly synthetic.
@@ -26,14 +26,57 @@ Requires Python 3.10+. The core uses only the Python standard library.
 ```sh
 git clone https://github.com/Jesse-Zeng423/plate-memory.git
 cd plate-memory
-python3 -m src.cli --menu examples/weekend.txt --date 2026-10-03 \
-  --offline --demo-extraction examples/weekend.extraction.json
+python3 -m src.terminal --demo
+# Choose demo, then weekend (or weekday / stale / allergy).
 ```
 
 This **canned demo** does not run AI. It is deliberately labeled in the report,
 and refuses a fixture if the menu or permitted matching terms have changed.
 The weekend vegetarian record returns `REVISE / IGNORE`, reason `NO_BRIDGE`.
 The synthetic allergy reminder remains `ESCALATE / IGNORE` regardless of detection.
+
+## Stay in the terminal
+
+```sh
+python3 -m src.terminal
+# macOS: double-click start.command, or run ./start.command
+```
+
+No UI packages are required. The guided interface has six visible commands:
+`review`, `preferences`, `demo`, `date`, `details`, and `quit`.
+Start with `preferences` → `add` to create an actual friend-authored record.
+The app does not prefill Harold's preferences. Permission defaults to `UNKNOWN`;
+confirmation defaults to unknown. It asks before saving any note.
+
+Set the meal date, choose `review`, and paste one dish per line. Finish with
+`/done`; `/cancel` abandons input. Ctrl+C cancels the current action; Ctrl+D exits.
+The interface reports extraction progress, groups observations by menu line,
+and keeps allergy review visible even when no matching ingredient is detected.
+`details` displays the full deterministic rule trace for the most recent review.
+
+Use `preferences` to edit, confirm, revoke or explicitly allow a record. Confirm
+only after the friend actually confirms; it records **today**, not the future
+meal date. Confirmation never restores permission. A note or date change clears
+the previous report so the next review runs against the current context.
+`--demo` uses an in-memory synthetic profile; edits in that session are never saved.
+The `demo` command always opens a separate, unchanged public fixture.
+
+Real notes are stored by default in ignored `private/friend.json`, with immutable
+revisions in `private/friend-history/`. Files are created with owner-only permissions
+on POSIX. This is local storage, not encryption. `--profile /absolute/path.json`
+selects another profile; keep real profiles out of tracked directories.
+
+Repeated menus reuse validated food spans in `private/food-cache/`. The key includes
+exact menu lines, model identifier, prompt and schema. Profiles, permission, dates
+and guard verdicts are **not cached**; matching and decisions run again every time.
+The UI labels cache reuse explicitly. Delete that directory to force fresh extraction,
+including after replacing weights under the same model identifier. A corrupt cache
+is rejected, not silently accepted. No cache or real profile enters the public repo.
+
+Use `--no-color` or `NO_COLOR=1` for plain output. Output remains readable without
+color, and untrusted text cannot send terminal control sequences. This is a guided,
+scrolling interface rather than a full-screen terminal emulator. The original
+file/stdin/JSON CLI remains available for scripts.
 
 ## Run the real local AI
 
@@ -82,8 +125,9 @@ the allergy reminder even when no allergy ingredient is detected.
 
 ## Your friend's profile
 
-Keep real data in the ignored `private/` directory. Copy the synthetic template,
-then edit it together with your friend before use:
+The terminal form is the easiest way to build a real profile. For scripting,
+keep real data in the ignored `private/` directory. You can also copy the synthetic
+template, then edit it together with your friend before use:
 
 ```sh
 mkdir -p private
@@ -133,12 +177,15 @@ flowchart LR
 | `src/food_adapter.py` | Food-specific phrase matching, profile validation, day/freshness/risk mapping, report assembly |
 | `src/extraction.py` | Local AI food phrase extraction; cannot supply policy fields or verdicts |
 | `src/cli.py` | Input files or stdin, explicit demo mode, readable or JSON output |
+| `src/terminal.py` | Guided setup, menu review, human-readable dish rows and local note management |
+| `src/profile_store.py` | Validated profile writes, private revision history, explicit consent/confirmation actions |
+| `src/food_cache.py` | Grounded food-span cache; every review re-runs matching and the guard |
 
 The model receives one menu line at a time. It does not receive profile terms,
 record IDs, the friend's label, remembered text, permission metadata, dates, scope, or risk.
 Revoked and unknown-permission records are excluded from candidate matching and redacted
-in the report. Reports appear only on stdout; the CLI writes no profile or output
-logs. Local terminal history, redirected output and the Ollama runtime remain your
+in the report. Reports appear only on stdout. The original CLI writes no profile or output
+logs; the guided terminal writes notes, revisions and food spans locally as described above. Local terminal history, redirected output and the Ollama runtime remain your
 responsibility. `.gitignore` is a convenience, not encryption or access control.
 
 Every extracted phrase must appear exactly in its original line; a fabricated
@@ -170,7 +217,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider
 Tests include engine precedence, non-food contexts, duplicate JSON rejection, profile/schema rejection,
 permission withholding, missing allergy detection, freshness boundaries,
 fabricated quotes, policy injection, remote inference rejection, fixture integrity
-and execution from an unrelated working directory. They never need Ollama.
+and execution from an unrelated working directory. Terminal tests also cover
+confirmation versus permission, immutable profile revisions, stale-report invalidation,
+control-sequence filtering, and cache reuse across changed dates and permissions. They never need Ollama.
 GitHub Actions runs Python 3.10, 3.12 and 3.14 checks. A green CI run proves those
 checks, not real-world menu accuracy or medical safety.
 

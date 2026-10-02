@@ -17,7 +17,7 @@ def main():
     assert hashlib.sha256(engine.read_bytes()).hexdigest() == metadata["sha256"], "Upstream guard fingerprint changed"
     text = engine.read_text().lower()
     assert "peanut" not in text and "menu" not in text, "Food concept leaked into generic engine"
-    for required in ("README.md", "LICENSE", "AGENTS.md", "docs/core-api.md", "docs/devto-post.md", "src/cli.py", "src/extraction.py", "src/food_adapter.py"):
+    for required in ("README.md", "LICENSE", "AGENTS.md", "docs/core-api.md", "docs/devto-post.md", "src/cli.py", "src/extraction.py", "src/food_adapter.py", "src/terminal.py", "src/profile_store.py", "src/food_cache.py", "start.command"):
         assert (ROOT / required).is_file(), f"Missing {required}"
     profile = validate_profile(json.loads((ROOT / "examples/profile.json").read_text()))
     assert profile["friend"].startswith("Synthetic"), "Public examples must identify synthetic origin"

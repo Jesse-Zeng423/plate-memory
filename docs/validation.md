@@ -11,6 +11,25 @@
 - Core fingerprint: `5873ccb197a6fb19b25a82de98471ad2cc64347b6fcb6a39bb7b8eefd3d772cd`.
 - Routine checks used no model and no external API.
 
+## Guided terminal upgrade
+
+- `python3 -m unittest discover -s tests -v`: 83 tests passed.
+- `PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider`:
+  83 tests and 43 subtests passed.
+- Project verification and all four canned dry-run scenarios passed again.
+- New tests cover private immutable revisions, confirmation versus permission,
+  cache grounding/fingerprints, fresh matching after permission changes, guard
+  recomputation after date changes, cancelled/failed review invalidation, explicit
+  save actions, synthetic demo isolation and terminal control filtering.
+- A real pseudo-terminal subprocess ran with local Gemma and the public synthetic
+  weekend menu: [evidence](terminal-smoke-v1.json), [ANSI transcript](terminal-live-v1.txt).
+  The initial review used inference; the repeated menu used the food-span cache.
+  Changing Saturday to Friday changed the weekday memory from IGNORE to USE without
+  another extraction. Allergy review stayed visible. No real friend profile or
+  real trial is represented by this check.
+- Terminal-specific color can be disabled with `--no-color` or `NO_COLOR=1`.
+  This is a scrolling, guided interface; no browser or full-screen UI is required.
+
 ## Actual local inference
 
 [Final smoke checkpoint](local-smoke-v11.json) records Gemma 3 4B, prompt version
