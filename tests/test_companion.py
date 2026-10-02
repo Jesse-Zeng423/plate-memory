@@ -51,3 +51,33 @@ class LunchboxTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as work:
             path=Path(work)/'bad.json';path.write_text('{"sender":"a","sender":"b"}')
             with self.assertRaises(JsonContractError):load_friend_pack(path)
+
+class JournalTests(unittest.TestCase):
+    def test_explicit_actual_meal_restart_edit_delete_and_conflict(self):
+        from src.domain.checkin import empty_checkin
+        from src.storage.journal_store import JournalStore
+        with tempfile.TemporaryDirectory() as work:
+            path=Path(work)/'journal.sqlite3';store=JournalStore(path)
+            self.assertEqual(store.list(),[]);self.assertFalse(path.exists())
+            meal=empty_checkin();meal['dish']='Soup';store.save(meal);store.close()
+            store=JournalStore(path);item,rev=store.list()[0]
+            self.assertIsNone(item['comfort']);self.assertEqual(item['dish'],'Soup')
+            item['taste']='enjoyed';store.save(item,rev)
+            with self.assertRaises(ValidationError):store.save(item,rev)
+            with self.assertRaises(ValidationError):store.delete(item['id'],rev)
+            store.delete(item['id'],rev+1);self.assertEqual(store.list(),[]);store.close()
+
+    def test_optional_flow_never_creates_preferences_and_can_cancel(self):
+        with tempfile.TemporaryDirectory() as work:
+            path=Path(work)/'friend.json'
+            answers=['checkin','log','Soup','','','','','','','yes','back','quit']
+            with patch('builtins.input',side_effect=answers),redirect_stdout(StringIO()):
+                self.assertEqual(main(['--profile',str(path),'--plain']),0)
+            self.assertFalse(path.exists())
+            from src.storage.journal_store import JournalStore
+            store=JournalStore(path.with_name('friend-journal.sqlite3'))
+            self.assertEqual(store.list()[0][0]['comfort'],None);store.close()
+        with tempfile.TemporaryDirectory() as work:
+            with patch('builtins.input',side_effect=['checkin','log','back','quit']),redirect_stdout(StringIO()):
+                main(['--profile',str(Path(work)/'f.json'),'--plain'])
+            self.assertEqual(list(Path(work).iterdir()),[])

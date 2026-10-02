@@ -116,3 +116,12 @@ on display; no URLs are fetched and no gift becomes a dietary memory. Synthetic
 gift text is labeled and demo import never writes real files. 108 tests passed,
 plus pytest, provenance verification and all four mock dry runs. Next: check-ins.
 User requested final copy/low-friction walkthrough; added as step 6.
+
+## Companion step 4 — optional meal journal
+
+Implemented explicit actual-meal logging with optional route/taste/fullness/comfort/
+note, bounded journal schema, separate private SQLite store and revision-checked
+edit/delete/history. A selected idea only provides an editable dish-name default;
+save requires actual-meal confirmation. Null fields stay null. No preferences or
+model inputs are derived from observations. 110 tests and 72 subtests passed,
+provenance verification and four mock scenarios passed. Next: local postcard.

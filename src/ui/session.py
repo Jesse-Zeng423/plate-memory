@@ -10,6 +10,8 @@ from ..query_parser import parse_query
 from ..file_io import read_text
 from ..json_contract import loads
 from ..storage.meal_store import MealStore
+from ..storage.journal_store import JournalStore
+from .checkin_flow import checkin_flow
 from .home import welcome, home
 from .lunchbox_flow import lunchbox_flow
 from ..services.friend_pack import load_friend_pack, save_friend_pack
@@ -35,6 +37,7 @@ class Session:
         self.lines = []
         self.selected_meal = None
         self.meals = MealStore(None if demo else path.with_name(path.stem + '-meals.sqlite3'))
+        self.journal = JournalStore(None if demo else path.with_name(path.stem + '-journal.sqlite3'))
         self.demo_meals_loaded = False
         self.catalog = Catalog()
         self.lunchbox_path = path.with_name(path.stem + '-lunchbox.json')
@@ -52,6 +55,7 @@ class Session:
 
     def close(self):
         self.meals.close()
+        self.journal.close()
 
     def review_saved(self, meal):
         self.last = None
@@ -176,7 +180,7 @@ class Session:
                 self.screen.paragraph("This session's idea: " + self.selected_meal['name'])
             try:
                 command = self.screen.ask('Choose', 'today').lower().lstrip('/')
-                command = {'1':'today', '2':'lunchbox'}.get(command, command)
+                command = {'1':'today', '2':'lunchbox', '3':'checkin'}.get(command, command)
                 if command == 'quit':
                     return 0
                 if command == 'today':
@@ -190,6 +194,8 @@ class Session:
                         edit_notes=self.discovery_notes)
                     if self.selected_meal:
                         self.last = None
+                elif command == 'checkin':
+                    checkin_flow(self.screen, self.journal, self.selected_meal)
                 elif command == 'lunchbox':
                     lunchbox_flow(self.screen, self.lunchbox, self.save_lunchbox, self.synthetic)
                 elif command == 'usuals':
