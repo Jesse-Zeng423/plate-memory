@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "mode": "synthetic saved-choice demo, no model calls",
+  "checks": {
+    "both_routes": true,
+    "back_and_switch_route": true,
+    "keyword_selection": true,
+    "risk_reminder": true,
+    "selection_not_consumption": true,
+    "no_private_files_created": true,
+    "absolute_launch_unrelated_cwd": true
+  },
+  "transcript": "docs/companion-terminal-v1.txt",
+  "real_friend_trial": false
+}

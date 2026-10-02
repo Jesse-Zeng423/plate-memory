@@ -10,3 +10,12 @@
 - Active CLI lives in `src/`; defaults resolve from project root. Explicit absolute paths remain absolute.
 - Run `python3 -m unittest discover -s tests -v`, `PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q -p no:cacheprovider`, `python3 scripts/verify_project.py` and `python3 scripts/run_mock_dry_run.py` before handoff. Routine tests never call a model.
 - Real model smoke tests use only synthetic public fixtures and are separately documented. Do not modify the original research repo or its frozen artifacts.
+
+## Companion implementation
+
+- Product: That bro who ate with you every day back in high school.
+- Primary routes: too tired => delivery; up for a walk => campus cafeteria. No cooking workflow.
+- Follow docs/implementation-plan.md and update docs/build-status.md at runnable checkpoints.
+- Saved choices are historical references, not live stock/prices or dietary clearance.
+- Selection is not consumption; future check-ins never silently become preference memories.
+- Synthetic companion demos use an in-memory store. Private meal databases stay ignored.

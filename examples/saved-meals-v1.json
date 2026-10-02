@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "synthetic": true,
+  "meals": [
+    {"id":"sample-rice","name":"Chicken rice bowl — synthetic","venue":"Example Takeout A","route":"delivery","price_cents":1200,"price_date":"2026-10-01","last_seen":"2026-10-01","walk_minutes":null,"menu_text":"Chicken rice bowl — chicken, rice, broccoli"},
+    {"id":"sample-noodles","name":"Vegetable noodles — synthetic","venue":"Example Takeout B","route":"delivery","price_cents":null,"price_date":null,"last_seen":null,"walk_minutes":null,"menu_text":"Vegetable noodles — noodles, carrots, cabbage"},
+    {"id":"sample-cafeteria-rice","name":"Vegetable rice — synthetic","venue":"Example Campus Cafeteria","route":"cafeteria","price_cents":750,"price_date":"2026-10-01","last_seen":"2026-10-01","walk_minutes":8,"menu_text":"Vegetable rice — rice, broccoli"},
+    {"id":"sample-cafeteria-soup","name":"Soup and bread — synthetic","venue":"Example Campus Cafeteria","route":"cafeteria","price_cents":null,"price_date":null,"last_seen":null,"walk_minutes":8,"menu_text":"Soup and bread — lentils, carrots, bread"}
+  ]
+}

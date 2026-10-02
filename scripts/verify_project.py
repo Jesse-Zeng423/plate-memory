@@ -8,6 +8,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from src.cli import load_demo
+from src.domain.meals import validate_meal
 from src.food_adapter import menu_lines, targets, validate_profile
 
 
@@ -19,6 +20,11 @@ def main():
     assert "peanut" not in text and "menu" not in text, "Food concept leaked into generic engine"
     for required in ("README.md", "LICENSE", "AGENTS.md", "docs/core-api.md", "docs/devto-post.md", "src/cli.py", "src/extraction.py", "src/food_adapter.py", "src/terminal.py", "src/profile_store.py", "src/food_cache.py", "start.command", "src/services/review.py", "src/ui/session.py", "src/ui/screen.py", "src/ui/forms.py", "src/ui/review_view.py", "src/file_io.py", "src/paths.py", "src/demo.py"):
         assert (ROOT / required).is_file(), f"Missing {required}"
+    saved = json.loads((ROOT / 'examples/saved-meals-v1.json').read_text())
+    assert saved['schema_version'] == 1 and saved['synthetic'] is True
+    for meal in saved['meals']:
+        validate_meal(meal)
+        assert 'synthetic' in meal['name'] and meal['venue'].startswith('Example')
     profile = validate_profile(json.loads((ROOT / "examples/profile.json").read_text()))
     assert profile["friend"].startswith("Synthetic"), "Public examples must identify synthetic origin"
     scenarios = json.loads((ROOT / "examples/scenarios.json").read_text())

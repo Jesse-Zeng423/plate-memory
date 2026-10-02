@@ -12,11 +12,12 @@ def safe_text(value):
 
 
 class Screen:
-    def __init__(self, color=True):
+    def __init__(self, color=True, decor=True):
+        self.decor = decor
         self.color = color and sys.stdout.isatty() and 'NO_COLOR' not in os.environ
 
     def say(self, text='', tone=None):
-        colors = {'title': '1;36', 'warn': '33', 'error': '31', 'ok': '32'}
+        colors = {'title': '1;33', 'accent': '35', 'warn': '33', 'error': '31', 'ok': '32'}
         clean = safe_text(text)
         if self.color and tone in colors:
             clean = '\033[' + colors[tone] + 'm' + clean + '\033[0m'

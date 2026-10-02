@@ -1,0 +1,76 @@
+today
+1
+rice
+1
+back
+route
+2
+rice
+1
+select
+quit
+       ( (             ( (
+     .-----.         .-----.
+     \_____/         \_____/
+   ---------------------------
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day back in high school.
+Different campuses. Still a place for you at the table.
+
+Synthetic example — not Harold’s actual preferences | 2026-10-02
+Synthetic demo: sample places, prices and preferences; changes stay in this session.
+1  today        Takeout or a walk to the cafeteria
+2  usuals       Your saved places and dishes
+review  Check a menu     preferences  Your dietary notes
+date    Meal date        details      Last rule trace
+demo    Menu example     quit         See you next time
+Choose [today]: 
+How are you doing today?
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the cafeteria.
+1 / 2 / back: Dish or place keyword (optional): 
+Takeout ideas
+! Allergy: confirm ingredients and cross-contact with the preparer
+Saved references only. Check current availability and price. Dietary notes have not
+been checked in this list; review a menu before relying on a choice.
+1. Chicken rice bowl — synthetic | Example Takeout A
+   CAD 12.00 recorded 2026-10-01 (check current price)
+   Last seen: 2026-10-01; current availability unknown
+Number / refine / route / add / back: Chicken rice bowl — synthetic | Example Takeout A
+   CAD 12.00 recorded 2026-10-01 (check current price)
+   Last seen: 2026-10-01; current availability unknown
+select / review / back: 
+Takeout ideas
+! Allergy: confirm ingredients and cross-contact with the preparer
+Saved references only. Check current availability and price. Dietary notes have not
+been checked in this list; review a menu before relying on a choice.
+1. Chicken rice bowl — synthetic | Example Takeout A
+   CAD 12.00 recorded 2026-10-01 (check current price)
+   Last seen: 2026-10-01; current availability unknown
+Number / refine / route / add / back: 1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the cafeteria.
+1 / 2 / back: Dish or place keyword (optional): 
+A walk and something to eat
+! Allergy: confirm ingredients and cross-contact with the preparer
+Saved references only. Check current availability and price. Dietary notes have not
+been checked in this list; review a menu before relying on a choice.
+1. Vegetable rice — synthetic | Example Campus Cafeteria
+   CAD 7.50 recorded 2026-10-01 (check current price)
+   Your walk estimate: 8 min
+   Last seen: 2026-10-01; current availability unknown
+Number / refine / route / add / back: Vegetable rice — synthetic | Example Campus Cafeteria
+   CAD 7.50 recorded 2026-10-01 (check current price)
+   Your walk estimate: 8 min
+   Last seen: 2026-10-01; current availability unknown
+select / review / back: An idea for this meal, saved for this session. You can change your mind.
+Nothing has been ordered or recorded as eaten.
+
+Synthetic example — not Harold’s actual preferences | 2026-10-02
+Synthetic demo: sample places, prices and preferences; changes stay in this session.
+1  today        Takeout or a walk to the cafeteria
+2  usuals       Your saved places and dishes
+review  Check a menu     preferences  Your dietary notes
+date    Meal date        details      Last rule trace
+demo    Menu example     quit         See you next time
+This session's idea: Vegetable rice — synthetic
+Choose [today]: 

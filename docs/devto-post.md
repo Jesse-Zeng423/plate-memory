@@ -119,6 +119,13 @@ shows each dish with the relevant advice. Allergy review remains prominent;
 the technical `IGNORE` label is not presented as reassurance. The raw rule trace
 is still available through `details`.
 
+The newest terminal entry asks just one routing question: too tired for a walk,
+or up for the cafeteria? It filters a private list of saved dishes and places,
+shows recorded prices with their dates, and keeps today's availability unknown.
+This first list is a route-and-keyword lookup; it does not claim dietary suitability.
+Guard risk reminders stay visible, and recorded-menu review requires verification
+of current preparation. Choosing an idea never records it as eaten.
+
 The friend can confirm, edit or revoke a note through the same interface. Every
 saved change keeps a private revision, and changing a note or meal date clears
 the old report. Confirmation updates the actual confirmation date but cannot

@@ -44,6 +44,24 @@ compatible. No new model inference was necessary for this structural change.
 - Provenance verification and all four mock dry runs passed.
 - Companion features are planned in `product-plan.md`, not implied by these tests.
 
+## Companion step 1: takeout and cafeteria
+
+- 98 unittest tests passed; pytest passed 98 tests and 57 subtests.
+- Saved-choice checks cover exact money, unknown metadata, route/keyword filtering,
+  Chinese literal names, storage restart, conflict-safe edits/deletes, future schema
+  rejection and owner-only file permissions.
+- Terminal checks cover no-profile empty state, explicit add, cancel without writes,
+  both demo routes, back/switch, session selection versus consumption and plain mode.
+- Risk reminders preserve permission precedence. Historical-menu review requires
+  external verification through an ephemeral profile copy; the original profile is
+  unchanged and revoked records remain withheld.
+- [Real pseudo-terminal run](companion-smoke-v1.json) exercised the synthetic
+  companion flow with [captured output](companion-terminal-v1.txt). No AI calls or
+  real-person data were used in this run. It is not a Harold trial.
+- Guard fingerprint verification and four original mock scenarios passed.
+- Public catalog/free-text query parsing, friend-pack import, journal and postcard
+  export are planned follow-ups, not covered as implemented features by these checks.
+
 ## Actual local inference
 
 [Final smoke checkpoint](local-smoke-v11.json) records Gemma 3 4B, prompt version

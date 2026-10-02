@@ -30,34 +30,42 @@ See `terminal-smoke-v1.json` and `terminal-live-v1.txt`. Public commit `1ab23cb`
 also passed CI on Python 3.10/3.12/3.14:
 https://github.com/Jesse-Zeng423/plate-memory/actions/runs/37051337645
 
-## Current checkpoint: stage 0 structure complete
+## Current checkpoint: companion step 1 implemented
 
-Current checkout: `/Users/zz/Downloads/plate-memory` (moved from the earlier
-`2026 summer intern` parent). Public repository:
+Current checkout: `/Users/zz/Downloads/plate-memory`. Public repository:
 https://github.com/Jesse-Zeng423/plate-memory
 
-User approved the text-only offline lunchbox, low-energy meal choices, optional
-after-meal check-ins, future-meal postcards and a warmer cafeteria corner. The
-story is two high-school friends attending different universities. See
-`docs/product-plan.md` for the agreed flow, skip behavior and staged delivery.
+Positioning: "That bro who ate with you every day back in high school."
+Latest scope is takeout and campus cafeteria, with only two energy choices:
+too tired -> delivery, otherwise -> walk to cafeteria. Cooking, equipment and
+preparation instructions were removed from the plan.
 
-Stage 0 extracts terminal output/forms/report/navigation and a shared review
-service. Storage no longer depends on CLI; both entry points use the same review
-operation. Generic guard, extraction prompt, profile schema and historical
-fixtures are unchanged. Original launch commands remain supported. Validation: 86 unittest tests,
-86 pytest tests plus 47 subtests, provenance verification and four mock scenarios
-passed. No model calls were made for this refactor.
+Detailed order/contracts: `docs/implementation-plan.md`; current product flow:
+`docs/product-plan.md` v3; data plan: `docs/data-plan.md` v2.
 
-The revised positioning is "That bro who ate with you every day back in high
-school." Direct local food search is the default planned entry; menu import is
-optional. The next implementation checkpoint is stage 1: versioned public dish
-data, checked recipe variants and local retrieval. Stage 2 combines the cafeteria
-home, text-only friend pack and complete meal-selection flow. See `docs/data-plan.md`
-and product plan v2. No dataset has been downloaded or packaged in this revision. These features are
-not yet shipped. Continue from this plan; lack of real preferences does not block
-independent implementation with synthetic examples. No background continuation
-was started as part of this stage. Inspect the saved automation before resuming
-it, since earlier prompts reference the old checkout path and completed CLI scope.
+Stage 0 shared-service refactor is complete. Step 1 now adds validated saved-meal
+records, private SQLite persistence with revision conflict checks, route/keyword
+shortlists, add/edit/delete forms, a warm two-bowl home, plain mode and a synthetic
+in-memory companion demo. No dietary profile is needed to browse saved choices.
+Selections are session-only plans, not orders or meal logs. Historical prices and
+unknown availability remain explicit. Baseline guard risk reminders stay visible;
+recorded-menu AI review adds temporary external-verification context without
+changing profile files. The generic guard and original extraction prompt are intact.
+
+A real pseudo-terminal synthetic run exercised both routes, back/switch, keyword
+filtering, selection and no-file demo isolation. Evidence:
+`docs/companion-smoke-v1.json`, `docs/companion-terminal-v1.txt`.
+Validation passed: 98 unittest tests; 98 pytest tests and 57 subtests; guard/package
+verification; four mock scenarios. No model calls were made for this step's tests
+or companion demo.
+
+Next step 2: public local dish/alias data and free-text candidate search, with
+explicit guard-based personalization. Current search is literal dish/place lookup
+only. Then implement text lunchbox, optional meal journal and postcard export.
+Those future features and a public catalog are NOT yet shipped. Do not stop
+independent work merely because real dietary preferences/feedback are pending.
+No background continuation was started in this step. Inspect/update any saved
+heartbeat before resuming it; the old prompt references a moved checkout and old scope.
 
 ## User input outstanding
 

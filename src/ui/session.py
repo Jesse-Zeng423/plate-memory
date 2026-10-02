@@ -2,15 +2,23 @@
 from copy import deepcopy
 from datetime import date
 import json
+import sqlite3
 
 from ..paths import ROOT
+from ..file_io import read_text
+from ..json_contract import loads
+from ..storage.meal_store import MealStore
+from .home import welcome, home
+from .meal_flow import choose_meal
+from .saved_flow import manage_choices
 from ..extraction import ExtractionError
 from ..food_adapter import ValidationError, parse_date, validate_profile
 from ..json_contract import JsonContractError
 from ..profile_store import load_profile, save_profile, update_record
 from ..services.review import review_demo, review_menu
 from .forms import record_form
-from .review_view import show_report
+from .review_view import show_report, headline
+from ..services.meal_choices import guard_reminders, recorded_menu_profile
 
 
 class Session:
@@ -21,6 +29,40 @@ class Session:
         self.meal_date = date.today()
         self.last = None
         self.lines = []
+        self.selected_meal = None
+        self.meals = MealStore(None if demo else path.with_name(path.stem + '-meals.sqlite3'))
+        self.demo_meals_loaded = False
+
+    def meal_store(self):
+        if self.synthetic and not self.demo_meals_loaded:
+            sample = loads(read_text(ROOT / 'examples/saved-meals-v1.json'))
+            if sample.get('synthetic') is not True or sample.get('schema_version') != 1:
+                raise ValidationError('Saved-meal demo must be explicitly synthetic schema v1.')
+            for meal in sample['meals']:
+                self.meals.save(meal)
+            self.demo_meals_loaded = True
+        return self.meals
+
+    def close(self):
+        self.meals.close()
+
+    def review_saved(self, meal):
+        self.last = None
+        if self.synthetic:
+            self.screen.say('This synthetic browser does not run AI. Use demo at the table for a canned guard example.')
+            return
+        if not self.profile:
+            self.screen.say('Add an actual dietary note in preferences first to check it against this choice.')
+            return
+        if not meal['menu_text']:
+            self.screen.say('No menu text saved. Use review at the table to paste the current menu.')
+            return
+        self.screen.paragraph("Reviewing your recorded menu text. This does not establish today's ingredients or preparation.")
+        result = review_menu(recorded_menu_profile(self.profile), meal['menu_text'], self.meal_date, self.model,
+                             cache_path=self.path.parent / 'food-cache',
+                             progress=lambda n, total, msg: self.screen.say(f'{n}/{total} {msg}'))
+        self.last, self.lines = result.report, result.lines
+        show_report(self.screen, self.last, self.lines)
 
     def commit(self, profile):
         validate_profile(profile)
@@ -30,6 +72,7 @@ class Session:
             save_profile(self.path, profile)
             self.screen.say('Saved locally with a private revision history.', 'ok')
         self.profile = profile
+        self.selected_meal = None
         if self.last:
             self.last = None
             self.screen.say('Previous review cleared. Review the menu again with the updated notes.')
@@ -108,20 +151,29 @@ class Session:
         show_report(self.screen, self.last, self.lines)
 
     def run(self):
-        self.screen.say('\n╭─ Plate Memory ───────────────────────────╮', 'title')
-        self.screen.say('│  Plan a meal with someone you know.      │', 'title')
-        self.screen.say('╰─────────────────────────────────────────╯', 'title')
-        self.screen.paragraph('A menu, a friend, and notes you can trust. Local food extraction; explicit rules decide when a note applies.')
-        if self.synthetic:
-            self.screen.say('Synthetic demo session. These are not Harold\'s preferences.', 'warn')
+        welcome(self.screen)
         while True:
-            self.screen.say('\n' + (self.profile['friend'] if self.profile else 'No profile yet: add actual preferences or try demo') + ' | ' + self.meal_date.isoformat(), 'title')
-            self.screen.say('review  Paste a menu       preferences  Manage notes\ndemo    Try a sample      date         Change meal date\ndetails View rule trace   quit         Exit')
+            home(self.screen, self.profile, self.meal_date, self.synthetic)
+            if self.selected_meal:
+                self.screen.paragraph("This session's idea: " + self.selected_meal['name'])
             try:
-                command = self.screen.ask('Choose', 'demo' if not self.profile or self.synthetic else 'review').lower().lstrip('/')
+                command = self.screen.ask('Choose', 'today').lower().lstrip('/')
+                command = {'1':'today', '2':'usuals'}.get(command, command)
                 if command == 'quit':
                     return 0
-                if command == 'review':
+                if command == 'today':
+                    self.last = None
+                    self.selected_meal = None
+                    self.selected_meal = choose_meal(
+                        self.screen, self.meal_store(), self.review_saved,
+                        reminders=[headline(d) for d in guard_reminders(self.profile, self.meal_date)])
+                    if self.selected_meal:
+                        self.last = None
+                elif command == 'usuals':
+                    self.last = None
+                    self.selected_meal = None
+                    manage_choices(self.screen, self.meal_store())
+                elif command == 'review':
                     self.review()
                 elif command == 'demo':
                     self.review(demo=True)
@@ -130,6 +182,7 @@ class Session:
                 elif command == 'date':
                     self.meal_date = parse_date(self.screen.ask('Meal date YYYY-MM-DD', self.meal_date))
                     self.last = None
+                    self.selected_meal = None
                 elif command == 'details':
                     if not self.last:
                         self.screen.say('Review a menu first. Changing notes or date clears the old report.')
@@ -139,5 +192,5 @@ class Session:
                     self.screen.say('Choose a command listed above.', 'warn')
             except KeyboardInterrupt:
                 self.screen.say('\nCurrent action cancelled. No partial review is shown.', 'warn')
-            except (ValidationError, ExtractionError, JsonContractError, OSError, UnicodeError, json.JSONDecodeError) as exc:
+            except (ValidationError, ExtractionError, JsonContractError, OSError, UnicodeError, json.JSONDecodeError, sqlite3.Error) as exc:
                 self.screen.say(str(exc), 'error')

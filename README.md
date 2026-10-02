@@ -21,21 +21,20 @@ but does not apply on Saturday. A 2023 note about spicy food needs confirmation.
 An allergy record always needs human review even when no ingredient is detected;
 revoked permission takes priority and withholds the record.
 
-## Next: a seat saved for a friend
+## A seat saved for a friend
 
-The next product direction is a small local companion for friends who shared a
-high-school cafeteria and now attend different universities. The agreed roadmap
-has four destinations: choosing today's meal through direct local search, a text-only lunchbox from a friend,
-an optional after-meal check-in, and a postcard for the next shared meal. A warm
-cafeteria scene will tie them together.
+The app now starts with two choices: **too tired → takeout**, or **up for a walk →
+the cafeteria**. Search your saved dishes/places with an optional keyword, see up
+to three references, and select an idea for this meal. Current availability is
+unknown; recorded prices show their dates. Choosing an idea never records it as
+ordered or eaten. You can start without a dietary profile.
 
-**These companion features are planned, not yet shipped.** Stage 0 separates the
-existing terminal presentation, interaction and review service so they can be
-implemented in small usable stages. See [the flow and delivery plan](docs/product-plan.md)
-for required steps, skippable questions and explicit data boundaries.
-The [local data plan](docs/data-plan.md) makes menu import optional and separates
-culinary reference data from actionable recipe variants. The commands
-below still launch the current working menu-review app.
+A text-only lunchbox from a friend, public local dish search, optional after-meal
+journal and a shareable postcard are the next planned stages. Cooking instructions
+and kitchen equipment are outside this product scope. The [implementation plan](docs/implementation-plan.md)
+lists modules, data contracts, delivery order and acceptance checks; the
+[product flow](docs/product-plan.md) and [data plan](docs/data-plan.md) explain the
+four eventual destinations and local information boundaries.
 
 ## Try it in one minute — no installation dependencies
 
@@ -45,13 +44,16 @@ Requires Python 3.10+. The core uses only the Python standard library.
 git clone https://github.com/Jesse-Zeng423/plate-memory.git
 cd plate-memory
 python3 -m src.terminal --demo
-# Choose demo, then weekend (or weekday / stale / allergy).
+# Choose today, then 1 (takeout) or 2 (cafeteria).
+# Leave the keyword blank to browse; choose a number, then select.
+# The demo command still opens weekday / weekend / stale / allergy guard examples.
 ```
 
-This **canned demo** does not run AI. It is deliberately labeled in the report,
-and refuses a fixture if the menu or permitted matching terms have changed.
-The weekend vegetarian record returns `REVISE / IGNORE`, reason `NO_BRIDGE`.
-The synthetic allergy reminder remains `ESCALATE / IGNORE` regardless of detection.
+Demo mode uses clearly labeled synthetic places, prices and dietary notes. Edits
+to demo saved choices stay in memory and never create a real database. No AI runs
+when browsing these references. The separate `demo` command uses fingerprint-bound
+canned menu extractions; it rejects altered fixtures. Real AI menu review remains
+available outside demo mode.
 
 ## Stay in the terminal
 
@@ -60,9 +62,27 @@ python3 -m src.terminal
 # macOS: double-click start.command, or run ./start.command
 ```
 
-No UI packages are required. The guided interface has six visible commands:
-`review`, `preferences`, `demo`, `date`, `details`, and `quit`.
-Start with `preferences` → `add` to create an actual friend-authored record.
+No UI packages are required. `today` (or `1`) opens the two-route meal flow;
+`usuals` (or `2`) opens add/edit/delete for your saved places and dishes. You can
+skip prices, last-seen dates, walk times and menu descriptions. A known price needs
+its recorded date. A choice is saved only after an explicit preview/confirmation.
+Use `/back` to return or `/skip` to leave an optional field unknown.
+
+Saved choices persist next to the selected profile as `<profile-stem>-meals.sqlite3`
+(default `private/friend-meals.sqlite3`). This database is separate from dietary
+preferences. Editing/deleting checks the record revision to avoid overwriting a
+change made in another session. Files are owner-only on POSIX, not encrypted.
+
+`today` currently uses **literal dish/place keywords**, not free-form AI search.
+Its shortlist filters route and keyword only. Dietary risk/permission reminders
+come from the guard, but the list does not claim preferences were checked. Select
+`review` on a choice to check its recorded menu against your dietary notes using
+local AI. Historical text requires current preparation verification; this temporary
+context does not change your profile. No-record and no-profile states explain the
+next step instead of inventing a result.
+
+Original commands remain available: `review`, `preferences`, `demo`, `date`,
+`details`, and `quit`. Use `preferences` → `add` to create an actual friend-authored record.
 The app does not prefill Harold's preferences. Permission defaults to `UNKNOWN`;
 confirmation defaults to unknown. It asks before saving any note.
 
@@ -91,7 +111,8 @@ The UI labels cache reuse explicitly. Delete that directory to force fresh extra
 including after replacing weights under the same model identifier. A corrupt cache
 is rejected, not silently accepted. No cache or real profile enters the public repo.
 
-Use `--no-color` or `NO_COLOR=1` for plain output. Output remains readable without
+Use `--plain` to remove colors and the decorative table. `--no-color` or
+`NO_COLOR=1` disables color while keeping the artwork. Output remains readable without
 color, and untrusted text cannot send terminal control sequences. This is a guided,
 scrolling interface rather than a full-screen terminal emulator. The original
 file/stdin/JSON CLI remains available for scripts.
@@ -198,6 +219,8 @@ flowchart LR
 | `src/terminal.py` | Stable guided-terminal entry point |
 | `src/ui/` | Terminal rendering, preference forms, report presentation and session navigation |
 | `src/services/review.py` | Shared menu-review operation for terminal and scripted CLI |
+| `src/domain/meals.py`, `src/storage/meal_store.py` | Validated, versioned private saved dishes/places |
+| `src/services/meal_choices.py` | Stable route/keyword lookup and guard-based risk reminders |
 | `src/paths.py`, `src/file_io.py`, `src/demo.py` | Source-relative paths, bounded reads and fingerprint-bound demo fixtures |
 | `src/profile_store.py` | Validated profile writes, private revision history, explicit consent/confirmation actions |
 | `src/food_cache.py` | Grounded food-span cache; every review re-runs matching and the guard |
