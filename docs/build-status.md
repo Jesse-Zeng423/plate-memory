@@ -48,8 +48,12 @@ fixtures are unchanged. Original launch commands remain supported. Validation: 8
 86 pytest tests plus 47 subtests, provenance verification and four mock scenarios
 passed. No model calls were made for this refactor.
 
-The next implementation checkpoint is stage 1: the cafeteria home and text-only
-friend pack, followed by the meal-selection flow in stage 2. These features are
+The revised positioning is "That bro who ate with you every day back in high
+school." Direct local food search is the default planned entry; menu import is
+optional. The next implementation checkpoint is stage 1: versioned public dish
+data, checked recipe variants and local retrieval. Stage 2 combines the cafeteria
+home, text-only friend pack and complete meal-selection flow. See `docs/data-plan.md`
+and product plan v2. No dataset has been downloaded or packaged in this revision. These features are
 not yet shipped. Continue from this plan; lack of real preferences does not block
 independent implementation with synthetic examples. No background continuation
 was started as part of this stage. Inspect the saved automation before resuming

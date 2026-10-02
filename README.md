@@ -2,7 +2,9 @@
 
 [![Tests](https://github.com/Jesse-Zeng423/plate-memory/actions/workflows/tests.yml/badge.svg)](https://github.com/Jesse-Zeng423/plate-memory/actions/workflows/tests.yml)
 
-**Remember the preference. Check whether it applies today.**
+**That bro who ate with you every day back in high school.**
+
+Remember the preference. Check whether it applies today.
 
 A guided local terminal app built for Harold, Jesse's friend and roommate from high school,
 and a big foodie. Before planning a meal, it checks remembered preferences against
@@ -23,14 +25,16 @@ revoked permission takes priority and withholds the record.
 
 The next product direction is a small local companion for friends who shared a
 high-school cafeteria and now attend different universities. The agreed roadmap
-has four destinations: choosing today's meal, a text-only lunchbox from a friend,
+has four destinations: choosing today's meal through direct local search, a text-only lunchbox from a friend,
 an optional after-meal check-in, and a postcard for the next shared meal. A warm
 cafeteria scene will tie them together.
 
 **These companion features are planned, not yet shipped.** Stage 0 separates the
 existing terminal presentation, interaction and review service so they can be
 implemented in small usable stages. See [the flow and delivery plan](docs/product-plan.md)
-for required steps, skippable questions and explicit data boundaries. The commands
+for required steps, skippable questions and explicit data boundaries.
+The [local data plan](docs/data-plan.md) makes menu import optional and separates
+culinary reference data from actionable recipe variants. The commands
 below still launch the current working menu-review app.
 
 ## Try it in one minute — no installation dependencies
