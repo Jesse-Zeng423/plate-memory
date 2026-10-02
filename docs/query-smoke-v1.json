@@ -1,0 +1,34 @@
+{
+  "synthetic": true,
+  "model": "gemma3:4b",
+  "results": [
+    {
+      "query": "I feel like pizza",
+      "status": "validated",
+      "extraction": {
+        "spans": [
+          {
+            "quote": "pizza",
+            "kind": "want"
+          }
+        ]
+      }
+    },
+    {
+      "query": "sandwich but no egg",
+      "status": "validated",
+      "extraction": {
+        "spans": [
+          {
+            "quote": "sandwich",
+            "kind": "want"
+          },
+          {
+            "quote": "no egg",
+            "kind": "avoid"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "count": 13,
+  "file": "dishes.json",
+  "sha256": "7a1cdf78808453a21d00c84e781651ead009596405a1c2733725511c1bd9220d",
+  "retrieved_at": "2026-10-02T20:14:11.351868+00:00",
+  "source": "Wikidata structured labels and aliases",
+  "license": "CC0-1.0",
+  "license_url": "https://www.wikidata.org/wiki/Wikidata:Licensing",
+  "editorial_terms_license": "MIT",
+  "coverage": "13 starter dish concepts; not global coverage",
+  "editorial_terms_note": "search_terms are project-authored query hints, not sourced aliases or verified restaurant ingredients. egg points to an omelette idea, not an ingredient check."
+}

@@ -85,3 +85,24 @@ Mac idle/system-sleep assertions are time-limited to October 5, 02:59 EDT.
 The original heartbeat was paused after the CLI handoff. The new staged roadmap
 is recorded above; do not assume that old automation is active or points at the
 current checkout. No reset credits were used.
+
+## Companion step 2 checkpoint — offline dish discovery
+
+Shipped a bounded 13-concept Wikidata CC0 names/aliases snapshot, revision links,
+retrieval timestamp, count and SHA-256 manifest. Added project-authored query hints
+separately (e.g. egg -> omelette). No cuisine or typical-ingredient assertions are
+shipped; unknown facts stay unknown. This is a small starter catalog, not worldwide
+coverage. Explicit developer refresh writes a new directory; runtime never fetches.
+
+Empty accounts can search pizza/sandwich/egg and Chinese aliases. Saved places and
+public ideas are visibly different. New keywords work at both empty and populated
+lists. Local Gemma query spans use a separate closed schema, preserve negation,
+reject invented spans and require phrase confirmation; only the user query reaches
+the model. Budgets/avoidances remain visible but unverified. No automatic ranking
+by preferences: actual-menu review is required for guard-based matching. The notes
+command provides confirmation/edit and recomputes guard reminders in the flow.
+
+105 tests and 72 subtests passed; provenance and four mock scenarios passed.
+New local Gemma synthetic query smoke: docs/query-smoke-v1.json, two validated
+queries including a negated egg phrase. Offline terminal tests forbid socket calls
+and verify empty-account selection creates no private files. Next: text lunchbox.

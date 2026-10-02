@@ -1,0 +1,281 @@
+{
+  "schema_version": 1,
+  "items": [
+    {
+      "id": "Q177",
+      "name": "pizza",
+      "names": {
+        "zh": "比萨饼",
+        "zh-hans": "比萨饼",
+        "zh-hant": "比薩",
+        "mul": "pizza"
+      },
+      "aliases": [
+        "pie",
+        "pizza pie",
+        "意大利薄饼",
+        "披萨",
+        "比萨"
+      ],
+      "search_terms": [
+        "披萨",
+        "披薩"
+      ],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q177",
+        "revision": 2547259198
+      }
+    },
+    {
+      "id": "Q28803",
+      "name": "sandwich",
+      "names": {
+        "zh": "三明治",
+        "zh-hant": "三明治",
+        "zh-hans": "三明治",
+        "en": "sandwich"
+      },
+      "aliases": [
+        "sammich",
+        "sandwiches",
+        "sarnie",
+        "三文治"
+      ],
+      "search_terms": [
+        "sandwiches"
+      ],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q28803",
+        "revision": 2551975605
+      }
+    },
+    {
+      "id": "Q188788",
+      "name": "falafel",
+      "names": {
+        "zh-hans": "炸豆丸子",
+        "zh-hant": "中東蔬菜球",
+        "en": "falafel",
+        "zh": "油炸鷹嘴豆餅"
+      },
+      "aliases": [
+        "法拉費",
+        "炸豆丸子"
+      ],
+      "search_terms": [],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q188788",
+        "revision": 2550157955
+      }
+    },
+    {
+      "id": "Q46383",
+      "name": "sushi",
+      "names": {
+        "zh": "寿司",
+        "en": "sushi",
+        "zh-hans": "寿司",
+        "zh-hant": "壽司"
+      },
+      "aliases": [
+        "壽司"
+      ],
+      "search_terms": [],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q46383",
+        "revision": 2535720335
+      }
+    },
+    {
+      "id": "Q192874",
+      "name": "noodle",
+      "names": {
+        "zh-hans": "面条",
+        "zh-hant": "麵條",
+        "en": "noodle",
+        "zh": "面条"
+      },
+      "aliases": [
+        "noodles",
+        "叉燒麵",
+        "麪",
+        "麵",
+        "麵條"
+      ],
+      "search_terms": [
+        "noodles"
+      ],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q192874",
+        "revision": 2544672125
+      }
+    },
+    {
+      "id": "Q6663",
+      "name": "hamburger",
+      "names": {
+        "en": "hamburger",
+        "zh": "漢堡",
+        "zh-hans": "汉堡",
+        "zh-hant": "漢堡"
+      },
+      "aliases": [
+        "Hamburgh ſauſage",
+        "beef hamburger",
+        "burger",
+        "hamburger sandwich",
+        "汉堡",
+        "汉堡包",
+        "漢堡包"
+      ],
+      "search_terms": [
+        "burger",
+        "burgers"
+      ],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q6663",
+        "revision": 2551971667
+      }
+    },
+    {
+      "id": "Q41415",
+      "name": "soup",
+      "names": {
+        "zh": "湯",
+        "en": "soup",
+        "zh-hant": "湯",
+        "zh-hans": "汤"
+      },
+      "aliases": [
+        "汤",
+        "湯品",
+        "湯水"
+      ],
+      "search_terms": [],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q41415",
+        "revision": 2551134195
+      }
+    },
+    {
+      "id": "Q9266",
+      "name": "salad",
+      "names": {
+        "en": "salad",
+        "zh": "沙拉",
+        "zh-hans": "沙拉",
+        "zh-hant": "沙拉"
+      },
+      "aliases": [
+        "salads",
+        "沙律"
+      ],
+      "search_terms": [],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q9266",
+        "revision": 2544466119
+      }
+    },
+    {
+      "id": "Q271555",
+      "name": "biryani",
+      "names": {
+        "zh-hans": "印度香饭",
+        "zh-hant": "印度香飯",
+        "en": "biryani",
+        "zh": "印度香饭"
+      },
+      "aliases": [
+        "比尔亚尼"
+      ],
+      "search_terms": [],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q271555",
+        "revision": 2537128619
+      }
+    },
+    {
+      "id": "Q20129",
+      "name": "omelette",
+      "names": {
+        "en": "omelette",
+        "zh": "西式蛋餅",
+        "zh-hans": "西式蛋餅",
+        "zh-hant": "歐姆蛋"
+      },
+      "aliases": [
+        "omelet",
+        "奄列",
+        "杏力蛋",
+        "歐姆蛋",
+        "煎蛋捲",
+        "西式蛋餅"
+      ],
+      "search_terms": [
+        "egg",
+        "eggs",
+        "鸡蛋",
+        "雞蛋",
+        "蛋饼",
+        "蛋餅"
+      ],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q20129",
+        "revision": 2532260650
+      }
+    },
+    {
+      "id": "Q96398796",
+      "name": "pepper and egg sandwich",
+      "names": {
+        "en": "pepper and egg sandwich"
+      },
+      "aliases": [],
+      "search_terms": [],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q96398796",
+        "revision": 2337375573
+      }
+    },
+    {
+      "id": "Q234646",
+      "name": "ramen",
+      "names": {
+        "zh-hans": "日本拉面",
+        "zh-hant": "日本拉麵",
+        "en": "ramen",
+        "zh": "日本拉面"
+      },
+      "aliases": [],
+      "search_terms": [],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q234646",
+        "revision": 2550158653
+      }
+    },
+    {
+      "id": "Q164606",
+      "name": "curry",
+      "names": {
+        "zh-hans": "咖哩",
+        "zh-hant": "咖哩",
+        "en": "curry",
+        "zh": "咖哩"
+      },
+      "aliases": [
+        "Curry",
+        "curries",
+        "咖喱",
+        "咖喱粉",
+        "咖喱飯"
+      ],
+      "search_terms": [
+        "咖喱"
+      ],
+      "source": {
+        "url": "https://www.wikidata.org/wiki/Q164606",
+        "revision": 2533542163
+      }
+    }
+  ]
+}

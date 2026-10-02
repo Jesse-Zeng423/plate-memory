@@ -24,12 +24,12 @@ revoked permission takes priority and withholds the record.
 ## A seat saved for a friend
 
 The app now starts with two choices: **too tired → takeout**, or **up for a walk →
-the cafeteria**. Search your saved dishes/places with an optional keyword, see up
-to three references, and select an idea for this meal. Current availability is
+the cafeteria**. Search saved dishes/places and a bundled 13-concept public food catalog with an
+optional Chinese/English keyword, see up to three results of each kind, and select an idea for this meal. Current availability is
 unknown; recorded prices show their dates. Choosing an idea never records it as
 ordered or eaten. You can start without a dietary profile.
 
-A text-only lunchbox from a friend, public local dish search, optional after-meal
+A text-only lunchbox from a friend, optional after-meal
 journal and a shareable postcard are the next planned stages. Cooking instructions
 and kitchen equipment are outside this product scope. The [implementation plan](docs/implementation-plan.md)
 lists modules, data contracts, delivery order and acceptance checks; the
@@ -73,7 +73,16 @@ Saved choices persist next to the selected profile as `<profile-stem>-meals.sqli
 preferences. Editing/deleting checks the record revision to avoid overwriting a
 change made in another session. Files are owner-only on POSIX, not encrypted.
 
-`today` currently uses **literal dish/place keywords**, not free-form AI search.
+`today` searches **literal dish/place keywords and checked aliases** offline. Type
+`pizza`, `三明治`, or `egg` even with no saved choices. Public ideas are explicitly
+unpersonalized and have unknown ingredients, price and availability. Names/aliases
+come from Wikidata CC0; project-authored query hints are marked separately in
+`data/catalog/v1/`. `egg` suggests an omelette concept, not an ingredient guarantee.
+Type `ai` to parse a sentence with downloaded local Gemma, inspect the exact spans,
+and confirm a phrase to search. Avoidances and budgets are shown but remain
+unverified; they do not silently become filters or permanent notes. Parsing failure
+offers explicit literal search. Demo browsing never calls a model. Type `notes` to
+edit/confirm preferences and recompute guard reminders in the same flow.
 Its shortlist filters route and keyword only. Dietary risk/permission reminders
 come from the guard, but the list does not claim preferences were checked. Select
 `review` on a choice to check its recorded menu against your dietary notes using

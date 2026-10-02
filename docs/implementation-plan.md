@@ -186,3 +186,12 @@ mock dry run. Model smoke tests only when changed model integration warrants it,
 using synthetic public inputs with separate evidence versions. No modification of
 frozen research or historical checkpoints. Update `build-status.md` as the resume
 point. An old automation prompt must be updated before resuming background work.
+
+## Step 2 implementation clarification
+
+Checkpoint ships 13 sourced concepts rather than the provisional 100–200 target.
+Cuisine/ingredient facts stay absent pending verification. Literal/alias discovery
+and optional confirmed local query spans are implemented. Guard-aware notes and
+actual-menu review provide confirmation/recomputation; personalized ranking awaits
+actual menu facts. No catalog result implies an ingredient or preference clearance.
+These conservative boundaries are deliberate, and described in README/build status.

@@ -2,7 +2,7 @@
 
 October 2, 2026. Public-data research remains valid; scope now focuses on takeout
 and campus cafeterias. Cooking recipes, preparation steps, kitchen equipment and
-recipe-variant targets from v1 are removed. The public catalog is not shipped yet.
+recipe-variant targets from v1 are removed. A 13-concept names/aliases starter catalog is now shipped.
 The personal saved-choice store is the first implemented data layer.
 
 ## Three separate records
@@ -72,3 +72,6 @@ Verify mixed Chinese/English aliases, no-hit recovery, variant ambiguity, negati
 route filtering, revocation and unknown actual ingredients. Runtime must work with
 only loopback model access and no external network. Record speed/coverage after
 measurement; do not promise unmeasured latency or global completeness.
+
+Current pack intentionally omits cuisine/ingredient facts until they are checked.
+Manifest records actual coverage; 100–200 concepts remain a future expansion target.

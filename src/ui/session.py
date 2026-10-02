@@ -5,6 +5,8 @@ import json
 import sqlite3
 
 from ..paths import ROOT
+from ..catalog.index import Catalog
+from ..query_parser import parse_query
 from ..file_io import read_text
 from ..json_contract import loads
 from ..storage.meal_store import MealStore
@@ -32,6 +34,7 @@ class Session:
         self.selected_meal = None
         self.meals = MealStore(None if demo else path.with_name(path.stem + '-meals.sqlite3'))
         self.demo_meals_loaded = False
+        self.catalog = Catalog()
 
     def meal_store(self):
         if self.synthetic and not self.demo_meals_loaded:
@@ -63,6 +66,12 @@ class Session:
                              progress=lambda n, total, msg: self.screen.say(f'{n}/{total} {msg}'))
         self.last, self.lines = result.report, result.lines
         show_report(self.screen, self.last, self.lines)
+
+    def discovery_notes(self):
+        self.preferences()
+        for decision in guard_reminders(self.profile, self.meal_date):
+            self.screen.paragraph('A note to keep in mind: ' + headline(decision))
+        self.screen.say('Guard reminders recomputed. Food ideas remain unverified; review the actual menu for preference matching.')
 
     def commit(self, profile):
         validate_profile(profile)
@@ -166,7 +175,10 @@ class Session:
                     self.selected_meal = None
                     self.selected_meal = choose_meal(
                         self.screen, self.meal_store(), self.review_saved,
-                        reminders=[headline(d) for d in guard_reminders(self.profile, self.meal_date)])
+                        reminders=[headline(d) for d in guard_reminders(self.profile, self.meal_date)],
+                        catalog=self.catalog,
+                        query_parser=None if self.synthetic else lambda q: parse_query(q, self.model),
+                        edit_notes=self.discovery_notes)
                     if self.selected_meal:
                         self.last = None
                 elif command == 'usuals':
