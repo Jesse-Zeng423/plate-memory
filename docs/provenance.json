@@ -1,0 +1,10 @@
+{
+  "upstream_url": "https://github.com/Jesse-Zeng423/memory-applicability-guard",
+  "commit": "f9e2dca51ee9ed26394ae838fe658095a5c72554",
+  "file": "memory-applicability-guard/scripts/guard_decision.py",
+  "sha256": "5873ccb197a6fb19b25a82de98471ad2cc64347b6fcb6a39bb7b8eefd3d772cd",
+  "destination": "src/guard_decision.py",
+  "changes": "None; food-domain adapter lives in src/domain.py",
+  "license": "MIT",
+  "project_started_utc": "2026-10-02T04:55:54.580380+00:00"
+}
