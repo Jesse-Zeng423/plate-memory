@@ -13,6 +13,8 @@ def choose_meal(screen, store, review=None, reminders=()):
             raise ValidationError('Use up to 160 characters.')
         return raw
     screen.say('\nHow are you doing today?', 'title')
+    for reminder in reminders:
+        screen.paragraph('A note to keep in mind: ' + reminder)
     while True:
         try:
             if route is None:
@@ -21,11 +23,23 @@ def choose_meal(screen, store, review=None, reminders=()):
                 query = ask(screen, 'Dish or place keyword (optional)', optional=True, convert=keyword) or ''
             rows = shortlist(store.list(), route, query)
             screen.say('\n' + ('Takeout ideas' if route == 'delivery' else 'A walk and something to eat'), 'title')
-            for reminder in reminders:
-                screen.paragraph('! ' + reminder)
             screen.paragraph('Saved references only. Check current availability and price. Dietary notes have not been checked in this list; review a menu before relying on a choice.')
             if not rows:
-                screen.say('No saved matches yet. Try another word, or add a choice you know.')
+                screen.say('No saved matches yet. Type another dish or place to search, add a choice, change route, or /back.')
+                action = ask(screen, 'New keyword / add / route / back', optional=True)
+                action = (action or '').lower()
+                if action == 'add':
+                    try:
+                        add_choice(screen, store, route)
+                    except FlowCancelled:
+                        pass
+                elif action == 'route':
+                    route = None
+                elif action:
+                    query = keyword(action)
+                else:
+                    query = ''
+                continue
             for index, (meal, _) in enumerate(rows, 1):
                 show_choice(screen, meal, index)
             action = ask(screen, 'Number / refine / route / add / back').lower()

@@ -124,7 +124,8 @@ Empty first run allows adding a choice or browsing a synthetic demo, without
 forcing a profile or fabricating restaurants. First shortlist is a literal
 food/place lookup, clearly not yet free-form AI search or dietary clearance.
 
-Acceptance: choose each route; create/edit/delete a choice; restart and retrieve
+Acceptance: choose each route; a no-match prompt accepts the next free-text term
+without requiring a `refine` command; create/edit/delete a choice; restart and retrieve
 it; show historic price date and unknown availability; back/cancel does not save;
 selection does not record consumption; demo never touches real data. Concurrency
 conflicts reject stale edits. Four original reports and guard fingerprint pass.

@@ -176,6 +176,23 @@ class MealFlowTests(unittest.TestCase):
         finally:
             store.close()
 
+    def test_no_results_accepts_next_free_text_term_without_rejection(self):
+        store = MealStore()
+        meal = empty_meal('cafeteria')
+        meal.update(name='Egg sandwich', venue='North Cafeteria')
+        store.save(meal)
+        try:
+            # User enters an unmatched term, then immediately types another dish name.
+            reminder = 'Allergy: confirm ingredients with the preparer'
+            with patch('builtins.input', side_effect=['2', 'pizza', 'sandwich', '1', 'select']), redirect_stdout(StringIO()) as out:
+                chosen = choose_meal(Screen(False), store, reminders=[reminder])
+            self.assertEqual(chosen['id'], meal['id'])
+            self.assertIn('No saved matches yet. Type another dish or place to search', out.getvalue())
+            self.assertNotIn('Choose a shown number, refine', out.getvalue())
+            self.assertEqual(out.getvalue().count(reminder), 1)
+        finally:
+            store.close()
+
     def test_absolute_launch_has_warm_home_and_plain_mode(self):
         with tempfile.TemporaryDirectory() as work:
             result=subprocess.run([sys.executable,'-B',str(ROOT/'src/terminal.py'),'--demo','--plain'],input='today\n2\n\nback\nquit\n',cwd=work,text=True,capture_output=True)
