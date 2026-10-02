@@ -114,3 +114,19 @@ Passing these checks does not estimate real-world extraction accuracy or establi
 medical safety. Source phrases can be omitted, vocabulary mappings are incomplete,
 menus can hide ingredients, and cross-contact is not assessed. The generic guard
 validates structure/precedence, not the truth of manually supplied metadata.
+
+## Companion steps 2–6 (October 2, 2026)
+
+116 unittest tests, 116 pytest tests and 72 subtests passed; generic guard
+fingerprint and all four mock scenarios passed. Offline UI tests forbid socket
+access; empty-account meal discovery needs no profile or AI. Catalog loader checks
+count/hash/schema; corrupt/unattributed packs are rejected. Query parser rejects
+invented spans, negation loss, remote aliases and incomplete output. Two real local
+Gemma synthetic queries passed in `query-smoke-v1.json`. This small smoke sample
+does not establish general query accuracy.
+
+Companion private storage tests cover friend-pack confirmation/cancellation,
+journal restart/stale revision/edit/delete, postcard excluded fields and overwrite
+refusal. A real pseudo-terminal walkthrough at 40 columns from outside the repo
+visits all four destinations without demo files. Transcript and metadata:
+`companion-terminal-v2.txt`, `companion-smoke-v2.json`. No real Harold trial yet.

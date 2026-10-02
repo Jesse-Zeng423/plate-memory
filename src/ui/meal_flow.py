@@ -21,19 +21,22 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
             if route is None:
                 screen.say('1  Too tired. Let\'s look at takeout.\n2  Up for a walk. Let\'s look at the cafeteria.')
                 route = choose(screen, '1 / 2 / back', {'1':'delivery','2':'cafeteria','delivery':'delivery','cafeteria':'cafeteria'})
-                query = ask(screen, 'Dish or place keyword (optional)', optional=True, convert=keyword) or ''
+                query = ask(screen, "Anything you’re craving? (Enter to browse)", optional=True, convert=keyword) or ''
             saved, ideas = discover(store, route, query, catalog)
             rows = saved + ideas
-            screen.say('Type a new keyword anytime; ai parses a sentence locally; notes opens dietary notes.')
+            screen.say('More options: route / add / notes / ai')
             screen.say('\n' + ('Takeout ideas' if route == 'delivery' else 'A walk and something to eat'), 'title')
-            screen.paragraph('Saved references only. Check current availability and price. Dietary notes have not been checked in this list; review a menu before relying on a choice.')
+            if saved:
+                screen.paragraph('Your saved places. Check today’s price and ingredients before deciding.')
             if not saved and ideas:
-                screen.say('No saved matches yet.' + (' Here are some food ideas to look for.' if ideas else ''))
+                screen.say('No saved matches yet. Here are a few things you could look for.')
             if ideas:
-                screen.paragraph('Food ideas from the offline catalog. These are not confirmed cafeteria or takeout listings. Ingredients, availability and price are unknown; these ideas have not been personalized.')
+                screen.paragraph('Food ideas, not live listings. Ingredients, availability and price are unknown. These ideas have not been personalized.')
             if not rows:
-                screen.say('No saved matches yet. Type another dish or place to search, add a choice, change route, or /back.')
-                action = ask(screen, 'New keyword / ai / notes / add / route / back', optional=True)
+                screen.say('No saved matches yet. Type another dish or place to search, or add one you know.')
+                if catalog is not None:
+                    screen.paragraph('Try a simple food name, like sandwich or 汤. For a sentence, type ai. The starter catalog is still small.')
+                action = ask(screen, 'Food keyword / back', optional=True)
                 action = (action or '').lower()
                 if action == 'ai':
                     query = query_flow(screen, query_parser, query)
@@ -57,13 +60,13 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     show_choice(screen, meal, index)
                 else:
                     show_idea(screen, meal, index)
-            action = ask(screen, 'Number / keyword / ai / notes / refine / route / add / back').lower()
+            action = ask(screen, 'Number / food keyword / back').lower()
             if action == 'ai':
                 query = query_flow(screen, query_parser, query)
             elif action == 'notes' and edit_notes:
                 edit_notes()
             elif action == 'refine':
-                query = ask(screen, 'Dish or place keyword (optional)', query or None, optional=True, convert=keyword) or ''
+                query = ask(screen, "Anything you’re craving? (Enter to browse)", query or None, optional=True, convert=keyword) or ''
             elif action == 'route':
                 route = None
             elif action == 'add':
@@ -76,9 +79,9 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                 if kind == 'saved':
                     show_choice(screen, meal)
                 else:
-                    show_idea(screen, meal)
+                    show_idea(screen, meal, detail=True)
                 try:
-                    decision = choose(screen, 'select / review / back', {'select':'select','review':'review'})
+                    decision = choose(screen, 'pick / check ingredients / back', {'pick':'select','select':'select','check':'review','review':'review','check ingredients':'review'})
                 except FlowCancelled:
                     continue
                 if decision == 'review':
@@ -87,7 +90,7 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     elif review:
                         review(meal)
                     continue
-                screen.say('An idea for this meal, saved for this session. You can change your mind.', 'ok')
+                screen.say('Sounds good. Keep this idea for today; you can always change your mind.', 'ok')
                 screen.say('Nothing has been ordered or recorded as eaten.')
                 return meal
             else:
@@ -96,15 +99,16 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
             return None
         except ValidationError as exc:
             screen.say(str(exc), 'warn')
-            return None
+            continue
 
 
-def show_idea(screen, item, index=None):
+def show_idea(screen, item, index=None, detail=False):
     prefix = str(index) + '. ' if index is not None else ''
     chinese = item['names'].get('zh-hans', item['names'].get('zh', ''))
     screen.say(prefix + item['name'] + (' · ' + chinese if chinese else '') + ' [food idea]', 'title')
-    screen.say('Something to look for on the menu. Variants and preparation differ.')
-    screen.say('Source: ' + item['source']['url'] + ' (revision ' + str(item['source']['revision']) + ')')
+    if detail:
+        screen.paragraph('Look for this on your menu. The recipe can vary; check the ingredients if needed.')
+        screen.paragraph('Source: ' + item['source']['url'] + ' (revision ' + str(item['source']['revision']) + ')')
 
 
 def query_flow(screen, parser, previous):

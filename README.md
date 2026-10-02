@@ -25,16 +25,17 @@ revoked permission takes priority and withholds the record.
 
 The app now starts with two choices: **too tired → takeout**, or **up for a walk →
 the cafeteria**. Search saved dishes/places and a bundled 13-concept public food catalog with an
-optional Chinese/English keyword, see up to three results of each kind, and select an idea for this meal. Current availability is
+optional Chinese/English keyword, see up to three choices, and select an idea for this meal. Current availability is
 unknown; recorded prices show their dates. Choosing an idea never records it as
 ordered or eaten. You can start without a dietary profile.
 
-A text-only lunchbox from a friend, optional after-meal
-journal and a shareable postcard are the next planned stages. Cooking instructions
+The four home destinations are now available: today’s meal, a text-only lunchbox
+from a friend, an optional after-meal journal and a postcard for your next meal
+together. Cooking instructions
 and kitchen equipment are outside this product scope. The [implementation plan](docs/implementation-plan.md)
 lists modules, data contracts, delivery order and acceptance checks; the
 [product flow](docs/product-plan.md) and [data plan](docs/data-plan.md) explain the
-four eventual destinations and local information boundaries.
+four destinations and local information boundaries.
 
 ## Try it in one minute — no installation dependencies
 
@@ -63,7 +64,7 @@ python3 -m src.terminal
 ```
 
 No UI packages are required. `today` (or `1`) opens the two-route meal flow;
-`usuals` (or `2`) opens add/edit/delete for your saved places and dishes. You can
+`usuals` opens add/edit/delete for your saved places and dishes. You can
 skip prices, last-seen dates, walk times and menu descriptions. A known price needs
 its recorded date. A choice is saved only after an explicit preview/confirmation.
 Use `/back` to return or `/skip` to leave an optional field unknown.
@@ -303,3 +304,31 @@ Code: [MIT](LICENSE). Ollama is [MIT](https://github.com/ollama/ollama/blob/main
 Gemma is an **open-weight** model distributed under its own
 [Gemma Terms](https://ai.google.dev/gemma/terms); the code's MIT license does not
 relicense the model weights. No paid API or API key is needed for this application.
+
+## The four seats at your table
+
+1. **Today:** press Enter at home, choose takeout or a walk, then browse or type a
+   food name. Pick one idea; you can stop there. No profile or AI setup required.
+2. **Lunchbox:** open a friend’s local JSON file, or choose `write` and type a short
+   message yourself. Preview before keeping/exporting. `examples/friend-pack-v1.json`
+   shows the format; its sender/message are clearly synthetic. Files are never sent.
+3. **Check-in:** record what you actually ate. Skip all feelings together or leave
+   individual fields empty; view/edit/delete your local journal. Selection alone
+   never records a meal. Journal lives beside the profile as `*-journal.sqlite3`.
+4. **Postcard:** write names and a message, optionally include today’s food idea,
+   preview, then export a local text file. No symptoms or dietary permissions enter
+   the card. Demo offers preview only. You decide whether and how to send it.
+
+Lunchbox files persist as `*-lunchbox.json`; all private companion files are
+owner-only on POSIX and local, not encrypted. Changing the profile path changes
+its associated stores. Postcard exports are independent files: deleting a journal
+entry does not delete an export or backup. Blank optional fields and `/skip` leave
+values unknown; `/back` leaves without saving. Existing edits retain defaults unless
+explicitly skipped. `--plain` removes decorations; `--no-color` retains the bowls.
+Narrow output wraps Chinese names and long source links.
+
+Validation: 116 tests and 72 subtests, original guard fingerprint/four mock reports,
+40-column pseudo-terminal walkthrough outside the repo and no-file demo isolation.
+Two new synthetic queries were also run through actual local Gemma; evidence is in
+`docs/query-smoke-v1.json` and `docs/companion-smoke-v2.json`. This does not substitute
+for Harold’s real trial, which is still pending.

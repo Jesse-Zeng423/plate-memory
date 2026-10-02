@@ -120,11 +120,21 @@ the technical `IGNORE` label is not presented as reassurance. The raw rule trace
 is still available through `details`.
 
 The newest terminal entry asks just one routing question: too tired for a walk,
-or up for the cafeteria? It filters a private list of saved dishes and places,
+or up for the cafeteria? It searches a small bundled Wikidata CC0 dish catalog
+alongside a private list of saved dishes and places,
 shows recorded prices with their dates, and keeps today's availability unknown.
-This first list is a route-and-keyword lookup; it does not claim dietary suitability.
+Public food ideas are marked separately from known places. The starter catalog
+has 13 concepts, with checked names/aliases, revision links and a hash manifest;
+it does not establish a restaurant’s ingredients or dietary suitability. Local
+Gemma can copy spans from a sentence, which the user confirms before searching.
 Guard risk reminders stay visible, and recorded-menu review requires verification
 of current preparation. Choosing an idea never records it as eaten.
+
+Three optional destinations sit beside that main path: a text lunchbox a friend
+can write and exchange as a local file, a private after-meal journal, and a postcard
+for the next time they eat together. Journal feelings can be skipped as a group.
+Postcards include only previewed fields; symptoms and permission records stay out.
+Nothing is sent automatically. All example friend messages are labeled synthetic.
 
 The friend can confirm, edit or revoke a note through the same interface. Every
 saved change keeps a private revision, and changing a note or meal date clears

@@ -1,0 +1,237 @@
+today
+2
+pizza
+sandwich
+egg
+1
+pick
+lunchbox
+back
+checkin
+log
+Omelette
+
+no
+
+yes
+history
+back
+postcard
+Example sender (synthetic)
+Example friend (synthetic)
+Lunch next week? (synthetic)
+yes
+yes
+quit
+       ( (             ( (
+     .-----.         .-----.
+     \_____/         \_____/
+   ---------------------------
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day
+back in high school.
+Different campuses. Still a place for
+you at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-02
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+How are you doing today?
+A note to keep in mind: Allergy:
+confirm ingredients and cross-contact
+with the preparer
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the
+cafeteria.
+1 / 2 / back: Anything you’re craving? (Enter to browse): More options: route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea]
+Number / food keyword / back: More options: route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. sandwich · 三明治 [food idea]
+2. hamburger · 汉堡 [food idea]
+3. pepper and egg sandwich [food idea]
+Number / food keyword / back: More options: route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. omelette · 西式蛋餅 [food idea]
+2. pepper and egg sandwich [food idea]
+Number / food keyword / back: omelette · 西式蛋餅 [food idea]
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+Source:
+https://www.wikidata.org/wiki/Q20129
+(revision 2532260650)
+pick / check ingredients / back: Sounds good. Keep this idea for today;
+you can always change your mind.
+Nothing has been ordered or recorded
+as eaten.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-02
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+This session's idea: omelette
+Choose [today]: 
+A corner of the cafeteria
+   +----------------------+
+   |  a little lunchbox   |
+   +----------------------+
+From Example friend (synthetic) to
+Example roommate (synthetic) (sender
+label supplied in the file)
+Synthetic example: Different campuses,
+same seat saved for you. Hope you find
+something you enjoy today.
+Synthetic example: Next time we meet,
+let's have lunch together.
+Soup and bread — synthetic — Example
+shared dish only; replace with your
+own words and real memory.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+open file / write / export / back: 
+Synthetic example — not Harold’s
+actual preferences | 2026-10-02
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+This session's idea: omelette
+Choose [today]: 
+How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+log / history / edit / delete / back: Only save a meal you actually ate.
+Every feeling is optional; /skip
+leaves it blank, /back leaves without
+saving.
+What did you eat? [omelette]: Date YYYY-MM-DD [2026-10-02]: Add how it felt? yes / no [no]: Anything to remember? (Enter to skip): 2026-10-02 · Omelette
+Save as an actual meal? yes / no [no]: Saved just to your meal journal.
+
+How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+log / history / edit / delete / back: 1 meals you chose to record. This may
+not be every meal.
+1. 2026-10-02 · Omelette
+
+How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+log / history / edit / delete / back: 
+Synthetic example — not Harold’s
+actual preferences | 2026-10-02
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+This session's idea: omelette
+Choose [today]: 
+Until our next meal
+A small note for your friend. Write it
+here, then send the file yourself
+whenever you feel like it.
+Your name or nickname: Your friend’s name or nickname: What would you like to say?: Include this food idea: omelette? yes / no [no]: 
+Preview
+Until our next meal  From Example
+sender (synthetic) to Example friend
+(synthetic)  Lunch next week?
+(synthetic)  A dish for next time:
+omelette
+This file contains only the names,
+message and optional dish shown above.
+Export this note locally? yes / no [no]: Synthetic preview only. No file
+exported.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-02
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+This session's idea: omelette
+Choose [today]: 

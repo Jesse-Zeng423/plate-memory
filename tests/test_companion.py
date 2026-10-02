@@ -70,7 +70,7 @@ class JournalTests(unittest.TestCase):
     def test_optional_flow_never_creates_preferences_and_can_cancel(self):
         with tempfile.TemporaryDirectory() as work:
             path=Path(work)/'friend.json'
-            answers=['checkin','log','Soup','','','','','','','yes','back','quit']
+            answers=['checkin','log','Soup','','no','','yes','back','quit']
             with patch('builtins.input',side_effect=answers),redirect_stdout(StringIO()):
                 self.assertEqual(main(['--profile',str(path),'--plain']),0)
             self.assertFalse(path.exists())
@@ -107,3 +107,43 @@ class PostcardTests(unittest.TestCase):
                 with patch('builtins.input',side_effect=answers),redirect_stdout(StringIO()):
                     main(['--profile',str(profile),'--plain',*args])
             self.assertEqual(list(Path(work).iterdir()),[target])
+
+class WalkthroughTests(unittest.TestCase):
+    def test_complete_demo_visits_four_parallel_destinations_without_writes(self):
+        answers=['1','2','pizza','1','pick','2','back','3','log','Pizza','','no','','yes','history','back','4','Me','Bro','Lunch next week?','yes','yes','quit']
+        with tempfile.TemporaryDirectory() as work:
+            with patch('builtins.input',side_effect=answers), patch('socket.socket',side_effect=AssertionError('No network')),redirect_stdout(StringIO()) as out:
+                self.assertEqual(main(['--profile',str(Path(work)/'f.json'),'--demo','--plain']),0)
+            output=out.getvalue()
+            for phrase in ('pizza','A corner of the cafeteria','How was your meal?','Until our next meal','Synthetic preview only'):
+                self.assertIn(phrase,output)
+            self.assertEqual(list(Path(work).iterdir()),[])
+
+    def test_hungry_first_run_needs_no_profile_or_optional_setup(self):
+        with tempfile.TemporaryDirectory() as work:
+            # Home Enter defaults to today; optional keyword Enter browses.
+            with patch('builtins.input',side_effect=['','1','','1','pick','quit']),redirect_stdout(StringIO()) as out:
+                self.assertEqual(main(['--profile',str(Path(work)/'f.json'),'--plain']),0)
+            self.assertIn('Sounds good.',out.getvalue())
+            self.assertEqual(list(Path(work).iterdir()),[])
+
+    def test_narrow_terminal_wraps_chinese_and_long_sources_without_color(self):
+        import os,unicodedata
+        with patch('src.ui.screen.shutil.get_terminal_size',return_value=os.terminal_size((32,24))), redirect_stdout(StringIO()) as out:
+            screen=Screen(False)
+            screen.say('三明治'*15)
+            screen.say('https://www.wikidata.org/wiki/Q96398796 (revision 2337375573)')
+            screen.say('   +----------------------+')
+        for line in out.getvalue().splitlines():
+            cells=sum(0 if unicodedata.combining(c) else 2 if unicodedata.east_asian_width(c) in ('W','F') else 1 for c in line)
+            self.assertLessEqual(cells,30)
+        self.assertNotIn('\x1b',out.getvalue())
+
+    def test_friend_can_write_gift_without_editing_json(self):
+        with tempfile.TemporaryDirectory() as work:
+            profile=Path(work)/'friend.json';export=Path(work)/'gift.json'
+            answers=['lunchbox','write','Me','Bro','Have a good lunch','','yes','export',str(export),'yes','back','quit']
+            with patch('builtins.input',side_effect=answers),redirect_stdout(StringIO()):
+                main(['--profile',str(profile),'--plain'])
+            self.assertEqual(load_friend_pack(export)['messages'],['Have a good lunch'])
+            self.assertFalse(profile.exists())

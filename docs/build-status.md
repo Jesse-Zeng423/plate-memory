@@ -133,3 +133,25 @@ preview then local text export, owner-only file permissions, overwrite refusal
 and demo preview without real writes. Export schema excludes journal/symptoms/
 permission/history by construction. No message is sent. 112 tests and 72 subtests
 passed, provenance and mock scenarios passed. Next: user-facing copy and walkthrough.
+
+## Companion step 6 — current resume point
+
+Four parallel numbered destinations are live. Meal discovery shows at most three
+results total, supports ordinary keyword refinement without special commands and
+keeps provenance at the selected detail view. Warm, shorter prompts keep the main
+meal path free of mandatory profile/AI setup. Journal feelings skip as one group;
+lunchbox authoring/export avoids requiring hand-edited JSON. Narrow-terminal output
+counts CJK display width and wraps long source links.
+
+116 tests/72 subtests passed; guard/package verification and all four mock reports
+passed. Real 40-column pseudo-terminal synthetic walkthrough covers all four
+destinations, English keyword refinement, explicit actual-meal record, postcard
+preview and no demo files, from a working directory outside the repository. See
+docs/companion-terminal-v2.txt and docs/companion-smoke-v2.json. No Harold trial
+feedback or DEV publication is claimed.
+
+Remaining product limits: public catalog covers only 13 concepts; cuisine/typical
+ingredient enrichment and personalized ranking require better verified data.
+Current flow deliberately defers dietary clearance to actual-menu guard review.
+Budget/avoidance extraction shows unverified constraints; it cannot prove a restaurant
+meets them. Real Harold usability feedback remains the next evidence needed.

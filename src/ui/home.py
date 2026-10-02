@@ -14,5 +14,5 @@ def home(screen, profile, meal_date, synthetic):
     screen.say('\n' + (profile['friend'] if profile else 'Your table') + ' | ' + meal_date.isoformat(), 'title')
     if synthetic:
         screen.say('Synthetic demo: sample places, prices and preferences; changes stay in this session.', 'warn')
-    screen.say('1  today        Takeout or a walk to the cafeteria\n2  lunchbox     A little note from your friend\n3  checkin      How did that meal feel?\n4  postcard     Until our next meal\nusuals          Your saved places and dishes')
-    screen.say('review  Check a menu     preferences  Your dietary notes\ndate    Meal date        details      Last rule trace\ndemo    Menu example     quit         See you next time')
+    screen.say('1  today        Let’s find you something to eat\n2  lunchbox     Open a little note from your friend\n3  checkin      Already ate? How did it feel?\n4  postcard     Until our next meal\nusuals          Your saved places and dishes')
+    screen.paragraph('More: review (check ingredients) / preferences (dietary notes) / date / details / demo / quit')

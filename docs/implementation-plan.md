@@ -4,15 +4,17 @@ October 2, 2026. This is the executable roadmap for the latest user requirements
 Positioning: **That bro who ate with you every day back in high school.**
 Cooking instructions, kitchen equipment and meal preparation are out of scope.
 Status at the start of this iteration: shared review service/refactor complete;
-step 1 below is implemented and validated in the current checkpoint. Later steps remain planned until recorded in
-`build-status.md`.
+steps 1–6 now have runnable checkpoints recorded in `build-status.md`.
+Step 2’s starter coverage and verified-menu personalization boundary are documented
+below; expanded coverage remains future work.
 
 ## Product flow and dependencies
 
 Home is a warm cafeteria corner. The completed product has four destinations:
 today's meal, a text-only lunchbox from a friend, optional meal check-ins and a
 postcard for the next shared meal. Ship only functioning routes at each checkpoint.
-During step 1, saved choices and the original menu-review commands remain visible.
+Saved choices and the original menu-review commands remain visible alongside
+the four completed primary destinations.
 
 ```text
 Today → too tired / up for a walk
@@ -205,3 +207,6 @@ ingredient/allergy uncertainty at the decision point without repeating paragraph
 Check empty account, demo, cancellation, narrow terminal and unsupported queries.
 Acceptance: a first-time user can pick a food idea without profile setup, import,
 logging, AI setup or knowing command names; optional destinations stay parallel.
+
+Step 6 is implemented and validated; see README for the shortest first-run path
+and build-status for tests, synthetic terminal evidence and remaining limits.

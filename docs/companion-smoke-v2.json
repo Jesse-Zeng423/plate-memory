@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "terminal_columns": 40,
+  "exit_code": 0,
+  "outside_repo_cwd": true,
+  "demo_created_files": false,
+  "routes": [
+    "meal discovery",
+    "lunchbox",
+    "checkin",
+    "postcard"
+  ],
+  "queries": [
+    "pizza",
+    "sandwich",
+    "egg"
+  ],
+  "export": "demo preview only"
+}

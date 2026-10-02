@@ -1,7 +1,7 @@
 """Optional after-meal observations; no diagnosis or automatic preference update."""
 from copy import deepcopy
 from ..domain.checkin import empty_checkin,validate_checkin,OPTIONS
-from ..food_adapter import parse_date
+from ..food_adapter import parse_date,ValidationError
 from .prompts import ask,choose,FlowCancelled
 
 
@@ -16,11 +16,16 @@ def checkin_form(screen,existing=None,selected=None):
     screen.paragraph('Only save a meal you actually ate. Every feeling is optional; /skip leaves it blank, /back leaves without saving.')
     item['dish']=ask(screen,'What did you eat?',item['dish'] or (selected['name'] if selected else None))
     item['date']=ask(screen,'Date YYYY-MM-DD',item['date'],convert=lambda raw:parse_date(raw).isoformat())
-    raw=ask(screen,'delivery / cafeteria (optional)',item['route'],optional=True)
-    item['route']=raw
-    for key,options in OPTIONS.items():
-        item[key]=ask(screen,key+' — '+' / '.join(options)+' (optional)',item[key],optional=True)
-    item['note']=ask(screen,'Anything else? (optional)',item['note'],optional=True)
+    if choose(screen,'Add how it felt? yes / no',{'yes':True,'no':False},'no'):
+        def allowed(options):
+            def convert(raw):
+                if raw not in options:raise ValidationError('Choose one of the listed words, or /skip.')
+                return raw
+            return convert
+        item['route']=ask(screen,'delivery / cafeteria (optional)',item['route'],optional=True,convert=allowed(('delivery','cafeteria')))
+        for key,options in OPTIONS.items():
+            item[key]=ask(screen,key+' — '+' / '.join(options)+' (optional)',item[key],optional=True,convert=allowed(options))
+    item['note']=ask(screen,'Anything to remember? (Enter to skip)',item['note'],optional=True)
     validate_checkin(item)
     show_checkin(screen,item)
     if choose(screen,'Save as an actual meal? yes / no',{'yes':True,'no':False},'no'):
