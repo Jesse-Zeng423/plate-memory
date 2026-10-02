@@ -26,7 +26,9 @@ prompt remain unchanged. No web UI or UI dependency was added.
 Real pseudo-terminal smoke with Gemma and public synthetic input passed: the first
 review uses local inference, the repeated menu uses the cache, changing the meal
 date changes the weekday guard action, and allergy review remains visible.
-See `terminal-smoke-v1.json` and `terminal-live-v1.txt`.
+See `terminal-smoke-v1.json` and `terminal-live-v1.txt`. Public commit `1ab23cb`
+also passed CI on Python 3.10/3.12/3.14:
+https://github.com/Jesse-Zeng423/plate-memory/actions/runs/37051337645
 
 ## Independent implementation complete
 

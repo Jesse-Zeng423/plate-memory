@@ -66,6 +66,8 @@ The earlier experiments are development traces, not a controlled accuracy study.
 [GitHub Actions run 36969923732](https://github.com/Jesse-Zeng423/plate-memory/actions/runs/36969923732)
 passed on Python 3.10, 3.12 and 3.14 for implementation commit `d4c410c`.
 All matrix jobs ran unittest, package verification and the canned dry run.
+The guided terminal upgrade at `1ab23cb` also passed the full Python matrix:
+[GitHub Actions run 37051337645](https://github.com/Jesse-Zeng423/plate-memory/actions/runs/37051337645).
 This validates the hosted checks; it does not validate real-world menu accuracy.
 
 ## Still requires a human
