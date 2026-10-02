@@ -1,0 +1,24 @@
+Plate Memory · Synthetic example — not Harold’s actual preferences · 2026-10-03
+Extraction: canned-demo — canned fixture, no AI inference
+Decision support only. No dish is certified safe. Extraction may omit ingredients or misread menus; cross-contact is not assessed.
+
+[ESCALATE / IGNORE] peanut-allergy: Avoid peanuts — synthetic allergy record
+  Reason: HIGH_RISK_HUMAN_REVIEW_REQUIRED
+  Allergy review required: confirm ingredients and cross-contact with the preparer; do not treat extraction as clearance.
+  Context: NO_MATCH_DETECTED_NOT_CLEARANCE
+
+[REVISE / IGNORE] weekday-vegetarian: Vegetarian on weekdays — synthetic preference
+  Reason: NO_BRIDGE
+  This weekday-only preference does not apply on the meal date.
+  Context: WEEKDAY_OUT_OF_SCOPE, NO_MATCH_DETECTED_NOT_CLEARANCE
+
+[ASK_USER / ASK] old-spice: Avoid spicy food — synthetic note from 2023
+  Reason: USER_RESOLVABLE_UNCERTAINTY
+  Ask the friend whether this preference still applies; confirm uncertain menu wording if needed.
+  L1 · matched · chilli oil
+  Context: CONFIRMATION_MISSING_OR_STALE
+
+[REVISE / IGNORE] cilantro: Dislikes cilantro — synthetic preference
+  Reason: NO_BRIDGE
+  No candidate detected for this preference; ingredients may still be missing from the menu.
+  Context: NO_MATCH_DETECTED_NOT_CLEARANCE

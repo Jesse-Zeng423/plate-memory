@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "friend": "Synthetic example — not Harold’s actual preferences",
+  "meal_date": "2026-10-03",
+  "extraction_mode": "canned-demo",
+  "model": null,
+  "notice": "Decision support only. No dish is certified safe. Extraction may omit ingredients or misread menus; cross-contact is not assessed.",
+  "decisions": [
+    {
+      "memory_id": "peanut-allergy",
+      "memory": "Avoid peanuts — synthetic allergy record",
+      "kind": "allergy",
+      "candidates": [],
+      "observations": [
+        "NO_MATCH_DETECTED_NOT_CLEARANCE"
+      ],
+      "boundary": "Research-informed decision-support prototype; not production validated; no autonomous execution or high-risk approval.",
+      "decisive_evidence": [
+        {
+          "id": "permission",
+          "kind": "PERMISSION",
+          "text": "Local profile permission: ALLOWED."
+        },
+        {
+          "id": "scope",
+          "kind": "APPLICABILITY",
+          "text": "No candidate was detected; this is not evidence that ingredients are absent."
+        }
+      ],
+      "guard_verdict": "ESCALATE",
+      "memory_action": "IGNORE",
+      "memory_state": "UNCERTAIN",
+      "next_step": "Pause memory-grounded action and escalate to a qualified human decision-maker.",
+      "reason_code": "HIGH_RISK_HUMAN_REVIEW_REQUIRED",
+      "resolution_source": "HUMAN_REVIEW",
+      "advice": "Allergy review required: confirm ingredients and cross-contact with the preparer; do not treat extraction as clearance."
+    },
+    {
+      "memory_id": "weekday-vegetarian",
+      "memory": "Vegetarian on weekdays — synthetic preference",
+      "kind": "preference",
+      "candidates": [
+        {
+          "memory_id": "weekday-vegetarian",
+          "line_id": "L1",
+          "quote": "chicken",
+          "match": "matched"
+        }
+      ],
+      "observations": [
+        "WEEKDAY_OUT_OF_SCOPE"
+      ],
+      "boundary": "Research-informed decision-support prototype; not production validated; no autonomous execution or high-risk approval.",
+      "decisive_evidence": [
+        {
+          "id": "permission",
+          "kind": "PERMISSION",
+          "text": "Local profile permission: ALLOWED."
+        },
+        {
+          "id": "scope",
+          "kind": "APPLICABILITY",
+          "text": "Meal date 2026-10-03 has weekday 5, outside declared [0, 1, 2, 3, 4]."
+        }
+      ],
+      "guard_verdict": "REVISE",
+      "memory_action": "IGNORE",
+      "memory_state": "CLEAR_INAPPLICABLE",
+      "next_step": "Continue without relying on the candidate memory unless explicit transfer evidence is supplied.",
+      "reason_code": "NO_BRIDGE",
+      "resolution_source": "SUPPLIED_EVIDENCE",
+      "advice": "This weekday-only preference does not apply on the meal date."
+    },
+    {
+      "memory_id": "old-spice",
+      "memory": "Avoid spicy food — synthetic note from 2023",
+      "kind": "preference",
+      "candidates": [],
+      "observations": [
+        "CONFIRMATION_MISSING_OR_STALE",
+        "NO_MATCH_DETECTED_NOT_CLEARANCE"
+      ],
+      "boundary": "Research-informed decision-support prototype; not production validated; no autonomous execution or high-risk approval.",
+      "decisive_evidence": [
+        {
+          "id": "permission",
+          "kind": "PERMISSION",
+          "text": "Local profile permission: ALLOWED."
+        },
+        {
+          "id": "scope",
+          "kind": "APPLICABILITY",
+          "text": "No candidate was detected; this is not evidence that ingredients are absent."
+        }
+      ],
+      "guard_verdict": "REVISE",
+      "memory_action": "IGNORE",
+      "memory_state": "CLEAR_INAPPLICABLE",
+      "next_step": "Continue without relying on the candidate memory unless explicit transfer evidence is supplied.",
+      "reason_code": "NO_BRIDGE",
+      "resolution_source": "SUPPLIED_EVIDENCE",
+      "advice": "No candidate detected for this preference; ingredients may still be missing from the menu."
+    },
+    {
+      "memory_id": "cilantro",
+      "memory": "Dislikes cilantro — synthetic preference",
+      "kind": "preference",
+      "candidates": [],
+      "observations": [
+        "NO_MATCH_DETECTED_NOT_CLEARANCE"
+      ],
+      "boundary": "Research-informed decision-support prototype; not production validated; no autonomous execution or high-risk approval.",
+      "decisive_evidence": [
+        {
+          "id": "permission",
+          "kind": "PERMISSION",
+          "text": "Local profile permission: ALLOWED."
+        },
+        {
+          "id": "scope",
+          "kind": "APPLICABILITY",
+          "text": "No candidate was detected; this is not evidence that ingredients are absent."
+        }
+      ],
+      "guard_verdict": "REVISE",
+      "memory_action": "IGNORE",
+      "memory_state": "CLEAR_INAPPLICABLE",
+      "next_step": "Continue without relying on the candidate memory unless explicit transfer evidence is supplied.",
+      "reason_code": "NO_BRIDGE",
+      "resolution_source": "SUPPLIED_EVIDENCE",
+      "advice": "No candidate detected for this preference; ingredients may still be missing from the menu."
+    }
+  ]
+}

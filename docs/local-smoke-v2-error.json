@@ -1,0 +1,11 @@
+{
+  "version": "v2",
+  "scenario": "allergy",
+  "model": "gemma3:4b",
+  "synthetic_input_only": true,
+  "generation_calls": 1,
+  "result": "rejected",
+  "error": "Candidate quote must occur verbatim in the referenced menu line.",
+  "report_produced": false,
+  "note": "Attempt stopped before a full smoke checkpoint; the validator rejected the response. No raw response was retained in this attempt."
+}

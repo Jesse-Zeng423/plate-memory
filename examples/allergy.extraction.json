@@ -1,0 +1,14 @@
+{
+  "menu_sha256": "0fab92f0d96bba7965b6d2882584dd40981d7556951e8af1772aa47bc3baca12",
+  "targets_sha256": "e563fc8ce2a3cff93d5950de4dfef9a34ce142bbdb13b440646c2efeb64ec1bc",
+  "extraction": {
+    "candidates": [
+      {
+        "memory_id": "peanut-allergy",
+        "line_id": "L1",
+        "quote": "peanut sauce",
+        "match": "matched"
+      }
+    ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "friend": "Synthetic example — not Harold’s actual preferences",
+  "memories": [
+    {
+      "id": "peanut-allergy",
+      "text": "Avoid peanuts — synthetic allergy record",
+      "kind": "allergy",
+      "terms": [
+        "peanuts",
+        "peanut sauce",
+        "groundnuts"
+      ],
+      "permission": "ALLOWED",
+      "weekdays": [],
+      "confirmed_on": "2026-10-02",
+      "valid_for_days": 180,
+      "superseded_by": null,
+      "external_required": false
+    },
+    {
+      "id": "weekday-vegetarian",
+      "text": "Vegetarian on weekdays — synthetic preference",
+      "kind": "preference",
+      "terms": [
+        "meat",
+        "poultry",
+        "fish",
+        "seafood"
+      ],
+      "permission": "ALLOWED",
+      "weekdays": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "confirmed_on": "2026-10-02",
+      "valid_for_days": 180,
+      "superseded_by": null,
+      "external_required": false
+    },
+    {
+      "id": "old-spice",
+      "text": "Avoid spicy food — synthetic note from 2023",
+      "kind": "preference",
+      "terms": [
+        "spicy food",
+        "chilli heat"
+      ],
+      "permission": "ALLOWED",
+      "weekdays": [],
+      "confirmed_on": "2023-06-01",
+      "valid_for_days": 180,
+      "superseded_by": null,
+      "external_required": false
+    },
+    {
+      "id": "cilantro",
+      "text": "Dislikes cilantro — synthetic preference",
+      "kind": "preference",
+      "terms": [
+        "cilantro",
+        "coriander leaves"
+      ],
+      "permission": "ALLOWED",
+      "weekdays": [],
+      "confirmed_on": "2026-10-02",
+      "valid_for_days": 180,
+      "superseded_by": null,
+      "external_required": false
+    }
+  ]
+}

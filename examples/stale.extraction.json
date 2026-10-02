@@ -1,0 +1,14 @@
+{
+  "menu_sha256": "37bf86183c87cbb132a44de56e4d11207ff9441e7dee0d6d83c312ef5f5bd336",
+  "targets_sha256": "e563fc8ce2a3cff93d5950de4dfef9a34ce142bbdb13b440646c2efeb64ec1bc",
+  "extraction": {
+    "candidates": [
+      {
+        "memory_id": "old-spice",
+        "line_id": "L1",
+        "quote": "chilli oil",
+        "match": "matched"
+      }
+    ]
+  }
+}

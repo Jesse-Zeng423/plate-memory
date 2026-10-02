@@ -1,0 +1,23 @@
+Plate Memory · Synthetic example — not Harold’s actual preferences · 2026-10-02
+Extraction: canned-demo — canned fixture, no AI inference
+Decision support only. No dish is certified safe. Extraction may omit ingredients or misread menus; cross-contact is not assessed.
+
+[ESCALATE / IGNORE] peanut-allergy: Avoid peanuts — synthetic allergy record
+  Reason: HIGH_RISK_HUMAN_REVIEW_REQUIRED
+  Allergy review required: confirm ingredients and cross-contact with the preparer; do not treat extraction as clearance.
+  L1 · matched · peanut sauce
+
+[REVISE / IGNORE] weekday-vegetarian: Vegetarian on weekdays — synthetic preference
+  Reason: NO_BRIDGE
+  No candidate detected for this preference; ingredients may still be missing from the menu.
+  Context: NO_MATCH_DETECTED_NOT_CLEARANCE
+
+[REVISE / IGNORE] old-spice: Avoid spicy food — synthetic note from 2023
+  Reason: NO_BRIDGE
+  No candidate detected for this preference; ingredients may still be missing from the menu.
+  Context: CONFIRMATION_MISSING_OR_STALE, NO_MATCH_DETECTED_NOT_CLEARANCE
+
+[REVISE / IGNORE] cilantro: Dislikes cilantro — synthetic preference
+  Reason: NO_BRIDGE
+  No candidate detected for this preference; ingredients may still be missing from the menu.
+  Context: NO_MATCH_DETECTED_NOT_CLEARANCE

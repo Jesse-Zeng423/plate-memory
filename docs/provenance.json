@@ -4,7 +4,13 @@
   "file": "memory-applicability-guard/scripts/guard_decision.py",
   "sha256": "5873ccb197a6fb19b25a82de98471ad2cc64347b6fcb6a39bb7b8eefd3d772cd",
   "destination": "src/guard_decision.py",
-  "changes": "None; food-domain adapter lives in src/domain.py",
+  "changes": "None; food-domain adapter lives in src/food_adapter.py",
   "license": "MIT",
-  "project_started_utc": "2026-10-02T04:55:54.580380+00:00"
+  "project_started_utc": "2026-10-02T04:55:54.580380+00:00",
+  "adapted_test_suite": {
+    "source_file": "tests/test_guard_decision.py",
+    "source_sha256": "dd79acea009130daeb46f1ed7f2f1b1f1bd4b91f2675399b801b58b266e78831",
+    "destination": "tests/test_guard_decision.py",
+    "changes": "Adapted engine path and example runner/expected count; MIT attribution added."
+  }
 }

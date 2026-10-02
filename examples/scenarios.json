@@ -1,0 +1,30 @@
+[
+  {
+    "name": "allergy",
+    "menu": "allergy.txt",
+    "extraction": "allergy.extraction.json",
+    "date": "2026-10-02",
+    "expected": "allergy.expected.json"
+  },
+  {
+    "name": "weekend",
+    "menu": "weekend.txt",
+    "extraction": "weekend.extraction.json",
+    "date": "2026-10-03",
+    "expected": "weekend.expected.json"
+  },
+  {
+    "name": "stale",
+    "menu": "stale.txt",
+    "extraction": "stale.extraction.json",
+    "date": "2026-10-03",
+    "expected": "stale.expected.json"
+  },
+  {
+    "name": "weekday",
+    "menu": "weekday.txt",
+    "extraction": "weekday.extraction.json",
+    "date": "2026-10-02",
+    "expected": "weekday.expected.json"
+  }
+]

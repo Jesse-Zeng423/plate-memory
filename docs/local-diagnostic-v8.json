@@ -1,0 +1,39 @@
+{
+  "synthetic_input_only": true,
+  "input_targets": [
+    {
+      "memory_id": "test-peanuts",
+      "terms": [
+        "peanuts"
+      ]
+    },
+    {
+      "memory_id": "test-poultry",
+      "terms": [
+        "poultry"
+      ]
+    },
+    {
+      "memory_id": "test-cilantro",
+      "terms": [
+        "cilantro"
+      ]
+    }
+  ],
+  "result": {
+    "candidates": [
+      {
+        "memory_id": "test-poultry",
+        "line_id": "L1",
+        "match": "matched",
+        "quote": "Grilled chicken bowl \u2014 chicken, rice, broccoli"
+      },
+      {
+        "memory_id": "test-cilantro",
+        "line_id": "L1",
+        "match": "matched",
+        "quote": "Grilled chicken bowl \u2014 chicken, rice, broccoli"
+      }
+    ]
+  }
+}
