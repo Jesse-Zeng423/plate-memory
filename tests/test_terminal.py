@@ -105,7 +105,7 @@ class TerminalTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as work:
             path = Path(work) / 'friend.json'
             for scenario in ('allergy','weekend','stale','weekday'):
-                with patch('builtins.input',side_effect=['demo',scenario,'details','quit']), patch('src.terminal.local_extract') as live, redirect_stdout(StringIO()) as out:
+                with patch('builtins.input',side_effect=['demo',scenario,'details','quit']), patch('src.services.review.local_extract') as live, redirect_stdout(StringIO()) as out:
                     self.assertEqual(main(['--profile',str(path),'--no-color']),0)
                 self.assertIn('Synthetic canned demo; no AI ran.',out.getvalue())
                 self.assertIn('Allergy: confirm',out.getvalue())
@@ -143,7 +143,7 @@ class TerminalTests(unittest.TestCase):
             save_profile(path, PROFILE)
             session = Session(Screen(False), path, 'gemma3:4b')
             session.last = {'old': 'report'}
-            with patch('builtins.input', side_effect=['rice','/done']), patch('src.terminal.local_extract', side_effect=ValidationError('bad cache')), redirect_stdout(StringIO()):
+            with patch('builtins.input', side_effect=['rice','/done']), patch('src.services.review.local_extract', side_effect=ValidationError('bad cache')), redirect_stdout(StringIO()):
                 with self.assertRaises(ValidationError):
                     session.review()
             self.assertIsNone(session.last)
@@ -153,7 +153,7 @@ class TerminalTests(unittest.TestCase):
             path = Path(work)/'friend.json'
             save_profile(path,PROFILE)
             session = Session(Screen(False),path,'gemma3:4b')
-            with patch('builtins.input',side_effect=['rice','/cancel']), patch('src.terminal.local_extract') as live, redirect_stdout(StringIO()):
+            with patch('builtins.input',side_effect=['rice','/cancel']), patch('src.services.review.local_extract') as live, redirect_stdout(StringIO()):
                 session.review()
             self.assertIsNone(session.last)
             live.assert_not_called()

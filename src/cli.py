@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import argparse
-import hashlib
 import json
 from pathlib import Path
 import sys
@@ -13,30 +12,14 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
     __package__ = "src"
 
-from .food_adapter import (ValidationError, build_report, menu_lines, parse_date,
-                     targets, validate_candidates, validate_profile)
+from .food_adapter import (ValidationError, parse_date, validate_profile)
 from .extraction import ExtractionError, local_extract, model_name
 from .json_contract import JsonContractError, loads
 
-ROOT = Path(__file__).resolve().parents[1]
-
-
-def read_text(path: Path, maximum: int = 128000) -> str:
-    with path.open("rb") as stream:
-        raw = stream.read(maximum + 1)
-    if len(raw) > maximum:
-        raise ValidationError(f"Input file exceeds {maximum} bytes.")
-    return raw.decode("utf-8")
-
-
-def load_demo(path: Path, menu: str, allowed: list[dict], lines: list[dict]) -> dict:
-    value = loads(read_text(path))
-    if not isinstance(value, dict) or set(value) != {"menu_sha256", "targets_sha256", "extraction"}:
-        raise ValidationError("Demo fixture needs menu_sha256, targets_sha256 and extraction.")
-    target_hash = hashlib.sha256(json.dumps(allowed, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
-    if value["menu_sha256"] != hashlib.sha256(menu.encode()).hexdigest() or value["targets_sha256"] != target_hash:
-        raise ValidationError("Demo fixture fingerprints do not match the exact menu and permitted targets.")
-    return validate_candidates(value["extraction"], lines, allowed)
+from .paths import ROOT
+from .file_io import read_text
+from .demo import load_demo  # Existing public import used by verification scripts.
+from .services.review import review_menu
 
 
 def render(report: dict) -> str:
@@ -79,18 +62,10 @@ def main(argv: list[str] | None = None) -> int:
             raise ValidationError("--offline and --demo-extraction must be supplied together.")
         profile = validate_profile(loads(read_text(args.profile)))
         menu = sys.stdin.read(12001) if args.stdin else read_text(args.menu, 48000)
-        lines = menu_lines(menu)
-        allowed = targets(profile)
-        if args.offline:
-            extraction = load_demo(args.demo_extraction, menu, allowed, lines)
-            mode, model = "canned-demo", None
-        elif not allowed:
-            extraction = {"candidates": []}
-            mode, model = "permission-withheld-no-inference", None
-        else:
-            extraction = local_extract(lines, allowed, args.model, args.timeout)
-            mode, model = "local-ollama", args.model
-        report = build_report(profile, extraction, args.date, mode, model)
+        result = review_menu(profile, menu, args.date, args.model,
+                             timeout=args.timeout, demo_path=args.demo_extraction,
+                             extractor=local_extract)
+        report = result.report
         print(json.dumps(report, ensure_ascii=False, indent=2) if args.json else render(report), end="\n" if args.json else "")
         return 0
     except (ValidationError, ExtractionError, JsonContractError, OSError, UnicodeError, json.JSONDecodeError) as exc:

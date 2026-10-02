@@ -19,6 +19,20 @@ but does not apply on Saturday. A 2023 note about spicy food needs confirmation.
 An allergy record always needs human review even when no ingredient is detected;
 revoked permission takes priority and withholds the record.
 
+## Next: a seat saved for a friend
+
+The next product direction is a small local companion for friends who shared a
+high-school cafeteria and now attend different universities. The agreed roadmap
+has four destinations: choosing today's meal, a text-only lunchbox from a friend,
+an optional after-meal check-in, and a postcard for the next shared meal. A warm
+cafeteria scene will tie them together.
+
+**These companion features are planned, not yet shipped.** Stage 0 separates the
+existing terminal presentation, interaction and review service so they can be
+implemented in small usable stages. See [the flow and delivery plan](docs/product-plan.md)
+for required steps, skippable questions and explicit data boundaries. The commands
+below still launch the current working menu-review app.
+
 ## Try it in one minute — no installation dependencies
 
 Requires Python 3.10+. The core uses only the Python standard library.
@@ -177,7 +191,10 @@ flowchart LR
 | `src/food_adapter.py` | Food-specific phrase matching, profile validation, day/freshness/risk mapping, report assembly |
 | `src/extraction.py` | Local AI food phrase extraction; cannot supply policy fields or verdicts |
 | `src/cli.py` | Input files or stdin, explicit demo mode, readable or JSON output |
-| `src/terminal.py` | Guided setup, menu review, human-readable dish rows and local note management |
+| `src/terminal.py` | Stable guided-terminal entry point |
+| `src/ui/` | Terminal rendering, preference forms, report presentation and session navigation |
+| `src/services/review.py` | Shared menu-review operation for terminal and scripted CLI |
+| `src/paths.py`, `src/file_io.py`, `src/demo.py` | Source-relative paths, bounded reads and fingerprint-bound demo fixtures |
 | `src/profile_store.py` | Validated profile writes, private revision history, explicit consent/confirmation actions |
 | `src/food_cache.py` | Grounded food-span cache; every review re-runs matching and the guard |
 

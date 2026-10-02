@@ -30,22 +30,38 @@ See `terminal-smoke-v1.json` and `terminal-live-v1.txt`. Public commit `1ab23cb`
 also passed CI on Python 3.10/3.12/3.14:
 https://github.com/Jesse-Zeng423/plate-memory/actions/runs/37051337645
 
-## Independent implementation complete
+## Current checkpoint: stage 0 structure complete
 
-- Public repository: https://github.com/Jesse-Zeng423/plate-memory
-- Hosted CI passed for implementation commit `d4c410c` on Python 3.10/3.12/3.14:
-  https://github.com/Jesse-Zeng423/plate-memory/actions/runs/36969923732
-- The original implementation checks above predate the terminal upgrade; current
-  upgrade verification is recorded separately in docs/validation.md.
-- Pause the Plate Memory heartbeat after this handoff: remaining work requires
-  Harold's actual preferences/problem and a real trial. Do not repeatedly rerun
-  model extraction or tests, and do not invent the missing information.
+Current checkout: `/Users/zz/Downloads/plate-memory` (moved from the earlier
+`2026 summer intern` parent). Public repository:
+https://github.com/Jesse-Zeng423/plate-memory
+
+User approved the text-only offline lunchbox, low-energy meal choices, optional
+after-meal check-ins, future-meal postcards and a warmer cafeteria corner. The
+story is two high-school friends attending different universities. See
+`docs/product-plan.md` for the agreed flow, skip behavior and staged delivery.
+
+Stage 0 extracts terminal output/forms/report/navigation and a shared review
+service. Storage no longer depends on CLI; both entry points use the same review
+operation. Generic guard, extraction prompt, profile schema and historical
+fixtures are unchanged. Original launch commands remain supported. Validation: 86 unittest tests,
+86 pytest tests plus 47 subtests, provenance verification and four mock scenarios
+passed. No model calls were made for this refactor.
+
+The next implementation checkpoint is stage 1: the cafeteria home and text-only
+friend pack, followed by the meal-selection flow in stage 2. These features are
+not yet shipped. Continue from this plan; lack of real preferences does not block
+independent implementation with synthetic examples. No background continuation
+was started as part of this stage. Inspect the saved automation before resuming
+it, since earlier prompts reference the old checkout path and completed CLI scope.
 
 ## User input outstanding
 
 Harold is Jesse's friend and roommate from high school and a big foodie.
-His actual preferences, concrete problem and reaction after a real handover
-are pending. Do not invent them; see docs/handover.md and marked DEV placeholders.
+His actual preferences and reaction after a real handover are pending. The user
+has supplied the broader problem of staying connected and caring about everyday
+meals after moving to different universities. Private health details should not
+be copied into public fixtures or the article without an explicit sharing choice. Do not invent them; see docs/handover.md and marked DEV placeholders.
 No DEV publishing or submission has occurred. No formal skill was created.
 
 ## Local operations
@@ -54,5 +70,6 @@ Ollama installed through Homebrew, which also upgraded its dependencies
 (openssl/readline/sqlite/xz) and installed Python/MLX dependencies. A local-only
 server was started for this build; weights remain downloaded for future use.
 Mac idle/system-sleep assertions are time-limited to October 5, 02:59 EDT.
-The scheduled heartbeat checks this chat every 30 minutes while work is unfinished;
-limits still apply and the app must remain running. No reset credits were used.
+The original heartbeat was paused after the CLI handoff. The new staged roadmap
+is recorded above; do not assume that old automation is active or points at the
+current checkout. No reset credits were used.

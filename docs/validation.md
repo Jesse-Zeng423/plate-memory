@@ -30,6 +30,20 @@
 - Terminal-specific color can be disabled with `--no-color` or `NO_COLOR=1`.
   This is a scrolling, guided interface; no browser or full-screen UI is required.
 
+## Stage 0: structure for the companion roadmap
+
+The terminal was split into presentation, forms, report view and session modules;
+scripted CLI and terminal now share `services/review.py`. Bounded file reads and
+project paths are independent of the CLI. Launch paths and data formats remain
+compatible. No new model inference was necessary for this structural change.
+
+- 86 unittest tests passed; pytest passed 86 tests and 47 subtests.
+- Four public demo reports exactly match the historical expected JSON fixtures.
+- Absolute terminal launch works from an unrelated temporary directory.
+- Unresolved permissions still bypass model extraction and redact records.
+- Provenance verification and all four mock dry runs passed.
+- Companion features are planned in `product-plan.md`, not implied by these tests.
+
 ## Actual local inference
 
 [Final smoke checkpoint](local-smoke-v11.json) records Gemma 3 4B, prompt version

@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 import tempfile
 from uuid import uuid4
-from .cli import read_text
+from .file_io import read_text
 from .food_adapter import ValidationError, validate_profile
 from .json_contract import loads
 
