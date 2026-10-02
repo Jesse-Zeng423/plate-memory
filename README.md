@@ -1,5 +1,7 @@
 # Plate Memory
 
+[![Tests](https://github.com/Jesse-Zeng423/plate-memory/actions/workflows/tests.yml/badge.svg)](https://github.com/Jesse-Zeng423/plate-memory/actions/workflows/tests.yml)
+
 **Remember the preference. Check whether it applies today.**
 
 A small local CLI built for Harold, Jesse's friend and roommate from high school,

@@ -14,12 +14,15 @@ New project started October 2, 2026. First commit: `6d852a2`, at 00:55 EDT.
   and demo image saved. Earlier failures remain preserved.
 - README, MIT, English DEV draft, handover guide and GitHub Actions workflow.
 
-## Next independent work
+## Independent implementation complete
 
-- Create/push the new public `Jesse-Zeng423/plate-memory` repo and verify CI on
-  Python 3.10/3.12/3.14. Record the final CI URL in docs/validation.md.
-- Once hosted checks pass, mark independent implementation complete and pause
-  the Plate Memory heartbeat. Avoid repeating completed model calls or tests.
+- Public repository: https://github.com/Jesse-Zeng423/plate-memory
+- Hosted CI passed for implementation commit `d4c410c` on Python 3.10/3.12/3.14:
+  https://github.com/Jesse-Zeng423/plate-memory/actions/runs/36969923732
+- Only documentation status is being updated after that verified implementation.
+- Pause the Plate Memory heartbeat after this handoff: remaining work requires
+  Harold's actual preferences/problem and a real trial. Do not repeatedly rerun
+  model extraction or tests, and do not invent the missing information.
 
 ## User input outstanding
 
