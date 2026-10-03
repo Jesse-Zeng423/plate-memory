@@ -210,3 +210,10 @@ logging, AI setup or knowing command names; optional destinations stay parallel.
 
 Step 6 is implemented and validated; see README for the shortest first-run path
 and build-status for tests, synthetic terminal evidence and remaining limits.
+
+## Next iteration: preview to friend-ready release
+
+User requested broader food coverage, explicit back/home navigation, richer emoji
+visual identity and mature postcard export with a recipient app link. The next
+ordered execution plan is [next-phase-plan.md](next-phase-plan.md). This is planned
+work, not part of the previously validated 116-test implementation.

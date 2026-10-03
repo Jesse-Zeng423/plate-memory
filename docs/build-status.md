@@ -155,3 +155,42 @@ ingredient enrichment and personalized ranking require better verified data.
 Current flow deliberately defers dietary clearance to actual-menu guard review.
 Budget/avoidance extraction shows unverified constraints; it cannot prove a restaurant
 meets them. Real Harold usability feedback remains the next evidence needed.
+
+## Next-phase planning (not implemented)
+
+Reviewed current source and official challenge rubric; investigated Wikidata,
+USDA FNDDS, CNF, Open Food Facts and OpenNutrition. Primary candidates: Wikidata
+concept/alias expansion and a bounded USDA prepared-food reference index. CNF
+redistribution terms remain unverified; OpenNutrition includes AI-inferred values.
+New ordered plan in docs/next-phase-plan.md: data, explicit navigation states,
+emoji/terminal identity, visual postcards and export, real friend handover.
+Runtime code/data remain at the preceding checkpoint; planned features are not shipped.
+
+## Phase A completed: offline catalog v2 (current resume point)
+
+Shipped 1,603 records: 13 preserved/namespaced Wikidata concepts and 1,590 selected
+USDA FNDDS reference foods from a 5,432-record official archive. Raw food references
+are excluded except one explicit egg ingredient record. Original variants and source
+labels remain distinct. Published categories, original English names, marked editorial
+Chinese hints, release/hash/count/field provenance are retained. No nutrient values
+or recipe/restaurant ingredient guarantees are included. V1 is unchanged/readable.
+
+Added plural/Unicode normalization, labeled spelling suggestions, category browsing
+and three-at-a-time paging across saved/public results without skipping records.
+Egg/鸡蛋 leads to an ingredient reference, with an explicit prepared-dishes action;
+it cannot be selected as a prepared meal. Unknown/negative queries do not silently
+become dietary clearance. Generic guard and model integration are unchanged.
+
+Validation: 121 unittest tests; 121 pytest tests/105 subtests; provenance verification
+and four mock scenarios pass. Frozen 28 positive queries/5 negative constraint cases
+pass. A new real 40-column pseudo-terminal walkthrough outside the repo exercises
+spelling confirmation, ingredient vs dish, pagination and categories with no demo
+files. Evidence: docs/catalog-smoke-v2.json and docs/catalog-terminal-v2.txt.
+
+Observed load 29.55 ms; median query 5.81 ms/max 9.71 ms on this build, pack 897,993
+bytes. Not a broad accuracy or global-coverage claim. Scope adjustment from the
+provisional 150–300 unique-concept target: retain a larger source-backed variant
+index instead of incorrectly collapsing variants into invented canonical dishes.
+Source count and covered languages remain explicit. Next: phase B navigation
+states, back/home/draft retention; then emoji/visual export. Continue from this
+checkpoint, do not restart the completed catalog work.

@@ -16,7 +16,7 @@ from src.terminal import main
 
 class CatalogTests(unittest.TestCase):
     def test_common_words_and_multilingual_aliases(self):
-        catalog = Catalog()
+        catalog = Catalog(ROOT/'data/catalog/v1')
         for query, qid in [('pizza','Q177'),('披萨','Q177'),('比薩','Q177'),('Sandwich','Q28803'),('三明治','Q28803'),('egg','Q20129'),('鸡蛋','Q20129'),('burger','Q6663'),('日本拉面','Q234646')]:
             with self.subTest(query=query):
                 self.assertEqual(catalog.search(query)[0]['id'], qid)
@@ -50,13 +50,13 @@ class CatalogTests(unittest.TestCase):
         for route, query in [('1','pizza'),('2','披萨')]:
             with self.subTest(route=route), tempfile.TemporaryDirectory() as work:
                 path=Path(work)/'friend.json'
-                answers=['today',route,query,'Sandwich','egg','1','review','1','select','quit']
+                answers=['today',route,query,'Sandwich','egg','1','review','1','dishes','1','select','quit']
                 with patch('builtins.input',side_effect=answers), patch('socket.socket',side_effect=AssertionError('Network forbidden')), patch('src.services.review.local_extract') as model, redirect_stdout(StringIO()) as out:
                     self.assertEqual(main(['--profile',str(path),'--plain']),0)
                 output=out.getvalue()
                 self.assertIn('pizza',output)
                 self.assertIn('sandwich',output)
-                self.assertIn('omelette',output)
+                self.assertIn('Egg, whole, raw',output)
                 self.assertIn('[food idea]',output)
                 self.assertIn('Ingredients, availability and price are unknown',output)
                 self.assertIn('paste the actual menu',output)

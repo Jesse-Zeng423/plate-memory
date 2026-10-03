@@ -1,0 +1,324 @@
+{
+  "synthetic_queries": true,
+  "runtime_network_calls": 0,
+  "source_records": 5432,
+  "catalog_records": 1603,
+  "catalog_bytes": 897993,
+  "catalog_sha256": "21f4ff1a1708e05efee96e5d27b1c05c160408f6731b34385811e69c46bce11e",
+  "load_ms": 29.55,
+  "query_median_ms": 5.81,
+  "query_max_ms": 9.71,
+  "results": [
+    {
+      "query": "pizza",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q177",
+        "usda:2708686",
+        "usda:2708507"
+      ],
+      "elapsed_ms": 9.71
+    },
+    {
+      "query": "sandwich",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q28803",
+        "wikidata:Q6663",
+        "usda:2706962"
+      ],
+      "elapsed_ms": 6.04
+    },
+    {
+      "query": "egg",
+      "expected": "hit",
+      "ids": [
+        "usda:2707152",
+        "usda:2707343",
+        "usda:2707179"
+      ],
+      "elapsed_ms": 4.44
+    },
+    {
+      "query": "burgers",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q6663",
+        "usda:2707481",
+        "usda:2706931"
+      ],
+      "elapsed_ms": 5.64
+    },
+    {
+      "query": "ramen",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q234646",
+        "usda:2709153",
+        "usda:2709154"
+      ],
+      "elapsed_ms": 5.39
+    },
+    {
+      "query": "soup",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q41415",
+        "usda:2709144",
+        "usda:2707453"
+      ],
+      "elapsed_ms": 5.1
+    },
+    {
+      "query": "salad",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q9266",
+        "usda:2710056",
+        "usda:2706749"
+      ],
+      "elapsed_ms": 5.53
+    },
+    {
+      "query": "pasta",
+      "expected": "hit",
+      "ids": [
+        "usda:2708357",
+        "usda:2708930",
+        "usda:2708359"
+      ],
+      "elapsed_ms": 5.44
+    },
+    {
+      "query": "burrito",
+      "expected": "hit",
+      "ids": [
+        "usda:2707343",
+        "usda:2708534",
+        "usda:2708555"
+      ],
+      "elapsed_ms": 6.16
+    },
+    {
+      "query": "taco",
+      "expected": "hit",
+      "ids": [
+        "usda:2708514",
+        "usda:2708529",
+        "usda:2708533"
+      ],
+      "elapsed_ms": 5.31
+    },
+    {
+      "query": "dumpling",
+      "expected": "hit",
+      "ids": [
+        "usda:2706543",
+        "usda:2708705",
+        "usda:2708708"
+      ],
+      "elapsed_ms": 6.58
+    },
+    {
+      "query": "rice",
+      "expected": "hit",
+      "ids": [
+        "usda:2709078",
+        "usda:2709077",
+        "usda:2709146"
+      ],
+      "elapsed_ms": 4.86
+    },
+    {
+      "query": "noodles",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q192874",
+        "usda:2708949",
+        "usda:2708352"
+      ],
+      "elapsed_ms": 5.81
+    },
+    {
+      "query": "chicken",
+      "expected": "hit",
+      "ids": [
+        "usda:2706445",
+        "usda:2706437",
+        "usda:2707134"
+      ],
+      "elapsed_ms": 5.59
+    },
+    {
+      "query": "fish",
+      "expected": "hit",
+      "ids": [
+        "usda:2708529",
+        "usda:2707026",
+        "usda:2707032"
+      ],
+      "elapsed_ms": 5.28
+    },
+    {
+      "query": "falafel",
+      "expected": "hit",
+      "ids": [
+        "usda:2707408",
+        "wikidata:Q188788",
+        "usda:2707483"
+      ],
+      "elapsed_ms": 6.22
+    },
+    {
+      "query": "curry",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q164606",
+        "usda:2706388",
+        "usda:2707431"
+      ],
+      "elapsed_ms": 5.62
+    },
+    {
+      "query": "sushi",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q46383",
+        "usda:2708959",
+        "usda:2708965"
+      ],
+      "elapsed_ms": 5.65
+    },
+    {
+      "query": "披萨",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q177",
+        "usda:2708686",
+        "usda:2708507"
+      ],
+      "elapsed_ms": 6.23
+    },
+    {
+      "query": "三明治",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q28803",
+        "usda:2706962",
+        "usda:2706977"
+      ],
+      "elapsed_ms": 6.27
+    },
+    {
+      "query": "鸡蛋",
+      "expected": "hit",
+      "ids": [
+        "usda:2707152",
+        "usda:2707343",
+        "usda:2707179"
+      ],
+      "elapsed_ms": 6.44
+    },
+    {
+      "query": "汉堡",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q6663",
+        "usda:2707481",
+        "usda:2706931"
+      ],
+      "elapsed_ms": 6.2
+    },
+    {
+      "query": "汤",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q41415",
+        "usda:2709144",
+        "usda:2707453"
+      ],
+      "elapsed_ms": 6.25
+    },
+    {
+      "query": "沙拉",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q9266",
+        "usda:2710056",
+        "usda:2706749"
+      ],
+      "elapsed_ms": 6.27
+    },
+    {
+      "query": "面条",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q192874",
+        "usda:2708949",
+        "usda:2708352"
+      ],
+      "elapsed_ms": 6.16
+    },
+    {
+      "query": "米饭",
+      "expected": "hit",
+      "ids": [
+        "usda:2709078",
+        "usda:2709077",
+        "usda:2709146"
+      ],
+      "elapsed_ms": 6.37
+    },
+    {
+      "query": "饺子",
+      "expected": "hit",
+      "ids": [
+        "usda:2706543",
+        "usda:2708705",
+        "usda:2708708"
+      ],
+      "elapsed_ms": 6.19
+    },
+    {
+      "query": "咖喱",
+      "expected": "hit",
+      "ids": [
+        "wikidata:Q164606",
+        "usda:2706388",
+        "usda:2707431"
+      ],
+      "elapsed_ms": 6.24
+    },
+    {
+      "query": "no egg",
+      "expected": "no positive interpretation",
+      "ids": [],
+      "elapsed_ms": 0.0
+    },
+    {
+      "query": "without peanuts",
+      "expected": "no positive interpretation",
+      "ids": [],
+      "elapsed_ms": 0.0
+    },
+    {
+      "query": "不要鸡蛋",
+      "expected": "no positive interpretation",
+      "ids": [],
+      "elapsed_ms": 0.0
+    },
+    {
+      "query": "pizza under 5 dollars",
+      "expected": "no positive interpretation",
+      "ids": [],
+      "elapsed_ms": 0.0
+    },
+    {
+      "query": "xyz123",
+      "expected": "no positive interpretation",
+      "ids": [],
+      "elapsed_ms": 9.24
+    }
+  ],
+  "boundary": "Coverage of this small public query set only; not worldwide accuracy, dietary suitability or serving nutrient evidence."
+}

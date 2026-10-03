@@ -24,7 +24,7 @@ revoked permission takes priority and withholds the record.
 ## A seat saved for a friend
 
 The app now starts with two choices: **too tired → takeout**, or **up for a walk →
-the cafeteria**. Search saved dishes/places and a bundled 13-concept public food catalog with an
+the cafeteria**. Search saved dishes/places and a bundled 1,603-record public food catalog with an
 optional Chinese/English keyword, see up to three choices, and select an idea for this meal. Current availability is
 unknown; recorded prices show their dates. Choosing an idea never records it as
 ordered or eaten. You can start without a dietary profile.
@@ -77,8 +77,11 @@ change made in another session. Files are owner-only on POSIX, not encrypted.
 `today` searches **literal dish/place keywords and checked aliases** offline. Type
 `pizza`, `三明治`, or `egg` even with no saved choices. Public ideas are explicitly
 unpersonalized and have unknown ingredients, price and availability. Names/aliases
-come from Wikidata CC0; project-authored query hints are marked separately in
-`data/catalog/v1/`. `egg` suggests an omelette concept, not an ingredient guarantee.
+come from Wikidata and USDA FNDDS CC0 snapshots; project-authored lookup hints
+are marked separately in `data/catalog/v2/`. `egg` first shows an ingredient
+reference, with `dishes` opening prepared egg references. It is not silently
+equated with an omelette. Use `next` / `previous` for pages and `categories` for
+published food families. Close spelling matches are labeled and require a choice.
 Type `ai` to parse a sentence with downloaded local Gemma, inspect the exact spans,
 and confirm a phrase to search. Avoidances and budgets are shown but remain
 unverified; they do not silently become filters or permanent notes. Parsing failure
@@ -327,8 +330,26 @@ values unknown; `/back` leaves without saving. Existing edits retain defaults un
 explicitly skipped. `--plain` removes decorations; `--no-color` retains the bowls.
 Narrow output wraps Chinese names and long source links.
 
-Validation: 116 tests and 72 subtests, original guard fingerprint/four mock reports,
+Validation: 121 tests and 105 subtests, original guard fingerprint/four mock reports,
 40-column pseudo-terminal walkthrough outside the repo and no-file demo isolation.
 Two new synthetic queries were also run through actual local Gemma; evidence is in
 `docs/query-smoke-v1.json` and `docs/companion-smoke-v2.json`. This does not substitute
 for Harold’s real trial, which is still pending.
+
+## Offline catalog v2
+
+The shipped pack has 13 Wikidata dish concepts and 1,590 selected USDA FNDDS
+reference foods. Variants remain separate: this is 1,603 records, not 1,603 distinct
+world cuisines or restaurant dishes. The FNDDS source release is 2021–2023, published
+October 31, 2024. Names and categories only are extracted; no nutrient values,
+serving calories or actual restaurant ingredients are shipped. English source
+names are preserved; Chinese lookup hints are editorial and marked as such.
+
+The name pack is 897,993 bytes. A small frozen public query set has 28 positive
+searches and five negative/constraint cases. Measurements on this build: load
+29.55 ms, median query 5.81 ms, maximum 9.71 ms. These are local observations, not
+a latency guarantee or general accuracy benchmark. Source manifest, hashes and
+field provenance: `data/catalog/v2/manifest.json`. The v1 pack remains preserved
+and readable. Build script takes a separately downloaded official zip and writes
+a new directory; runtime never downloads it. Evidence: `docs/catalog-smoke-v2.json`
+and `docs/catalog-terminal-v2.txt`.

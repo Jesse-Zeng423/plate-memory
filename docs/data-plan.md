@@ -75,3 +75,11 @@ measurement; do not promise unmeasured latency or global completeness.
 
 Current pack intentionally omits cuisine/ingredient facts until they are checked.
 Manifest records actual coverage; 100–200 concepts remain a future expansion target.
+
+## Shipped v2 update
+
+Current default is data/catalog/v2: 13 namespaced Wikidata concepts plus 1,590 USDA
+reference-food variants, names/categories only. The developer builder reads a
+bounded official FNDDS zip; runtime has no fetch. Original v1 data remains intact.
+Chinese lookup hints are separately editorial; no claim of full bilingual coverage.
+Source/archive hashes, release, count and field provenance are in the manifest.

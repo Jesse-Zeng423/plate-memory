@@ -1,0 +1,302 @@
+today
+2
+piza
+1
+back
+egg
+1
+dishes
+1
+pick
+today
+2
+rice
+next
+previous
+categories
+1
+1
+pick
+quit
+       ( (             ( (
+     .-----.         .-----.
+     \_____/         \_____/
+   ---------------------------
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day
+back in high school.
+Different campuses. Still a place for
+you at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+How are you doing today?
+A note to keep in mind: Allergy:
+confirm ingredients and cross-contact
+with the preparer
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the
+cafeteria.
+1 / 2 / back: Anything you’re craving? (Enter to browse): More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea] [suggest
+ed
+match]
+Number / food keyword / back: pizza · 比萨饼 [food idea] [suggested
+match]
+This spelling match is a suggestion.
+Pick only if it is the food you meant.
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+Source:
+https://www.wikidata.org/wiki/Q177
+(revision 2547259198)
+pick / check ingredients / back: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea] [suggest
+ed
+match]
+Number / food keyword / back: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. Egg, whole, raw [ingredient
+reference]
+2. Egg burrito [food idea]
+3. Egg, creamed [food idea]
+Number / food keyword / back: Egg, whole, raw [ingredient reference]
+An ingredient reference, not a
+prepared meal. Search omelette or an
+egg sandwich for a dish idea.
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+Source: https://fdc.nal.usda.gov/food-
+details/2707152/nutrients (revision
+FNDDS 2021-2023 / 2024-10-31)
+dishes (prepared egg ideas) / check / back: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+Category: Eggs and omelets (a
+reference category, not current stock)
+1. Cheese souffle [food idea]
+2. Duck egg, cooked [food idea]
+3. Egg casserole with bread, cheese,
+milk and meat [food idea]
+Number / food keyword / back: Cheese souffle [food idea]
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+Source: https://fdc.nal.usda.gov/food-
+details/2705792/nutrients (revision
+FNDDS 2021-2023 / 2024-10-31)
+pick / check ingredients / back: Sounds good. Keep this idea for today;
+you can always change your mind.
+Nothing has been ordered or recorded
+as eaten.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+This session's idea: Cheese souffle
+Choose [today]: 
+How are you doing today?
+A note to keep in mind: Allergy:
+confirm ingredients and cross-contact
+with the preparer
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the
+cafeteria.
+1 / 2 / back: Anything you’re craving? (Enter to browse): More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+Your saved places. Check today’s price
+and ingredients before deciding.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+Your saved choice
+1. Vegetable rice — synthetic |
+Example Campus Cafeteria
+   CAD 7.50 recorded 2026-10-01 (check
+current price)
+   Your walk estimate: 8 min
+   Last seen: 2026-10-01; current
+availability unknown
+2. Dirty rice [food idea]
+3. Rice pilaf [food idea]
+Number / food keyword / back: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+More food ideas — type previous to go
+back.
+1. Soup, rice [food idea]
+2. Rice dressing [food idea]
+3. Rice croquette [food idea]
+Number / food keyword / back: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+Your saved places. Check today’s price
+and ingredients before deciding.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+Your saved choice
+1. Vegetable rice — synthetic |
+Example Campus Cafeteria
+   CAD 7.50 recorded 2026-10-01 (check
+current price)
+   Your walk estimate: 8 min
+   Last seen: 2026-10-01; current
+availability unknown
+2. Dirty rice [food idea]
+3. Rice pilaf [food idea]
+Number / food keyword / back: Browse a food family
+1. Bean, pea, legume dishes
+2. Burgers
+3. Burritos and tacos
+4. Cheese sandwiches
+5. Chicken fillet sandwiches
+6. Coleslaw, non-lettuce salads
+7. Deli and cured meat sandwiches
+8. Egg rolls, dumplings, sushi
+9. Egg/breakfast sandwiches
+10. Eggs and omelets
+11. Fried rice and lo/chow mein
+12. Lettuce and lettuce salads
+13. Macaroni and cheese
+14. Meat and BBQ sandwiches
+15. Meat mixed dishes
+16. Other Mexican mixed dishes
+17. Pasta mixed dishes, excludes
+macaroni and cheese
+18. Pasta, noodles, cooked grains
+19. Pizza
+20. Poultry mixed dishes
+21. Ramen and Asian broth-based soups
+22. Rice
+23. Rice mixed dishes
+24. Seafood sandwiches
+25. Soups, broth-based
+26. Soups, cream-based
+27. Stir-fry and soy-based sauce
+mixtures
+28. Vegetable sandwiches/burgers
+Category number / back: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+Category: Bean, pea, legume dishes (a
+reference category, not current stock)
+1. Bean cake [food idea]
+2. Beans and brown rice [food idea]
+3. Beans and rice, from fast food /
+restaurant [food idea]
+Number / food keyword / back: Bean cake [food idea]
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+Source: https://fdc.nal.usda.gov/food-
+details/2707409/nutrients (revision
+FNDDS 2021-2023 / 2024-10-31)
+pick / check ingredients / back: Sounds good. Keep this idea for today;
+you can always change your mind.
+Nothing has been ordered or recorded
+as eaten.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+This session's idea: Bean cake
+Choose [today]: 
