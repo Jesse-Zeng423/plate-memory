@@ -24,6 +24,7 @@ from ..json_contract import JsonContractError
 from ..profile_store import load_profile, save_profile, update_record
 from ..services.review import review_demo, review_menu
 from .forms import record_form
+from .prompts import HomeRequested
 from .review_view import show_report, headline
 from ..services.meal_choices import guard_reminders, recorded_menu_profile
 
@@ -37,6 +38,7 @@ class Session:
         self.last = None
         self.lines = []
         self.selected_meal = None
+        self.postcard_draft = {}
         self.meals = MealStore(None if demo else path.with_name(path.stem + '-meals.sqlite3'))
         self.journal = JournalStore(None if demo else path.with_name(path.stem + '-journal.sqlite3'))
         self.demo_meals_loaded = False
@@ -196,7 +198,7 @@ class Session:
                     if self.selected_meal:
                         self.last = None
                 elif command == 'postcard':
-                    postcard_flow(self.screen, self.path.parent/'postcards', self.selected_meal, self.synthetic)
+                    postcard_flow(self.screen, self.path.parent/'postcards', self.selected_meal, self.synthetic, self.postcard_draft)
                 elif command == 'checkin':
                     checkin_flow(self.screen, self.journal, self.selected_meal)
                 elif command == 'lunchbox':
@@ -222,6 +224,8 @@ class Session:
                         self.screen.say(json.dumps(self.last, ensure_ascii=False, indent=2))
                 else:
                     self.screen.say('Choose a command listed above.', 'warn')
+            except HomeRequested:
+                self.screen.say('Back at the table.')
             except KeyboardInterrupt:
                 self.screen.say('\nCurrent action cancelled. No partial review is shown.', 'warn')
             except (ValidationError, ExtractionError, JsonContractError, OSError, UnicodeError, json.JSONDecodeError, sqlite3.Error) as exc:

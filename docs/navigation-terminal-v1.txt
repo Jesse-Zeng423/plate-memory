@@ -1,0 +1,188 @@
+SYNTHETIC demo; real 40-column pseudo-terminal; unrelated working directory; exit 0; no files written.
+postcard
+Demo Jesse
+/home
+postcard
+
+Demo Bro
+Lunch next week?
+/back
+A seat saved for you.
+yes
+1
+2
+pizza
+refine
+/back
+1
+back
+/home
+quit
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day
+back in high school.
+Different campuses. Still a place for
+you at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+Until our next meal
+A small note for your friend. Write it
+here, then send the file yourself
+whenever you feel like it.
+/back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Your name or nickname: Your friend’s name or nickname: Back at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+Until our next meal
+A small note for your friend. Write it
+here, then send the file yourself
+whenever you feel like it.
+/back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Your name or nickname [Demo Jesse]: Your friend’s name or nickname: What would you like to say?: 
+Postcard / Preview
+Until our next meal  From Demo Jesse
+to Demo Bro  Lunch next week?
+Only the names, message and optional
+dish shown above will be shared.
+/back: edit note · /home: table, keep
+draft · /cancel: discard draft
+Export this note locally? yes / no [no]: /back: previous field · /home: table,
+keep draft · /cancel: discard draft
+What would you like to say? [Lunch next week?]: 
+Postcard / Preview
+Until our next meal  From Demo Jesse
+to Demo Bro  A seat saved for you.
+Only the names, message and optional
+dish shown above will be shared.
+/back: edit note · /home: table, keep
+draft · /cancel: discard draft
+Export this note locally? yes / no [no]: Synthetic preview only. No file
+exported.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+How are you doing today?
+A note to keep in mind: Allergy:
+confirm ingredients and cross-contact
+with the preparer
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the
+cafeteria.
+1 / 2 / back: Anything you’re craving? (Enter to browse): More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea]
+2. Pizza rolls [food idea]
+3. Mexican pizza [food idea]
+Number / food keyword / back to table: Anything you’re craving? (Enter to browse; /back: food ideas) [pizza]: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea]
+2. Pizza rolls [food idea]
+3. Mexican pizza [food idea]
+Number / food keyword / back to table: pizza · 比萨饼 [food idea]
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+Source:
+https://www.wikidata.org/wiki/Q177
+(revision 2547259198)
+pick / check ingredients / back: More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea]
+2. Pizza rolls [food idea]
+3. Mexican pizza [food idea]
+Number / food keyword / back to table: Back at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 

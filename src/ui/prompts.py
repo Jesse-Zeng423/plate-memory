@@ -6,11 +6,27 @@ class FlowCancelled(Exception):
     pass
 
 
+class BackRequested(FlowCancelled):
+    pass
+
+
+class CancelRequested(FlowCancelled):
+    pass
+
+
+class HomeRequested(Exception):
+    """Return to the table without nested flows swallowing the request."""
+
+
 def ask(screen, label, default=None, *, optional=False, convert=None):
     while True:
         raw = screen.ask(label, default)
-        if raw.lower() in ('/back', '/cancel', 'back'):
-            raise FlowCancelled
+        if raw.lower() in ('/back', 'back'):
+            raise BackRequested
+        if raw.lower() == '/cancel':
+            raise CancelRequested
+        if raw.lower() in ('/home', 'home'):
+            raise HomeRequested
         if raw.lower() == '/skip' or (optional and not raw):
             if optional:
                 return None

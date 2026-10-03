@@ -43,14 +43,16 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                 screen.say('No saved matches yet. Type another dish or place to search, or add one you know.')
                 if catalog is not None:
                     screen.paragraph('Try a simple food name, like sandwich or 汤. For a sentence, type ai. The starter catalog is still small.')
-                action = ask(screen, 'Food keyword / back', optional=True)
+                action = ask(screen, 'Food keyword / back to table', optional=True)
                 action = (action or '').lower()
                 if action=='next':
                     screen.say('No more matches on this page. Try previous or a new food name.')
                 elif action=='previous':
                     offset=max(0,offset-3)
                 elif action=='categories' and catalog:
-                    category=category_flow(screen,catalog);offset=0;query=''
+                    chosen_category=category_flow(screen,catalog)
+                    if chosen_category is not None:
+                        category=chosen_category;offset=0;query=''
                 elif action == 'ai':
                     query = query_flow(screen, query_parser, query);offset=0;category=None
                 elif action == 'notes' and edit_notes:
@@ -73,19 +75,25 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     show_choice(screen, meal, index)
                 else:
                     show_idea(screen, meal, index)
-            action = ask(screen, 'Number / food keyword / back').lower()
+            action = ask(screen, 'Number / food keyword / back to table').lower()
             if action=='next' and catalog:
                 offset += 3
             elif action=='previous':
                 offset=max(0,offset-3)
             elif action=='categories' and catalog:
-                category=category_flow(screen,catalog);offset=0;query=''
+                chosen_category=category_flow(screen,catalog)
+                if chosen_category is not None:
+                    category=chosen_category;offset=0;query=''
             elif action == 'ai':
                 query = query_flow(screen, query_parser, query);offset=0;category=None
             elif action == 'notes' and edit_notes:
                 edit_notes()
             elif action == 'refine':
-                query = ask(screen, "Anything you’re craving? (Enter to browse)", query or None, optional=True, convert=keyword) or '';offset=0;category=None
+                try:
+                    query = ask(screen, "Anything you’re craving? (Enter to browse; /back: food ideas)", query or None, optional=True, convert=keyword) or ''
+                except FlowCancelled:
+                    continue
+                offset=0;category=None
             elif action == 'route':
                 route = None
             elif action == 'add':
@@ -141,6 +149,14 @@ def show_idea(screen, item, index=None, detail=False):
 
 
 def query_flow(screen, parser, previous):
+    screen.say('/back: food ideas · /home: table')
+    try:
+        return _query_flow(screen, parser, previous)
+    except FlowCancelled:
+        return previous
+
+
+def _query_flow(screen, parser, previous):
     if parser is None:
         screen.say('Local AI sentence parsing is unavailable in this demo. Use a dish keyword.')
         return previous

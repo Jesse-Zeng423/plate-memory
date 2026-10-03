@@ -186,3 +186,11 @@ not 1,603 deduplicated dishes. This replaces the provisional unique-concept coun
 with explicit variant retention. Frozen public query set, measured size/latency,
 source manifest, corruption/negative/paging tests and real synthetic terminal run
 are recorded in build-status. Phase B is next; C–E remain unimplemented.
+
+## Phase B checkpoint 1 (partial)
+
+Shared navigation requests and postcard field/preview/destination states are now
+implemented; session-only postcard drafts survive home. Nested query/category/refine
+cancellation preserves food results. See build-status and navigation-terminal-v1.txt.
+B gate remains open for lunchbox/check-in/saved-choice fields, route/list state and
+numbered navigation. Do not advance to C yet.

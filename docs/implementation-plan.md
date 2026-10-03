@@ -217,3 +217,8 @@ User requested broader food coverage, explicit back/home navigation, richer emoj
 visual identity and mature postcard export with a recipient app link. The next
 ordered execution plan is [next-phase-plan.md](next-phase-plan.md). This is planned
 work, not part of the previously validated 116-test implementation.
+
+Latest follow-up: navigation checkpoint B1 in next-phase-plan/build-status adds
+session-only postcard drafts and distinct home/back/discard requests. The original
+statement that every cancel returns home is superseded by explicit per-screen
+navigation in the v2 plan. Other forms have not yet been migrated.

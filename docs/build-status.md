@@ -194,3 +194,32 @@ index instead of incorrectly collapsing variants into invented canonical dishes.
 Source count and covered languages remain explicit. Next: phase B navigation
 states, back/home/draft retention; then emoji/visual export. Continue from this
 checkpoint, do not restart the completed catalog work.
+
+## Phase B checkpoint 1 — postcard drafts and nested search returns
+
+Added distinct back, discard and home requests, plus a reusable in-memory field
+navigator. Postcard fields return one field at a time with retained defaults;
+preview returns to the message, destination returns to preview, overwrite returns
+to destination. Home preserves the session draft, confirmed discard clears it,
+and successful export clears it. Drafts are not written to disk. Invalid postcard
+text retries its field; a failed save retries the destination with the note intact.
+Existing overwrite refusal leaves the target untouched. Optional dish selection
+and original text-export schema remain unchanged for the later export checkpoint.
+
+Query interpretation cancellation keeps the preceding keyword; cancelling category
+or refine leaves the preceding list intact. Home propagates out of nested companion
+prompts to the table. No guard, model or catalog data changes.
+
+Validation: 127 unittest tests; 127 pytest tests/105 subtests; verify_project and
+all four mock scenarios pass. New synthetic tests cover previous-field edits,
+preview/path returns, home/resume, discard confirmation, overwrite path correction,
+save-error recovery and nested search cancellation. Real 40-column pseudo-terminal
+walkthrough from an unrelated directory exits 0 with no demo files; captured in
+docs/navigation-terminal-v1.txt. Wrapped output made the first transcript assertion
+fail; inspecting and normalizing whitespace confirmed the expected message. This
+was a capture assertion, not a terminal crash.
+
+Phase B is NOT complete: lunchbox, saved-choice and check-in forms still need the
+same previous-field/draft behavior; meal route/list states and numbered navigation
+need completion. Narrow input prompts can still exceed the width, to be addressed
+in phase C. Next run continues these B acceptance gaps before visual/export work.

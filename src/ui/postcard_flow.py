@@ -1,25 +1,83 @@
-"""Preview chosen fields, then explicit local export. Nothing is sent."""
+"""Compose in memory; preview and destination each have a real return target."""
 from pathlib import Path
 from uuid import uuid4
-from ..services.postcard import render_postcard,export_postcard
-from .prompts import ask,choose,FlowCancelled
+from ..food_adapter import ValidationError
+from ..services.postcard import render_postcard, export_postcard
+from .prompts import ask, choose, BackRequested, CancelRequested
+from .navigation import form_fields, discard_draft
 
 
-def postcard_flow(screen,directory,selected=None,synthetic=False):
-    try:
-        screen.say('\nUntil our next meal', 'title')
-        screen.paragraph('A small note for your friend. Write it here, then send the file yourself whenever you feel like it.')
-        card={'schema_version':1,'sender':ask(screen,'Your name or nickname'),'recipient':ask(screen,'Your friend’s name or nickname'),'message':ask(screen,'What would you like to say?'),'dish':None}
-        if selected and choose(screen,'Include this food idea: '+selected['name']+'? yes / no',{'yes':True,'no':False},'no'):
-            card['dish']=selected['name']
-        screen.say('\nPreview', 'title');screen.paragraph(render_postcard(card))
-        screen.say('This file contains only the names, message and optional dish shown above.')
-        if not choose(screen,'Export this note locally? yes / no',{'yes':True,'no':False},'no'):return
-        if synthetic:
-            screen.say('Synthetic preview only. No file exported.');return
-        default=directory/('postcard-'+uuid4().hex[:12]+'.txt')
-        path=Path(ask(screen,'Save path',default)).expanduser()
-        if path.exists() and not choose(screen,'Replace the existing file? yes / no',{'yes':True,'no':False},'no'):return
-        export_postcard(path,card)
-        screen.paragraph('Saved to '+str(path)+'. Nothing was sent. You can share this file in your own chat.')
-    except FlowCancelled:return
+def _text(maximum):
+    def validate(raw):
+        if len(raw) > maximum or any(ord(c) < 32 or 127 <= ord(c) <= 159 for c in raw):
+            raise ValidationError(f'Use up to {maximum} characters, without control characters.')
+        return raw
+    return validate
+
+
+def postcard_flow(screen, directory, selected=None, synthetic=False, draft=None):
+    draft = {} if draft is None else draft
+    fields = [('sender', 'Your name or nickname', _text(80)),
+              ('recipient', 'Your friend’s name or nickname', _text(80)),
+              ('message', 'What would you like to say?', _text(1000))]
+    screen.say('\nUntil our next meal', 'title')
+    screen.paragraph('A small note for your friend. Write it here, then send the file yourself whenever you feel like it.')
+    state = 'fields'
+    start = 0
+    default = directory / ('postcard-' + uuid4().hex[:12] + '.txt')
+    while True:
+        try:
+            if state == 'fields':
+                if not form_fields(screen, fields, draft, start):
+                    return
+                state = 'dish' if selected else 'preview'
+            if state == 'dish':
+                include = choose(screen, 'Include this food idea: ' + selected['name'] + '? yes / no',
+                                 {'yes': True, 'no': False}, 'yes' if draft.get('dish') else 'no')
+                draft['dish'] = selected['name'] if include else None
+                state = 'preview'
+            if state == 'preview':
+                card = {'schema_version': 1, **{k: draft[k] for k in ('sender', 'recipient', 'message')},
+                        'dish': draft.get('dish')}
+                screen.say('\nPostcard / Preview', 'title')
+                screen.paragraph(render_postcard(card))
+                screen.say('Only the names, message and optional dish shown above will be shared.')
+                screen.say('/back: edit note · /home: table, keep draft · /cancel: discard draft')
+                if not choose(screen, 'Export this note locally? yes / no', {'yes': True, 'no': False}, 'no'):
+                    return
+                if synthetic:
+                    screen.say('Synthetic preview only. No file exported.')
+                    draft.clear()
+                    return
+                state = 'destination'
+            if state == 'destination':
+                screen.say('Postcard / Save file — /back: preview · /home: table, keep draft')
+                path = Path(ask(screen, 'Save path', draft.get('path', default))).expanduser()
+                draft['path'] = str(path)
+                state = 'replace' if path.exists() else 'write'
+            if state == 'replace':
+                screen.say('/back: choose another path · /home: table, keep draft')
+                if not choose(screen, 'Replace the existing file? yes / no', {'yes': True, 'no': False}, 'no'):
+                    screen.say('Existing file kept. Your note draft is still available this session.')
+                    return
+                state = 'write'
+            if state == 'write':
+                try:
+                    export_postcard(Path(draft['path']), card)
+                except OSError as exc:
+                    screen.say('Could not save: ' + str(exc), 'warn')
+                    state = 'destination'
+                    continue
+                screen.paragraph('Saved to ' + draft['path'] + '. Nothing was sent. You can share this file in your own chat.')
+                draft.clear()
+                return
+        except BackRequested:
+            if state in ('dish', 'preview'):
+                state, start = 'fields', len(fields) - 1
+            elif state == 'destination':
+                state = 'preview'
+            elif state == 'replace':
+                state = 'destination'
+        except CancelRequested:
+            if discard_draft(screen, draft):
+                return
