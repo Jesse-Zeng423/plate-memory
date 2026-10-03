@@ -55,7 +55,7 @@ def run():
             flat=' '.join(capture.split())
             for expected in ['Remember lunch?','Saved just to your meal journal.',
                              'A good lunch','Saved. It will be here next time','Takeout ideas',
-                             '0 Back to food ideas']:
+                             '3 Source / 0 Back']:
                 if expected not in flat:raise RuntimeError('Missing terminal checkpoint: '+expected)
             return 'SYNTHETIC demo; 40-column pseudo-terminal; unrelated cwd; exit 0; no files written.\n'+capture
     finally:

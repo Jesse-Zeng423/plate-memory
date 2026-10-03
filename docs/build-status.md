@@ -307,3 +307,57 @@ editorial hints. Decoration/width work applies to both languages.
 meal path, canonical journal fields, untranslated user-authored content and added
 catalog coverage. Repository verification, four mocks and the actual navigation replay also pass.
 Synthetic bilingual walkthroughs are in language-preview-en/zh.txt. Next: visual postcard/export.
+
+## D/E implementation complete — visual exports and final synthetic handover
+
+Postcard v2 is a strict separate share contract: explicit names/message/optional
+food, theme/language/date and opt-in allowlisted public quick-start link. V1 remains
+readable and its API/schema unchanged. Standalone HTML embeds original CSS/SVG,
+escapes user text and forbids automatic external resources/scripts through CSP.
+Three themes and English/Chinese labels are implemented. No journal, health,
+permission, profile ID or history fields are accepted. Food included in an imported
+lunchbox is explicitly an idea, not evidence of a meal eaten together.
+
+Exports: atomic new folder with HTML/text/importable lunchbox JSON and SHA-256
+manifest; single HTML/text/JSON files with explicit replacement; optional PNG from
+an isolated installed local Chrome/Chromium, no install/download triggered. New
+share folders are never overwritten. Failures remove staging files and keep the
+note; missing renderer returns to format selection. Exact created paths are shown.
+HTML supports viewing and browser printing offline; the public app link requires
+intentional navigation and opens repository instructions, not a hosted app.
+
+Actual local rendering exposed two issues before this gate passed: Chrome stayed
+alive after writing a valid PNG, and macOS's minimum desktop viewport clipped a
+390px screenshot. The renderer now waits for a complete image, terminates only its
+own process group and pins small preview document width. A bounded RGB/RGBA PNG
+crop removes only uniform trailing background, preserving all content. Long
+Chinese output is complete; templates wrap long names/words and preserve emoji.
+Desktop, phone-width and long-message images were visually inspected. Print QA
+initially put a hint on page 2; refined print CSS produced one complete inspected
+A4 page for the normal synthetic example. Scratch PDF/PNG QA files were removed.
+
+Synthetic examples: examples/postcards/, including actual share bundle, desktop
+PNG, phone Chinese PNG and Chinese HTML. These contain no Harold trial facts.
+Recipient guide: docs/start-here.md; handover checklist updated to begin with hungry
+meal discovery, with local AI and dietary setup optional. DEV draft updated for
+current functionality and friend story; real reaction remains explicitly unfilled.
+Source links/rule details are secondary actions instead of the default food screen;
+Chinese discovery actions also accept Chinese words. Core guard/inference unchanged.
+
+Final evidence: 150 unittest/pytest tests; provenance/four mocks; navigation replay;
+new 40-column real-terminal journeys in both languages across meals, authored
+lunchbox/export, actual-meal confirmation/history and styled postcard bundle with
+app link. Runtime app sockets are forbidden in this smoke; no dietary profile was
+created. Synthetic private stores are temporary and removed. Reproduce with
+scripts/run_friend_ready_smoke.py; transcripts and metadata in docs/friend-ready-*.
+
+All independently implementable plan items are complete within stated scope.
+Remaining human work: actual Harold device/use trial, permitted factual feedback,
+and final DEV publication instruction. No real trial, message or DEV submission
+has occurred. No new accuracy, nutrient, availability or health claim is made.
+Automatic continuation should pause after the saved checks/commit/CI are complete.
+
+Final release checks repeated successfully: 150 unittest tests; 150 pytest tests
+and 132 subtests; verify_project; four mock scenarios; navigation replay; English
+and Chinese 40-column friend-ready replay with application sockets forbidden.
+No new model inference was required for these presentation/export changes.

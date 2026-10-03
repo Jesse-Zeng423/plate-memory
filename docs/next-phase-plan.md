@@ -214,3 +214,12 @@ Then complete D and E, with actual Harold feedback still supplied by the user.
 Expanded pack/language checkpoint: 3,535 name records now ship by default with v1/v2
 retained; interactive language selection and --language en/zh are implemented.
 142 tests and offline synthetic walkthroughs pass. Proceed with D.
+
+## Final implementation outcome
+
+C, expanded data/language, D exports and the independently executable part of E
+are complete. Actual artifact/print inspection and bilingual real-terminal evidence
+are in build-status and friend-ready-smoke.json. Earlier steps are historical.
+The remaining handover/real reaction belongs to Harold and Jesse; it cannot be
+synthesized. Pause automation after final verification and checkpoint save; resume
+only for new work or actual trial feedback. No DEV publication is authorized.

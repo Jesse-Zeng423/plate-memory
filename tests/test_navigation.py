@@ -16,7 +16,7 @@ class NavigationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as work:
             path = Path(work) / 'note.txt'
             answers = ['Me', 'Bro', '/back', 'Other bro', 'First note',
-                       'yes', '/back', '/back', 'Revised note', 'yes', str(path)]
+                       'yes','3','no', '/back', '/back', 'Revised note', 'yes','3','no', str(path)]
             with patch('builtins.input', side_effect=answers), redirect_stdout(StringIO()):
                 postcard_flow(Screen(False), Path(work))
             self.assertIn('Other bro', path.read_text())
@@ -41,7 +41,7 @@ class NavigationTests(unittest.TestCase):
             answers = ['postcard', 'Me', '/home', 'postcard', '', 'Bro', 'Hello', 'no', 'quit']
             with patch('builtins.input', side_effect=answers), redirect_stdout(StringIO()) as out:
                 self.assertEqual(main(['--profile', str(Path(work) / 'f.json'), '--plain']), 0)
-            self.assertIn('From Me to Bro', out.getvalue())
+            self.assertIn('From Me / To Bro', out.getvalue())
             self.assertEqual(list(Path(work).iterdir()), [])
 
     def test_overwrite_back_and_save_failure_allow_new_destination(self):
@@ -49,21 +49,21 @@ class NavigationTests(unittest.TestCase):
             existing = Path(work) / 'existing.txt'
             existing.write_text('original')
             target = Path(work) / 'new.txt'
-            answers = ['Me', 'Bro', 'Hello', 'yes', str(existing), '/back', str(target)]
+            answers = ['Me', 'Bro', 'Hello', 'yes','3','no', str(existing), '/back', str(target)]
             with patch('builtins.input', side_effect=answers), redirect_stdout(StringIO()):
                 postcard_flow(Screen(False), Path(work))
             self.assertEqual(existing.read_text(), 'original')
             self.assertIn('Hello', target.read_text())
-            from src.services.postcard import export_postcard
+            from src.services.export import export_file
             attempts = []
-            def fail_once(path, card):
+            def fail_once(path, card, format, replace=False):
                 attempts.append(path)
                 if len(attempts) == 1:
                     raise PermissionError('Synthetic denied destination')
-                export_postcard(path, card)
+                return export_file(path, card, format, replace)
             recovered = Path(work) / 'recovered.txt'
-            answers = ['Me', 'Bro', 'Hello', 'yes', str(Path(work)/'denied.txt'), str(recovered)]
-            with patch('builtins.input', side_effect=answers), patch('src.ui.postcard_flow.export_postcard', side_effect=fail_once), redirect_stdout(StringIO()):
+            answers = ['Me', 'Bro', 'Hello', 'yes','3','no', str(Path(work)/'denied.txt'), str(recovered)]
+            with patch('builtins.input', side_effect=answers), patch('src.ui.postcard_flow.export_file', side_effect=fail_once), redirect_stdout(StringIO()):
                 postcard_flow(Screen(False), Path(work))
             self.assertIn('Hello', recovered.read_text())
             self.assertFalse((Path(work)/'denied.txt').exists())

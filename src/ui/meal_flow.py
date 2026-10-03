@@ -38,7 +38,7 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
             draft.update(route=route,query=query,offset=offset,category=category,step=step)
             saved, ideas = discover(store, route, query, catalog, offset, category)
             rows = saved + ideas
-            screen.say(screen.t('next / previous · categories · route · add · ai'))
+            screen.say(screen.t('next: more ideas · categories · add a place · describe'))
             screen.say('\n' + (screen.t('Takeout ideas') if route == 'delivery' else screen.t('A walk and something to eat')), 'title')
             if saved:
                 screen.paragraph(screen.t('Your saved places. Check today’s price and ingredients before deciding.'))
@@ -55,7 +55,7 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                 if catalog is not None:
                     screen.paragraph(screen.t('Try sandwich or 汤, or type ai to describe what sounds good.'))
                 action = ask(screen, screen.t('Food keyword / 0 Back to craving / h Home'), optional=True)
-                action = (action or '').lower()
+                action = list_action((action or '').lower())
                 if action == '0':raise BackRequested
                 if action == 'h':
                     raise HomeRequested
@@ -89,7 +89,7 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     show_choice(screen, meal, index)
                 else:
                     show_idea(screen, meal, index)
-            action = ask(screen, screen.t('Number / food keyword / 0 Back to craving / h Home')).lower()
+            action = list_action(ask(screen, screen.t('Number / food keyword / 0 Back to craving / h Home')).lower())
             if action == '0':raise BackRequested
             if action == 'h':
                 raise HomeRequested
@@ -126,10 +126,14 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     show_idea(screen, meal, detail=True)
                 try:
                     if meal.get('kind')=='ingredient':
-                        decision=choose(screen,screen.t('1 Prepared dishes / 2 Check / 0 Back to food ideas / h Home'),{'1':'dishes','2':'review','dishes':'dishes','check':'review','review':'review'})
+                        decision=choose(screen,screen.t('1 Prepared dishes / 2 Check / 3 Source / 0 Back / h Home'),{'1':'dishes','2':'review','3':'source','source':'source','dishes':'dishes','check':'review','review':'review'})
                     else:
-                        decision = choose(screen, screen.t('1 Pick / 2 Check ingredients / 0 Back to food ideas / h Home'), {'1':'select','2':'review','pick':'select','select':'select','check':'review','review':'review','check ingredients':'review'})
+                        decision = choose(screen, screen.t('1 Pick / 2 Check ingredients / 3 Source / 0 Back / h Home'), {'1':'select','2':'review','3':'source','source':'source','pick':'select','select':'select','check':'review','review':'review','check ingredients':'review'})
                 except FlowCancelled:
+                    continue
+                if decision=='source':
+                    if kind=='idea':screen.paragraph(screen.t('Source: ')+meal['source']['url']+screen.t(' (revision ')+str(meal['source']['revision'])+screen.t(')'))
+                    else:screen.say(screen.t('This is a choice you saved yourself.'))
                     continue
                 if decision=='dishes':
                     category='Eggs and omelets';query='';offset=0
@@ -156,6 +160,11 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
             continue
 
 
+def list_action(raw):
+    return {'下一页':'next','上一页':'previous','分类':'categories','换路线':'route','收藏':'add',
+            '描述':'ai','描述想吃什么':'ai','describe':'ai','add a place':'add','饮食提醒':'notes'}.get(raw,raw)
+
+
 def show_idea(screen, item, index=None, detail=False):
     prefix = str(index) + '. ' if index is not None else ''
     chinese = item['names'].get('zh-hans', item['names'].get('zh', ''))
@@ -166,7 +175,6 @@ def show_idea(screen, item, index=None, detail=False):
         if item.get('match_kind')=='suggested':
             screen.paragraph(screen.t('This spelling match is a suggestion. Pick only if it is the food you meant.'))
         screen.paragraph(screen.t('Look for this on your menu. The recipe can vary; check the ingredients if needed.'))
-        screen.paragraph(screen.t('Source: ') + item['source']['url'] + screen.t(' (revision ') + str(item['source']['revision']) + screen.t(')'))
 
 
 def query_flow(screen, parser, previous, draft=None):
@@ -190,7 +198,7 @@ def query_flow(screen, parser, previous, draft=None):
                         value=parser(raw);cached_raw=raw
                     state='interpretation'
                 except (ExtractionError,ValidationError) as exc:
-                    screen.say(str(exc),'warn');state='literal'
+                    screen.say(screen.t('Let’s use a food name for now. You can still browse.'),'warn');state='literal'
             if state=='interpretation':
                 wants=[s['quote'] for s in value['spans'] if s['kind']=='want']
                 for span in value['spans']:

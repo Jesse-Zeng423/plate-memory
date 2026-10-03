@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "files": [
+    {
+      "name": "postcard.html",
+      "sha256": "a3d99ff88f1b13eb632f1be2f8280e31b199fa2d7d5d34f2332accedb244900a"
+    },
+    {
+      "name": "postcard.txt",
+      "sha256": "95dd104601247452413268d43fc6e81e7ed27546c34ec16cb66ece4c075e6dd4"
+    },
+    {
+      "name": "lunchbox.json",
+      "sha256": "add68e707f96e54b8abdfd1c97f1c7f1ae8931d3f5246647355324e537a22898"
+    }
+  ]
+}

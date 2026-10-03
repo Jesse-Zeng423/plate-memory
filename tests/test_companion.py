@@ -91,7 +91,7 @@ class PostcardTests(unittest.TestCase):
         with self.assertRaises(ValidationError):validate_postcard(card)
         with tempfile.TemporaryDirectory() as work:
             path=Path(work)/'note.txt'
-            with patch('builtins.input',side_effect=['postcard','Me','Bro','See you soon','yes',str(path),'quit']),redirect_stdout(StringIO()):
+            with patch('builtins.input',side_effect=['postcard','Me','Bro','See you soon','yes','3','no',str(path),'quit']),redirect_stdout(StringIO()):
                 main(['--profile',str(Path(work)/'friend.json'),'--plain'])
             text=path.read_text();self.assertIn('See you soon',text)
             self.assertNotIn('comfort',text);self.assertNotIn('permission',text)
@@ -100,7 +100,7 @@ class PostcardTests(unittest.TestCase):
     def test_declined_export_demo_and_overwrite_refusal_do_not_write(self):
         with tempfile.TemporaryDirectory() as work:
             profile=Path(work)/'friend.json';target=Path(work)/'note.txt';target.write_text('original')
-            with patch('builtins.input',side_effect=['postcard','Me','Bro','Hello','yes',str(target),'no','quit']),redirect_stdout(StringIO()):
+            with patch('builtins.input',side_effect=['postcard','Me','Bro','Hello','yes','3','no',str(target),'no','quit']),redirect_stdout(StringIO()):
                 main(['--profile',str(profile),'--plain'])
             self.assertEqual(target.read_text(),'original')
             for args,answers in [([],['postcard','Me','Bro','Hello','no','quit']),(['--demo'],['postcard','Me','Bro','Hello','yes','quit'])]:

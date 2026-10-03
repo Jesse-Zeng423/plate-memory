@@ -1,0 +1,30 @@
+[
+  {
+    "language": "en",
+    "columns": 40,
+    "exit_code": 0,
+    "app_sockets_forbidden": true,
+    "dietary_profile_created": false,
+    "share_files": [
+      "lunchbox.json",
+      "manifest.json",
+      "postcard.html",
+      "postcard.txt"
+    ],
+    "synthetic": true
+  },
+  {
+    "language": "zh",
+    "columns": 40,
+    "exit_code": 0,
+    "app_sockets_forbidden": true,
+    "dietary_profile_created": false,
+    "share_files": [
+      "lunchbox.json",
+      "manifest.json",
+      "postcard.html",
+      "postcard.txt"
+    ],
+    "synthetic": true
+  }
+]

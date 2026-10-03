@@ -231,3 +231,8 @@ build-status.md. Continue with terminal visual identity in next-phase-plan.md C.
 Latest runnable checkpoint adds the expanded 3,535-record reference snapshot and
 English/Simplified Chinese presentation selection; storage/model/guard fields stay
 unchanged. next-phase-plan.md D is now the active implementation step.
+
+Final follow-up: visual local postcards, mature export, recipient guide and a
+complete bilingual synthetic walkthrough are implemented. See build-status for
+acceptance failures fixed and actual visual evidence. Real Harold trial and final
+publishing instruction remain human steps, with article placeholders retained.

@@ -1,0 +1,370 @@
+SYNTHETIC real-terminal walkthrough
+2
+1
+2
+pizza
+1
+1
+2
+2
+Synthetic Jesse
+Synthetic Bro
+Synthetic: a seat saved for you.
+
+yes
+3
+<synthetic temporary folder>/gift.json
+yes
+0
+3
+1
+
+
+no
+
+yes
+2
+0
+4
+Synthetic Jesse
+Synthetic Bro
+Synthetic: lunch next week? 🥣
+yes
+3
+2
+yes
+1
+yes
+<synthetic temporary folder>/share
+0
+🌏  简体中文 / English
+1 简体中文 · 2 English [2]
+›   🥣     🥣
+  ─────────────
+  a seat saved for you
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day
+back in high school.
+Different campuses. Still a place for
+you at the table.
+
+Your table | 2026-10-03
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+Choose [1]
+› 
+🍽️  How are you doing today?
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the
+cafeteria.
+1 / 2 / 0 Back to table / h Home
+› Anything you’re craving? (Enter to
+browse; /back: route; /home: table)
+› next: more ideas · categories · add a
+place · describe
+
+🚶  A walk and something to eat
+A few things you could look for today.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. Check dietary notes
+against an actual menu.
+1. pizza · 比萨饼 [food idea]
+2. Pizza rolls [food idea]
+3. Mexican pizza [food idea]
+Number / food keyword / 0 Back to
+craving / h Home
+› pizza · 比萨饼 [food idea]
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+1 Pick / 2 Check ingredients / 3
+Source / 0 Back / h Home
+› Sounds good. Keep this idea for today;
+you can always change your mind.
+Nothing has been ordered or recorded
+as eaten.
+
+Your table | 2026-10-03
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+This session's idea: pizza
+Choose [1]
+› Your lunchbox is waiting for a note
+from a friend. Open a local JSON pack,
+or write one here.
+1 Open file · 2 Write · 3 Export · 0
+Back to table
+Choose
+› /back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Your name or nickname
+› Your friend’s name or nickname
+› A little message for your friend
+› A shared dish? (Enter to skip)
+› 
+🎒  A corner of the cafeteria
+   +----------------------+
+   |  a little lunchbox   |
+   +----------------------+
+From Synthetic Jesse to Synthetic Bro
+(sender label supplied in the file)
+Synthetic: a seat saved for you.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Keep these words? yes/no [no]
+› 
+🎒  A corner of the cafeteria
+   +----------------------+
+   |  a little lunchbox   |
+   +----------------------+
+From Synthetic Jesse to Synthetic Bro
+(sender label supplied in the file)
+Synthetic: a seat saved for you.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+1 Open file · 2 Write · 3 Export · 0
+Back to table
+Choose
+› 
+🎒  A corner of the cafeteria
+   +----------------------+
+   |  a little lunchbox   |
+   +----------------------+
+From Synthetic Jesse to Synthetic Bro
+(sender label supplied in the file)
+Synthetic: a seat saved for you.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+/back: lunchbox · /home: table
+Save lunchbox JSON path
+› 
+🎒  A corner of the cafeteria
+   +----------------------+
+   |  a little lunchbox   |
+   +----------------------+
+From Synthetic Jesse to Synthetic Bro
+(sender label supplied in the file)
+Synthetic: a seat saved for you.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+/back: choose another path · /home:
+table
+Export exactly these words? yes/no
+[no]
+› Saved to /var/folders/12/wyzv4_wj5d3gx
+j6rdbrj5plr0000gn/T/plate-
+synthetic-6mwdvadi/gift.json. Send
+this file yourself; your friend can
+open it in lunchbox.
+
+🎒  A corner of the cafeteria
+   +----------------------+
+   |  a little lunchbox   |
+   +----------------------+
+From Synthetic Jesse to Synthetic Bro
+(sender label supplied in the file)
+Synthetic: a seat saved for you.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+1 Open file · 2 Write · 3 Export · 0
+Back to table
+Choose
+› 
+Your table | 2026-10-03
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+This session's idea: pizza
+Choose [1]
+› 
+📝  How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+1 Log · 2 History · 3 Edit · 4 Delete
+· 0 Back to table · h Home
+Choose
+› Only save a meal you actually ate.
+Feelings are optional. /skip clears an
+optional answer.
+/back: previous field · /home: table,
+keep draft · /cancel: discard draft
+What did you eat? [pizza]
+› Date YYYY-MM-DD [2026-10-03]
+› Add how it felt? yes / no [no]
+› Anything to remember? (Enter to skip)
+› 2026-10-03 · pizza
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Save as an actual meal? yes / no [no]
+› Saved just to your meal journal.
+
+📝  How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+1 Log · 2 History · 3 Edit · 4 Delete
+· 0 Back to table · h Home
+Choose
+› 1 meals you chose to record. This may
+not be every meal.
+1. 2026-10-03 · pizza
+
+📝  How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+1 Log · 2 History · 3 Edit · 4 Delete
+· 0 Back to table · h Home
+Choose
+› 
+Your table | 2026-10-03
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+This session's idea: pizza
+Choose [1]
+› 
+💌  Until our next meal
+A small note for your friend. Write it
+here, then send the file yourself
+whenever you feel like it.
+/back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Your name or nickname
+› Your friend’s name or nickname
+› What would you like to say?
+› Include this food idea: pizza? yes /
+no [no]
+› 
+💌  Postcard / Preview
+A seat saved for you
+2026-10-03
+
+From Synthetic Jesse / To Synthetic
+Bro
+
+Synthetic: lunch next week? 🥣
+
+For our next meal: pizza
+
+Different campuses. Still a place for
+you at the table.
+
+Only the names, message and optional
+dish shown above will be shared.
+1 Export / 2 Edit note / 3 Style / 0
+Back / h Home
+Export this note locally? yes / no
+[no]
+› 1 Cafeteria table / 2 Takeout receipt
+/ 3 Next lunch invitation / 0 Preview
+[table]
+› 
+💌  Postcard / Preview
+A seat saved for you
+2026-10-03
+
+From Synthetic Jesse / To Synthetic
+Bro
+
+Synthetic: lunch next week? 🥣
+
+For our next meal: pizza
+
+Different campuses. Still a place for
+you at the table.
+
+Only the names, message and optional
+dish shown above will be shared.
+1 Export / 2 Edit note / 3 Style / 0
+Back / h Home
+Export this note locally? yes / no
+[no]
+› 1 Share folder: HTML + text + lunchbox
+JSON / 2 HTML / 3 Text / 4 Lunchbox
+JSON / 5 PNG
+Choose format / 0 Preview / h Home
+[bundle]
+› The link opens the public project
+quick-start, not a web ordering app.
+Include the link to try Plate Memory?
+yes / no [no]
+› 
+💌  Postcard / Preview
+A seat saved for you
+2026-10-03
+
+From Synthetic Jesse / To Synthetic
+Bro
+
+Synthetic: lunch next week? 🥣
+
+For our next meal: pizza
+
+Different campuses. Still a place for
+you at the table.
+
+A seat is saved for you — try Plate
+Memory
+https://github.com/Jesse-
+Zeng423/plate-memory#try-it-in-one-
+minute--no-installation-dependencies
+Open the project quick-start. Runs on
+your own computer.
+
+Only the names, message and optional
+dish shown above will be shared.
+Postcard / Save file — /back: preview
+· /home: table, keep draft
+Save path [/var/folders/12/wyzv4_wj5d3
+gxj6rdbrj5plr0000gn/T/plate-synthetic-
+6mwdvadi/postcards/postcard-
+8f62c2abc4eb]
+› Saved locally. Nothing was sent.
+/var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
+lr0000gn/T/plate-
+synthetic-6mwdvadi/share/postcard.html
+/var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
+lr0000gn/T/plate-
+synthetic-6mwdvadi/share/postcard.txt
+/var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
+lr0000gn/T/plate-
+synthetic-6mwdvadi/share/lunchbox.json
+/var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
+lr0000gn/T/plate-
+synthetic-6mwdvadi/share/manifest.json
+Open postcard.html to view; import
+lunchbox.json in Lunchbox.
+
+Your table | 2026-10-03
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+This session's idea: pizza
+Choose [1]
+› 

@@ -186,7 +186,7 @@ class Session:
             if self.selected_meal:
                 self.screen.paragraph(self.screen.t("This session's idea: ") + self.selected_meal['name'])
             try:
-                command = self.screen.ask(self.screen.t('Choose'), 'today').lower().lstrip('/')
+                command = self.screen.ask(self.screen.t('Choose'), '1').lower().lstrip('/')
                 command = {'1':'today', '2':'lunchbox', '3':'checkin', '4':'postcard','5':'usuals','6':'more','0':'quit'}.get(command, command)
                 if command == 'more':
                     self.screen.say(self.screen.t('More options'), 'title')

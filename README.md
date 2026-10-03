@@ -324,26 +324,26 @@ relicense the model weights. No paid API or API key is needed for this applicati
    individual fields empty; view/edit/delete your local journal. Selection alone
    never records a meal. Journal lives beside the profile as `*-journal.sqlite3`.
 4. **Postcard:** write names and a message, optionally include today’s food idea,
-   preview, then export a local text file. No symptoms or dietary permissions enter
+   preview, choose a style and export HTML, text, importable lunchbox JSON or optional PNG. No symptoms or dietary permissions enter
    the card. Demo offers preview only. You decide whether and how to send it.
 
 Lunchbox files persist as `*-lunchbox.json`; all private companion files are
 owner-only on POSIX and local, not encrypted. Changing the profile path changes
 its associated stores. Postcard exports are independent files: deleting a journal
 entry does not delete an export or backup. Blank optional fields and `/skip` leave
-values unknown; `/back` leaves without saving. Existing edits retain defaults unless
+values unknown; `/back` edits the previous active field. Existing edits retain defaults unless
 explicitly skipped. `--plain` removes decorations; `--no-color` retains the bowls.
 Narrow output wraps Chinese names and long source links.
 
-Validation: 121 tests and 105 subtests, original guard fingerprint/four mock reports,
+Validation: 150 tests and 132 subtests, original guard fingerprint/four mock reports,
 40-column pseudo-terminal walkthrough outside the repo and no-file demo isolation.
 Two new synthetic queries were also run through actual local Gemma; evidence is in
 `docs/query-smoke-v1.json` and `docs/companion-smoke-v2.json`. This does not substitute
 for Harold’s real trial, which is still pending.
 
-## Offline catalog v2
+## Retained offline catalog v2 checkpoint
 
-The shipped pack has 13 Wikidata dish concepts and 1,590 selected USDA FNDDS
+The preserved v2 pack has 13 Wikidata dish concepts and 1,590 selected USDA FNDDS
 reference foods. Variants remain separate: this is 1,603 records, not 1,603 distinct
 world cuisines or restaurant dishes. The FNDDS source release is 2021–2023, published
 October 31, 2024. Names and categories only are extracted; no nutrient values,
@@ -373,3 +373,20 @@ The default catalog now contains **3,535 attributed reference records**, includi
 meal variants, sides, breakfast, fruit and drinks. The retained v1/v2 packs remain
 readable. English source names and editorial Chinese lookup hints are distinguished;
 this is not a worldwide dish database, live restaurant list or nutrient calculator.
+
+
+### Share a postcard
+
+The default share folder contains `postcard.html` (open in a browser),
+`postcard.txt` (plain words), `lunchbox.json` (import in Lunchbox) and a SHA-256
+file manifest. Choose a cafeteria table, takeout receipt or lunch invitation style.
+The optional project link is the verified public repository quick-start, not a
+hosted app. HTML has embedded CSS/SVG, no scripts, external fonts or analytics.
+PNG uses an installed local Chrome/Chromium with an isolated temporary profile;
+no browser installation is triggered. PNG failure keeps the note and offers other
+formats. New share folders are never overwritten; individual replacements require
+confirmation. Export is explicit and nothing is sent. [Recipient guide](docs/start-here.md).
+
+[Synthetic postcard preview](examples/postcards/synthetic-table/postcard.html)
+and [phone-sized Chinese preview](examples/postcards/synthetic-phone.png) show the
+implemented rendering, not a real message or trial reaction from Harold.

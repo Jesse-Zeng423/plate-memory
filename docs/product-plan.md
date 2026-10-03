@@ -1,4 +1,9 @@
-# Product plan v3: that bro from high school
+# Product plan: that bro from high school
+
+Current implementation: four destinations, bilingual startup, 3,535-record offline
+reference catalog, retained draft navigation and visual local exports. The
+first-checkpoint descriptions below are historical sequencing; current behavior
+and friend instructions are in [start-here.md](start-here.md).
 
 Positioning: **That bro who ate with you every day back in high school.**
 Welcome: **给你留了个座 / Saved you a seat.** Project name: Plate Memory.

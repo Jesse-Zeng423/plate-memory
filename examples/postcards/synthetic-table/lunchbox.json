@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "sender": "Synthetic Jesse",
+  "recipient": "Synthetic Bro",
+  "messages": [
+    "A synthetic example. Different campuses, same table. Next time we meet, lunch is on me. Until then, eat something you enjoy.",
+    "A seat is saved for you — try Plate Memory\nhttps://github.com/Jesse-Zeng423/plate-memory#try-it-in-one-minute--no-installation-dependencies"
+  ],
+  "shared_dishes": [
+    {
+      "name": "A bowl of noodles",
+      "note": "A food idea for next time; not a record of a meal eaten."
+    }
+  ]
+}

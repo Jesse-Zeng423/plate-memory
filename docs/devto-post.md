@@ -1,5 +1,5 @@
 ---
-title: "Plate Memory: remembering a preference is only half the job"
+title: "Plate Memory: a seat saved for a friend on another campus"
 published: false
 tags: devchallenge, weekendchallenge, hf26challenge
 ---
@@ -11,8 +11,14 @@ tags: devchallenge, weekendchallenge, hf26challenge
 ## What I Built
 
 I built Plate Memory for Harold, my friend and roommate from high school, and a
-big foodie. The tool reviews a menu against remembered food preferences before
-I plan a meal with someone.
+big foodie. We now study at different universities. I wanted to keep a small piece
+of our high-school lunch table: help him decide what to eat, leave a note in an
+offline lunchbox, and keep a seat open for our next shared meal.
+
+The first screen asks only whether he is too tired for a walk or up for the
+cafeteria. He can type a food name without importing a menu, setting up a profile
+or logging a meal. Dietary notes are optional; checking one against an actual menu
+uses local open-weight AI and a deterministic memory guard.
 
 **[TO FILL WITH JESSE: one actual meal-planning situation Harold encountered, and
 the preferences he agreed could be described publicly. Do not assign the synthetic
@@ -120,12 +126,14 @@ the technical `IGNORE` label is not presented as reassurance. The raw rule trace
 is still available through `details`.
 
 The newest terminal entry asks just one routing question: too tired for a walk,
-or up for the cafeteria? It searches a small bundled Wikidata CC0 dish catalog
+or up for the cafeteria? It searches a bundled Wikidata/USDA CC0 food-reference catalog
 alongside a private list of saved dishes and places,
 shows recorded prices with their dates, and keeps today's availability unknown.
-Public food ideas are marked separately from known places. The starter catalog
-has 13 concepts, with checked names/aliases, revision links and a hash manifest;
-it does not establish a restaurant’s ingredients or dietary suitability. Local
+Public food ideas are marked separately from known places. The current pack
+contains 3,535 source-backed records, including retained food variants, with
+source links and hash manifests. These are not 3,535 distinct world cuisines or
+restaurant listings. English source names stay intact; Chinese lookup hints are
+explicitly editorial. It does not establish ingredients or dietary suitability. Local
 Gemma can copy spans from a sentence, which the user confirms before searching.
 Guard risk reminders stay visible, and recorded-menu review requires verification
 of current preparation. Choosing an idea never records it as eaten.
@@ -135,6 +143,16 @@ can write and exchange as a local file, a private after-meal journal, and a post
 for the next time they eat together. Journal feelings can be skipped as a group.
 Postcards include only previewed fields; symptoms and permission records stay out.
 Nothing is sent automatically. All example friend messages are labeled synthetic.
+
+The interface offers English or Simplified Chinese, wraps CJK and combined emoji
+at narrow terminal widths, and keeps drafts in memory when returning home. The
+postcard can be a cafeteria table, takeout receipt or next-lunch invitation. Its
+local share folder has a browser-viewable HTML card, text and a lunchbox JSON file
+the recipient can import. An opt-in link opens the public project quick-start.
+There are no external fonts, scripts or analytics in the card. Optional PNG export
+uses a local browser rather than a hosted image service.
+
+![Synthetic postcard, not Harold's actual note](https://raw.githubusercontent.com/Jesse-Zeng423/plate-memory/main/examples/postcards/synthetic-table.png)
 
 The friend can confirm, edit or revoke a note through the same interface. Every
 saved change keeps a private revision, and changing a note or meal date clears

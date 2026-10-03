@@ -130,3 +130,20 @@ journal restart/stale revision/edit/delete, postcard excluded fields and overwri
 refusal. A real pseudo-terminal walkthrough at 40 columns from outside the repo
 visits all four destinations without demo files. Transcript and metadata:
 `companion-terminal-v2.txt`, `companion-smoke-v2.json`. No real Harold trial yet.
+
+## Friend-ready release (October 3)
+
+150 unittest and pytest tests; original guard fingerprint; all four mocks; real
+40-column navigation smoke; new bilingual real-terminal walkthrough with runtime
+app sockets forbidden. Both languages traverse all four destinations and produce
+complete HTML/text/import-JSON bundles from synthetic names/text in temporary
+stores. Transcripts and exact results: friend-ready-en.txt, friend-ready-zh.txt,
+friend-ready-smoke.json. These are scripted checks, not Harold usability evidence.
+
+Visual inspection covered actual local PNG output at desktop/390px card widths,
+long Chinese/emoji text, and a browser-printed one-page A4 normal card after a
+pagination fix. Export tests cover escaping, schema exclusions, allowlisted link,
+manifest hashes, Unicode paths, permissions, collisions, rollback and missing-PNG
+renderer recovery. No real model rerun was necessary for presentation/export-only
+changes; existing local-smoke-v11/query-smoke-v1 remain explicitly small earlier
+synthetic inference checks, not a new quality claim.

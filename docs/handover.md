@@ -1,38 +1,37 @@
 # Handover to Harold
 
-This is a guided local terminal prototype built for Jesse’s friend and roommate from high
-school, Harold, who is a big foodie. No actual dietary profile has been supplied.
+Built for Jesse's friend and roommate from high school, a big foodie now at a
+different university. No actual dietary profile or trial feedback has been supplied.
 
-## Before the trial
+## Start with being hungry
 
-1. Install Ollama and download Gemma using the README. Confirm a real local run
-   works with the synthetic menu; the canned demo is a different mode.
-2. Ask Harold which meal-planning situation is useful to him: ordering together,
-   choosing what to cook, or comparing menus. Record the actual answer.
-3. Run `python3 -m src.terminal`, choose `preferences` then `add`. Enter only
-   actual preferences Harold wants remembered. The default profile starts empty;
-   the separate `demo` command never assigns its synthetic notes to Harold.
-4. Set the remembered scope and last-confirmed date together. Agree a freshness
-   interval; do not treat the example 180 days as a health standard.
-5. Choose `date` for the intended meal date, then `review` to paste a real menu.
-   Finish with `/done`. Review the dish rows and questions together; `details`
-   shows the raw rule trace. Use `preferences` to confirm, edit or revoke notes. Do not publish the menu,
-   profile or terminal output if it contains private facts.
+1. Follow [start-here.md](start-here.md); choose English or Simplified Chinese.
+2. Start normally without `--demo`, choose Today, then takeout or cafeteria.
+   Search a food he actually wants. No AI setup or dietary form is needed to browse.
+3. Ask whether the ideas help and whether any prompt is confusing. Back returns
+   one step; Home retains only session drafts. Choosing is not ordering/eating.
+4. If he wants, save a familiar place with observed prices/dates, open a lunchbox,
+   record an actual meal, or make a postcard. All of these are optional.
+5. For local AI menu review or a sentence query, install Ollama/Gemma using the
+   README. The already-recorded synthetic model smoke is not his device validation.
+   Add only actual dietary notes he wants remembered; set permission/scope/date
+   together. Never treat an example allergy or diet as his own.
 
-## Questions for the trial
+## Collect only actual feedback
 
-- Which task did Harold actually try?
-- Did the date-dependent explanation make sense?
-- Was any match missing, wrong or too vague?
-- Were the questions useful, or did the tool ask too often?
-- What would make this useful next time?
+- What did he try without explanation?
+- Did he understand the difference between a food idea and a real menu listing?
+- Where did he hesitate, get stuck, or need a return command?
+- Did the lunchbox/card feel like something he would use or send?
+- What one thing would make this useful next time?
 
-## Facts to add before DEV publication
+Record errors too. Real profiles, menus and feedback remain in ignored private/.
+Only publish a quote or personal detail with his permission. Public exports and
+screenshots currently use explicitly synthetic names and text. Do not infer food
+preferences from a journal entry or invent a reaction.
 
-- A real meal-planning problem, in Jesse’s own words.
-- Only preferences or examples Harold agrees may be shared.
-- What actually happened during the trial, including errors.
-- A real reaction, quoted only if accurate and approved for public sharing.
+## Submission still needs a human
 
-Leaving feedback unfilled is more accurate than claiming a handover happened.
-The DEV draft is not published automatically.
+Harold's real trial and permitted reaction remain unfilled in docs/devto-post.md.
+The app has not messaged him or published/submitted DEV. Complete factual
+placeholders after use, then obtain the user's final publishing instruction.
