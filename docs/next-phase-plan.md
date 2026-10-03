@@ -203,3 +203,10 @@ numbered actions. File preview/destination returns are separated. 135 tests and
 synthetic real-terminal replay are recorded in build-status. B is complete within
 the companion scope; original dietary-note/menu-review contracts are preserved.
 Next checkpoint is C; no visual postcard or HTML/PNG export is claimed yet.
+
+## Latest user adjustment (October 3)
+
+C is implemented and verified. Before D, expand the attributed offline name pack,
+add startup English/Simplified Chinese choice and reduce visible copy to actionable
+information. Keep ingredients/availability unknown and preserve safety reminders.
+Then complete D and E, with actual Harold feedback still supplied by the user.

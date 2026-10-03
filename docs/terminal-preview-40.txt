@@ -1,0 +1,23 @@
+SYNTHETIC visual preview; width 40
+  🥣     🥣
+  ─────────────
+  a seat saved for you
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day
+back in high school.
+Different campuses. Still a place for
+you at the table.
+
+Your table | 2026-10-03
+Synthetic demo. Changes stay in this
+session.
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+👨‍👩‍👦 🇨🇦 👍🏽 🍽️ 三明治 — a seat saved for
+you
+Anything you’re craving? (Enter to
+browse; /back: route; /home: table)

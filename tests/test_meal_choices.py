@@ -139,7 +139,7 @@ class MealFlowTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as work:
             with patch('builtins.input',side_effect=['today','2','','/home','quit']), redirect_stdout(StringIO()) as out:
                 main(['--profile',str(Path(work)/'friend.json'),'--plain'])
-            self.assertIn('No saved matches yet',out.getvalue())
+            self.assertIn('A few things you could look for today.',out.getvalue())
             self.assertEqual(list(Path(work).iterdir()), [])
 
     def test_explicit_add_persists_without_a_dietary_profile(self):

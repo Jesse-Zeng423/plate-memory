@@ -263,3 +263,24 @@ exits 0 and creates no real demo files. Reproduce with
 This checks navigation, not real Harold usability or visual polish. The Phase B
 companion gate is met. Next: C emoji identity, proper grapheme width and narrow
 input prompts; then D visual/export artifacts and E final copy/real trial.
+
+## Phase C completed — terminal visual identity
+
+Four destinations have matched bowl/lunchbox/journal/postcard emoji, a compact
+seat motif and warm title accents. Optional technical actions move to More while
+old commands remain accepted. Bundled unmodified MIT wcwidth 0.6.0 provides
+Unicode grapheme-aware wrapping, with source/license recorded separately in
+terminal-width-provenance.json. No package installation or runtime network needed.
+Multiline text stays multiline; labels and defaults now wrap above a short input
+marker. Plain mode removes product emoji/art/color; no-color keeps decoration.
+
+137 unittest/pytest tests, width/control checks at 32/40/80/120 columns, verify and
+four mocks pass; navigation replay passes. Checked CJK, combining accents, ZWJ
+families, flags, skin tones, URL wrapping and long input defaults. Synthetic visual
+previews are in terminal-preview-{32,40,80,120}.txt. Actual terminal/font emoji
+rendering may differ; no cross-terminal universal rendering claim is made.
+
+Latest user scope adds broader offline data, a startup English/Simplified Chinese
+choice and shorter key-information copy before final exports/handover. These are
+next, followed by D visual postcard/export and final walkthrough. Harold's trial
+and DEV factual placeholders remain outstanding.

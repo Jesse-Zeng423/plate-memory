@@ -3,8 +3,7 @@ import os
 import re
 import shutil
 import sys
-import textwrap
-import unicodedata
+from .._vendor.wcwidth import wrap, wcswidth
 
 
 def safe_text(value):
@@ -17,30 +16,33 @@ class Screen:
         self.decor = decor
         self.color = color and sys.stdout.isatty() and 'NO_COLOR' not in os.environ
 
+    @property
+    def columns(self):
+        return max(12,min(88,shutil.get_terminal_size((88,24)).columns-2))
+
     def say(self, text='', tone=None):
-        colors = {'title': '1;33', 'accent': '35', 'warn': '33', 'error': '31', 'ok': '32'}
+        colors = {'title':'1;33','accent':'36','warn':'33','error':'31','ok':'32'}
         clean = safe_text(text)
-        width = max(12, min(88, shutil.get_terminal_size((88, 24)).columns - 2))
-        rendered = []
+        if self.decor and tone=='title':
+            icons={'How are you doing today?':'🍽️','Takeout ideas':'🛵',
+                   'A walk and something to eat':'🚶','A corner of the cafeteria':'🎒',
+                   'How was your meal?':'📝','Until our next meal':'💌',
+                   'Postcard / Preview':'💌','Your usuals':'📍','Browse a food family':'🍱'}
+            title=clean.strip()
+            if title in icons:clean=('\n' if clean.startswith('\n') else '')+icons[title]+'  '+title
+        rendered=[]
         for line in clean.split('\n'):
-            for part in (textwrap.wrap(line, width, replace_whitespace=False) or ['']):
-                chunk = ''; cells = 0
-                for char in part:
-                    size = 0 if unicodedata.combining(char) else (2 if unicodedata.east_asian_width(char) in ('W', 'F') else 1)
-                    if cells + size > width:
-                        rendered.append(chunk); chunk = ''; cells = 0
-                    chunk += char; cells += size
-                rendered.append(chunk)
-        clean = '\n'.join(rendered)
+            rendered.extend(wrap(line,self.columns,replace_whitespace=False) or [''])
+        clean='\n'.join(rendered)
         if self.color and tone in colors:
-            clean = '\033[' + colors[tone] + 'm' + clean + '\033[0m'
+            clean='\033['+colors[tone]+'m'+clean+'\033[0m'
         print(clean)
 
     def paragraph(self, text):
-        width = max(12, min(88, shutil.get_terminal_size((88, 24)).columns - 2))
-        self.say(textwrap.fill(safe_text(text), width))
+        self.say(text)
 
     def ask(self, label, default=None):
-        suffix = f' [{safe_text(default)}]' if default is not None else ''
-        result = input(safe_text(label) + suffix + ': ').strip()
+        suffix=f' [{safe_text(default)}]' if default is not None else ''
+        self.say(safe_text(label)+suffix)
+        result=input('› ' if self.decor else '> ').strip()
         return result or (str(default) if default is not None else '')

@@ -187,7 +187,12 @@ class Session:
                 self.screen.paragraph("This session's idea: " + self.selected_meal['name'])
             try:
                 command = self.screen.ask('Choose', 'today').lower().lstrip('/')
-                command = {'1':'today', '2':'lunchbox', '3':'checkin', '4':'postcard'}.get(command, command)
+                command = {'1':'today', '2':'lunchbox', '3':'checkin', '4':'postcard','5':'usuals','6':'more','0':'quit'}.get(command, command)
+                if command == 'more':
+                    self.screen.say('More options', 'title')
+                    self.screen.say('review: check a menu · preferences: dietary notes · date: meal date\ndetails: last review rules · demo: guard example · language: language · 0: table')
+                    command=self.screen.ask('Choose an option', '0').lower().lstrip('/')
+                    if command in ('0','back','home'):continue
                 if command == 'quit':
                     return 0
                 if command == 'today':

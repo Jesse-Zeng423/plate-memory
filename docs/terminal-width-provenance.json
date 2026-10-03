@@ -1,0 +1,9 @@
+{
+  "package": "wcwidth",
+  "version": "0.6.0",
+  "source": "https://pypi.org/project/wcwidth/0.6.0/",
+  "wheel_sha256": "1a3a1e510b553315f8e146c54764f4fb6264ffad731b3d78088cdb1478ffbdad",
+  "license": "MIT",
+  "path": "src/_vendor/wcwidth",
+  "changes": "Unmodified pure Python package contents; LICENSE copied from wheel metadata."
+}

@@ -38,14 +38,14 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
             draft.update(route=route,query=query,offset=offset,category=category,step=step)
             saved, ideas = discover(store, route, query, catalog, offset, category)
             rows = saved + ideas
-            screen.say('More options: next / previous / categories / route / add / notes / ai')
+            screen.say('next / previous · categories · route · add · ai')
             screen.say('\n' + ('Takeout ideas' if route == 'delivery' else 'A walk and something to eat'), 'title')
             if saved:
                 screen.paragraph('Your saved places. Check today’s price and ingredients before deciding.')
             if not saved and ideas:
-                screen.say('No saved matches yet. Here are a few things you could look for.')
+                screen.say('A few things you could look for today.')
             if ideas:
-                screen.paragraph('Food ideas, not live listings. Ingredients, availability and price are unknown. These ideas have not been personalized.')
+                screen.paragraph('Food ideas, not live listings. Ingredients, availability and price are unknown. Check dietary notes against an actual menu.')
             if category:
                 screen.paragraph('Category: '+category+' (a reference category, not current stock)')
             if offset:
@@ -53,7 +53,7 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
             if not rows:
                 screen.say('No saved matches yet. Type another dish or place to search, or add one you know.')
                 if catalog is not None:
-                    screen.paragraph('Try a simple food name, like sandwich or 汤. For a sentence, type ai. The starter catalog is still small.')
+                    screen.paragraph('Try sandwich or 汤, or type ai to describe what sounds good.')
                 action = ask(screen, 'Food keyword / 0 Back to craving / h Home', optional=True)
                 action = (action or '').lower()
                 if action == '0':raise BackRequested
