@@ -20,6 +20,9 @@ class ExportTests(unittest.TestCase):
         html=render_html(card)
         self.assertNotIn('<script>',html);self.assertIn('&lt;script&gt;',html)
         self.assertIn(APP_URL,html);self.assertIn("default-src 'none'",html)
+        self.assertIn('src="data:image/png;base64,',html)
+        self.assertNotIn('<svg',html)
+        self.assertNotIn('class="hint"',html)
         for bad in ('https://evil.example','javascript:alert(1)','https://github.com/Jesse-Zeng423/plate-memory?private=foo'):
             with self.assertRaises(ValidationError):render_html(dict(card,app_url=bad))
         for key in ('comfort','profile','permission','history'):

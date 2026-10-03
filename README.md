@@ -410,3 +410,8 @@ Demo postcard export now writes real files after explicit confirmation. Choose
 **4 Until our next meal → write note → 1 Export → 1 Share folder** (or PNG/HTML).
 Accept the default private path or enter your own destination. Optional PNG needs
 an installed local Chrome/Chromium; HTML and text need no renderer.
+
+Postcards now use a bundled fictional wax-crayon drawing of two friends eating
+together, a short title and your note. The original note is preserved. The image
+is embedded locally in HTML; no runtime image service or remote asset is needed.
+[Illustration prompt and provenance](assets/postcards/illustration-prompt.md).

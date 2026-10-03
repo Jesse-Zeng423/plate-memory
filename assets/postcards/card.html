@@ -3,30 +3,23 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src data:; base-uri 'none'; form-action 'none'">
 <title>$title · Plate Memory</title>
 <style>
-*{box-sizing:border-box}body{margin:0;padding:36px;background:#dce6dd;color:#183b35;font-family:Georgia,'Songti SC',serif}
-.card{position:relative;max-width:900px;margin:auto;background:#fff9dd;border:2px solid #183b35;padding:48px 54px;box-shadow:10px 10px 0 #789488;overflow:hidden}
-.top{display:flex;justify-content:space-between;align-items:center;gap:20px;border-bottom:2px solid #183b35;padding-bottom:20px;font:16px ui-monospace,monospace}
-.stamp{border:2px dashed #476b59;padding:12px 16px;transform:rotate(4deg);line-height:1.5;text-align:center}
-h1{font-size:clamp(32px,6vw,62px);line-height:1.08;margin:38px 0 24px;font-weight:normal;letter-spacing:-1px}
-.names{display:flex;gap:30px;font-size:19px;flex-wrap:wrap}.names div{min-width:0;max-width:100%;overflow-wrap:anywhere}.names span{display:block;font:13px ui-monospace,monospace;color:#476b59;margin-bottom:6px}
-.message{font-size:26px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere;margin:40px 0 30px}
-.trays{width:100%;height:auto;max-height:240px;margin:20px 0}.dish{padding:18px 0;border-top:1px dashed #476b59;border-bottom:1px dashed #476b59;font-size:21px;overflow-wrap:anywhere}
-footer{margin-top:32px;font-size:18px;line-height:1.5}.app{display:inline-block;margin-top:24px;color:#183b35;text-decoration-thickness:2px;text-underline-offset:5px;font:16px system-ui,sans-serif;overflow-wrap:anywhere}.url{font:12px/1.5 ui-monospace,monospace;overflow-wrap:anywhere;color:#476b59}.hint{font:13px/1.5 system-ui,sans-serif;color:#476b59}
-.receipt{background:#fcfcf1;border-style:dashed;box-shadow:6px 6px 0 #8ba48b}.receipt h1{font-family:ui-monospace,monospace;font-size:42px}.receipt .top{border-bottom-style:dashed}
-.invitation{background:#fbe4a2}.invitation .stamp{border-radius:50%;padding:20px}.invitation h1{font-style:italic}
-@media(max-width:540px){body{padding:16px}.card{padding:26px 23px;box-shadow:5px 5px 0 #789488}.top{font-size:12px}.stamp{padding:8px}h1{margin-top:28px}.message{font-size:21px;margin-top:28px}.names{font-size:17px}.trays{margin:6px 0}footer{font-size:16px}}
-@page{size:A4;margin:12mm}
-@media print{body{padding:0;background:white}.card{box-shadow:none;border-width:1px;max-width:none;padding:26px;overflow:visible}.top{font-size:12px;padding-bottom:12px}.stamp{padding:8px}h1{font-size:36px;margin:22px 0 18px}.names{font-size:16px}.message{font-size:17px;line-height:1.5;margin:24px 0;widows:3;orphans:3}.trays{max-height:145px;break-inside:avoid}.dish{font-size:16px;padding:12px 0}footer{font-size:14px;margin-top:20px}.app{font-size:13px;margin-top:16px}.url{font-size:10px}.hint{font-size:11px}}
-
+*{box-sizing:border-box}body{margin:0;padding:28px;background:#e6e9df;color:#3b5144;font-family:Georgia,'Songti SC',serif}
+.card{max-width:760px;margin:auto;background:#fffcf2;padding:36px 42px 28px;box-shadow:3px 5px 13px #30403218;overflow:hidden;border-radius:3px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;font:12px system-ui,sans-serif;color:#71816b}
+h1{font-size:clamp(28px,5vw,42px);line-height:1.2;margin:28px 0 12px;font-weight:normal}
+.friends{display:block;width:100%;height:auto;margin:4px auto 14px;max-height:340px;object-fit:contain}
+.message{font-size:23px;line-height:1.6;white-space:pre-wrap;overflow-wrap:anywhere;margin:14px 0 20px}
+.names{font-size:14px;color:#71816b;overflow-wrap:anywhere}.dish{font-size:16px;overflow-wrap:anywhere;margin:16px 0 10px}
+.app{display:inline-block;margin-top:22px;color:#63765e;text-underline-offset:4px;font:12px system-ui,sans-serif}.url{font:10px/1.4 ui-monospace,monospace;overflow-wrap:anywhere;color:#71816b;margin:5px 0 0}
+.receipt{background:#fffef6}.invitation{background:#fff6df}
+@media(max-width:540px){body{padding:12px}.card{padding:24px 22px}h1{margin-top:24px}.message{font-size:20px}.friends{margin:0 auto 12px}.names{font-size:13px}}
+@page{size:A4;margin:16mm}
+@media print{body{padding:0;background:white}.card{box-shadow:none;max-width:none;padding:20px}.friends{max-height:240px;break-inside:avoid}h1{font-size:32px}.message{font-size:17px;line-height:1.5;widows:3;orphans:3}.url{font-size:9px}}
 </style></head><body><main class="card $theme">
-<div class="top"><div>Plate Memory<br>$table_label</div><div class="stamp">$date<br>♡</div></div>
-<h1>$title</h1><div class="names"><div><span>$from_label</span>$sender</div><div><span>$to_label</span>$recipient</div></div>
+<div class="top"><span>Plate Memory</span><span>$date</span></div>
+<h1>$title</h1>
+<img class="friends" src="$illustration" alt="$illustration_label">
 <p class="message">$message</p>
-<svg class="trays" viewBox="0 0 720 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Two meal trays with a seat between them">
-<path d="M10 195H710" stroke="#183b35" stroke-width="3"/><g stroke="#183b35" stroke-width="3" fill="#b8cdac"><rect x="28" y="24" width="274" height="155" rx="20"/><rect x="420" y="24" width="274" height="155" rx="20"/></g>
-<g fill="#fff9dd" stroke="#183b35" stroke-width="2"><circle cx="111" cy="98" r="52"/><circle cx="503" cy="98" r="52"/><rect x="181" y="49" width="96" height="38" rx="9"/><rect x="181" y="105" width="96" height="49" rx="9"/><rect x="573" y="49" width="96" height="38" rx="9"/><rect x="573" y="105" width="96" height="49" rx="9"/></g>
-<g fill="#e3ae4a"><ellipse cx="111" cy="101" rx="35" ry="25"/><ellipse cx="503" cy="101" rx="35" ry="25"/></g><g fill="#789488"><circle cx="201" cy="67" r="9"/><circle cx="225" cy="67" r="9"/><circle cx="252" cy="67" r="9"/><circle cx="593" cy="67" r="9"/><circle cx="617" cy="67" r="9"/><circle cx="644" cy="67" r="9"/></g>
-<g fill="none" stroke="#183b35" stroke-width="2" stroke-linecap="round"><path d="M90 18q-12-12 0-22m20 22q-12-12 0-22m20 22q-12-12 0-22M480 18q-12-12 0-22m20 22q-12-12 0-22m20 22q-12-12 0-22"/><path d="M340 60h40v57h-40zm0 57v55m40-55v55"/></g><text x="360" y="42" text-anchor="middle" font-size="15" fill="#183b35">♡</text>
-</svg>
-$dish<footer>$footer</footer>$app
+<div class="names">$sender → $recipient</div>
+$dish$app
 </main></body></html>

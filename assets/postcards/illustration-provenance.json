@@ -1,0 +1,8 @@
+{
+  "asset": "friends-crayon.png",
+  "method": "Built-in image_gen, synthetic fictional illustration",
+  "created_on": "2026-10-03",
+  "prompt": "Two fictional college-age male friends eating shoulder to shoulder at a cafeteria table; minimal hand-drawn wax crayon, ivory paper, blue and ochre shirts, visible grain, no text.",
+  "identity": "Generic fictional characters; not Jesse or Harold likenesses",
+  "runtime": "Bundled local PNG embedded as a data URL; no remote asset loads."
+}

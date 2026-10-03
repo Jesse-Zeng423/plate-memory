@@ -3,15 +3,15 @@
   "files": [
     {
       "name": "postcard.html",
-      "sha256": "a3d99ff88f1b13eb632f1be2f8280e31b199fa2d7d5d34f2332accedb244900a"
+      "sha256": "2ff789fb2583deb7298903f9036cdc6eb0dfbc7e8059ba908456e07bc41cf870"
     },
     {
       "name": "postcard.txt",
-      "sha256": "95dd104601247452413268d43fc6e81e7ed27546c34ec16cb66ece4c075e6dd4"
+      "sha256": "0e3c5dc715deb53df1ed21b5616d4e7a6df91c65b9a60c96204ababce3a1538e"
     },
     {
       "name": "lunchbox.json",
-      "sha256": "add68e707f96e54b8abdfd1c97f1c7f1ae8931d3f5246647355324e537a22898"
+      "sha256": "2f134ee8a2dae72d147fb32bbf5da753eed1fbed32208b821bc163085ae87214"
     }
   ]
 }

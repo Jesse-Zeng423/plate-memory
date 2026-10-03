@@ -182,7 +182,7 @@ Export exactly these words? yes/no
 [no]
 › Saved to /var/folders/12/wyzv4_wj5d3gx
 j6rdbrj5plr0000gn/T/plate-synthetic-
-icjm_352/gift.json. Send this file
+oym6fplb/gift.json. Send this file
 yourself; your friend can open it in
 lunchbox.
 
@@ -277,7 +277,7 @@ no [no]
 › 
 💌  Postcard / Preview
 ────────────────────────
-A seat saved for you
+Same table, soon.
 2026-10-03
 
 From Synthetic Jesse / To Synthetic
@@ -286,9 +286,6 @@ Bro
 Synthetic: lunch next week? 🥣
 
 For our next meal: pizza
-
-Different campuses. Still a place for
-you at the table.
 
 ────────────────────────
 Only the names, message and optional
@@ -303,7 +300,7 @@ Export this note locally? yes / no
 › 
 💌  Postcard / Preview
 ────────────────────────
-A seat saved for you
+Same table, soon.
 2026-10-03
 
 From Synthetic Jesse / To Synthetic
@@ -312,9 +309,6 @@ Bro
 Synthetic: lunch next week? 🥣
 
 For our next meal: pizza
-
-Different campuses. Still a place for
-you at the table.
 
 ────────────────────────
 Only the names, message and optional
@@ -335,7 +329,7 @@ yes / no [no]
 › 
 💌  Postcard / Preview
 ────────────────────────
-A seat saved for you
+Same table, soon.
 2026-10-03
 
 From Synthetic Jesse / To Synthetic
@@ -345,11 +339,7 @@ Synthetic: lunch next week? 🥣
 
 For our next meal: pizza
 
-Different campuses. Still a place for
-you at the table.
-
-A seat is saved for you — try Plate
-Memory
+Save your bro a seat · Plate Memory
 https://github.com/Jesse-
 Zeng423/plate-memory#try-it-in-one-
 minute--no-installation-dependencies
@@ -363,21 +353,21 @@ Postcard / Save file — /back: preview
 · /home: table, keep draft
 Save path [/var/folders/12/wyzv4_wj5d3
 gxj6rdbrj5plr0000gn/T/plate-synthetic-
-icjm_352/postcards/postcard-
-1446bc07e788]
+oym6fplb/postcards/postcard-
+dd5bc41ff29d]
 › Saved locally. Nothing was sent.
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-icjm_352/share/postcard.html
+oym6fplb/share/postcard.html
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-icjm_352/share/postcard.txt
+oym6fplb/share/postcard.txt
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-icjm_352/share/lunchbox.json
+oym6fplb/share/lunchbox.json
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-icjm_352/share/manifest.json
+oym6fplb/share/manifest.json
 Open postcard.html to view; import
 lunchbox.json in Lunchbox.
 

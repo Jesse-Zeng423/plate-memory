@@ -389,3 +389,22 @@ smoke expectation was updated for the new Similar ideas option.
 mocks, actual navigation replay and bilingual 40-column journeys passed. See
 practical-review.md for what the tool achieves and the remaining need for actual
 Harold trial and dated campus choices. No feedback or nutritional ranking invented.
+
+## Crayon postcard visual revision
+
+User requested a shorter warmer brotherhood card. Replaced the tray diagram with
+a bundled wax-crayon illustration of two fictional male friends eating together,
+made with built-in image_gen. Exact prompt and asset provenance are in assets/
+postcards/. No real likeness, personal preference or trial feedback is implied.
+Runtime remains offline: the PNG is embedded as a data URL in standalone HTML.
+
+Card copy is now a short “Same table, soon.” / “下次，还坐一起。” title plus the
+author's unmodified note. Repeated footer and instructional paragraph removed;
+small signature/date and optional use link retained. Three saved theme values
+remain compatible. Desktop/Chinese/phone actual renders checked; examples updated.
+User notes are never silently shortened. Existing escaping/privacy/atomic export
+contracts preserved. Full release tests and real-terminal replay repeated below.
+
+Crayon checkpoint verified: 154 unittest/pytest tests, 145 subtests, repository
+provenance verification, all four mocks and bilingual real-terminal export replay
+pass. Actual desktop and 390px Chinese PNGs were visually inspected.
