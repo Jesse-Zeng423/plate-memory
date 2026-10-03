@@ -22,27 +22,27 @@ def headline(decision):
 
 
 def show_report(screen, report, lines):
-    screen.say('\nMenu review', 'title')
+    screen.say(screen.t('\nMenu review'), 'title')
     screen.say(f"{report['friend']} | Meal date {report['meal_date']}")
     mode = report['extraction_mode']
-    screen.say('Synthetic canned demo; no AI ran.' if mode == 'canned-demo' else
-               ('Validated cached extraction: ' + report['model'] if mode == 'local-ollama-cached-extraction' else
-               ('Local model: ' + report['model'] if report['model'] else 'Permission withheld; no AI ran.')))
+    screen.say(screen.t('Synthetic canned demo; no AI ran.') if mode == 'canned-demo' else
+               (screen.t('Validated cached extraction: ') + report['model'] if mode == 'local-ollama-cached-extraction' else
+               (screen.t('Local model: ') + report['model'] if report['model'] else screen.t('Permission withheld; no AI ran.'))))
     screen.paragraph(report['notice'])
     # Persistent allergy warning even when no ingredient was detected.
     for d in report['decisions']:
         if d['guard_verdict'] == 'ESCALATE':
-            screen.say('\n! ' + headline(d), 'warn')
+            screen.say(screen.t('\n! ') + screen.t(headline(d)), 'warn')
             screen.paragraph(d['memory'])
     for line in lines:
         screen.say('\n' + line['line_id'], 'title')
         screen.paragraph(line['text'])
         relevant = [d for d in report['decisions'] if any(c['line_id'] == line['line_id'] for c in d['candidates'])]
         if not relevant:
-            screen.paragraph('No matching note detected for this line. Missing ingredients and cross-contact are not checked.')
+            screen.paragraph(screen.t('No matching note detected for this line. Missing ingredients and cross-contact are not checked.'))
         for d in relevant:
-            screen.paragraph(headline(d) + ': ' + d['memory'])
-    screen.say('\nNotes for this meal', 'title')
+            screen.paragraph(screen.t(headline(d)) + screen.t(': ') + d['memory'])
+    screen.say(screen.t('\nNotes for this meal'), 'title')
     for d in report['decisions']:
-        screen.paragraph(d['memory_id'] + ' | ' + headline(d))
-    screen.say('Use preferences to confirm, edit or revoke a note; details shows the rule trace.')
+        screen.paragraph(d['memory_id'] + screen.t(' | ') + screen.t(headline(d)))
+    screen.say(screen.t('Use preferences to confirm, edit or revoke a note; details shows the rule trace.'))

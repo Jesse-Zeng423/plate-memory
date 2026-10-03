@@ -227,3 +227,7 @@ Navigation follow-up B2: all companion forms now share conditional previous-fiel
 navigation and session drafts. Food results/craving/route have explicit return
 states. B acceptance and reproducible synthetic terminal evidence are in
 build-status.md. Continue with terminal visual identity in next-phase-plan.md C.
+
+Latest runnable checkpoint adds the expanded 3,535-record reference snapshot and
+English/Simplified Chinese presentation selection; storage/model/guard fields stay
+unchanged. next-phase-plan.md D is now the active implementation step.

@@ -4,6 +4,7 @@ import re
 import shutil
 import sys
 from .._vendor.wcwidth import wrap, wcswidth
+from .i18n import translate
 
 
 def safe_text(value):
@@ -12,9 +13,13 @@ def safe_text(value):
 
 
 class Screen:
-    def __init__(self, color=True, decor=True):
+    def __init__(self, color=True, decor=True, language="en"):
+        self.language = language
         self.decor = decor
         self.color = color and sys.stdout.isatty() and 'NO_COLOR' not in os.environ
+
+    def t(self,text):
+        return translate(text,self.language)
 
     @property
     def columns(self):
@@ -28,6 +33,7 @@ class Screen:
                    'A walk and something to eat':'🚶','A corner of the cafeteria':'🎒',
                    'How was your meal?':'📝','Until our next meal':'💌',
                    'Postcard / Preview':'💌','Your usuals':'📍','Browse a food family':'🍱'}
+            icons.update({self.t(k):v for k,v in list(icons.items())})
             title=clean.strip()
             if title in icons:clean=('\n' if clean.startswith('\n') else '')+icons[title]+'  '+title
         rendered=[]

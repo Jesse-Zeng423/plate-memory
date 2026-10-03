@@ -11,7 +11,7 @@ from ..file_io import read_text
 
 class Catalog:
     def __init__(self, directory=None):
-        directory = directory or ROOT / 'data/catalog/v2'
+        directory = directory or ROOT / 'data/catalog/v3'
         raw = read_text(directory / 'dishes.json', maximum=8_000_000).encode('utf-8')
         if len(raw) > 8_000_000:
             raise ValidationError('Public catalog is too large.')

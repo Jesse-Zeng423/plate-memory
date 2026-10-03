@@ -1,0 +1,53 @@
+SYNTHETIC bilingual walkthrough
+  🥣     🥣
+  ─────────────
+  a seat saved for you
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day back in high school.
+Different campuses. Still a place for you at the table.
+
+Your table | 2026-10-03
+Synthetic demo. Changes stay in this session.
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+Choose [today]
+
+🍽️  How are you doing today?
+A note to keep in mind: Allergy: confirm ingredients and cross-contact with the
+preparer
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the cafeteria.
+1 / 2 / 0 Back to table / h Home
+Anything you’re craving? (Enter to browse; /back: route; /home: table)
+next / previous · categories · route · add · ai
+
+🚶  A walk and something to eat
+A few things you could look for today.
+Food ideas, not live listings. Ingredients, availability and price are unknown. Check
+dietary notes against an actual menu.
+1. Yogurt tube [food idea]
+2. Yogurt, NFS [food idea]
+3. Yogurt, soy [food idea]
+Number / food keyword / 0 Back to craving / h Home
+Yogurt tube [food idea]
+Look for this on your menu. The recipe can vary; check the ingredients if needed.
+Source: https://fdc.nal.usda.gov/food-details/2705443/nutrients (revision FNDDS
+2021-2023 / 2024-10-31)
+1 Pick / 2 Check ingredients / 0 Back to food ideas / h Home
+Sounds good. Keep this idea for today; you can always change your mind.
+Nothing has been ordered or recorded as eaten.
+
+Your table | 2026-10-03
+Synthetic demo. Changes stay in this session.
+1  🍽️  Find something to eat
+2  🎒  A note from your friend
+3  📝  Already ate? How was it?
+4  💌  Until our next meal
+5  📍  Your saved places
+6  More options   ·   0  Close
+This session's idea: Yogurt tube
+Choose [today]

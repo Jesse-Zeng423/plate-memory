@@ -17,15 +17,15 @@ def observed_date(value):
 
 def show_choice(screen, meal, number=None):
     prefix = f'{number}. ' if number is not None else ''
-    screen.paragraph(prefix + meal['name'] + ' | ' + (meal['venue'] or 'Place not recorded'))
+    screen.paragraph(prefix + meal['name'] + screen.t(' | ') + (meal['venue'] or 'Place not recorded'))
     if meal['price_cents'] is None:
-        screen.say('   Price unknown')
+        screen.say(screen.t('   Price unknown'))
     else:
         cents = meal['price_cents']
         screen.say(f"   CAD {cents // 100}.{cents % 100:02d} recorded {meal['price_date']} (check current price)")
     if meal['route'] == 'cafeteria':
-        screen.say(f"   Your walk estimate: {meal['walk_minutes']} min" if meal['walk_minutes'] else '   Walk time unknown')
-    screen.say('   Last seen: ' + (meal['last_seen'] or 'not recorded') + '; current availability unknown')
+        screen.say(f"   Your walk estimate: {meal['walk_minutes']} min" if meal['walk_minutes'] else screen.t('   Walk time unknown'))
+    screen.say(screen.t('   Last seen: ') + (meal['last_seen'] or 'not recorded') + screen.t('; current availability unknown'))
 
 
 def meal_form(screen, previous=None, route=None, draft=None, back_target='saved choices'):
@@ -33,7 +33,7 @@ def meal_form(screen, previous=None, route=None, draft=None, back_target='saved 
     if not draft:
         draft.update(deepcopy(previous) if previous else empty_meal(route or 'delivery'))
     def route_value(raw):
-        value={'1':'delivery','2':'cafeteria'}.get(raw,raw)
+        value={'1':'delivery','2':'cafeteria','外卖':'delivery','食堂':'cafeteria'}.get(raw,raw)
         if value not in meal_routes():raise ValidationError('Choose delivery or cafeteria.')
         return value
     def price_default(d):
@@ -47,18 +47,18 @@ def meal_form(screen, previous=None, route=None, draft=None, back_target='saved 
         if len(value) > 4000 or len(menu_lines(value)) > 16:
             raise ValidationError('Keep the description within 4000 characters and 16 lines.')
         return value
-    fields=[Field('route','delivery / cafeteria',route_value),
-            Field('name','Dish name',short_text(160)),
-            Field('venue','Place (optional)',short_text(160),True),
-            Field('price_cents','CAD price (optional)',parse_price,True,default=price_default),
-            Field('price_date','Date that price was recorded YYYY-MM-DD',observed_date,
+    fields=[Field('route',screen.t('delivery / cafeteria'),route_value),
+            Field('name',screen.t('Dish name'),short_text(160)),
+            Field('venue',screen.t('Place (optional)'),short_text(160),True),
+            Field('price_cents',screen.t('CAD price (optional)'),parse_price,True,default=price_default),
+            Field('price_date',screen.t('Date that price was recorded YYYY-MM-DD'),observed_date,
                   active=lambda d:d.get('price_cents') is not None),
-            Field('last_seen','Last actually seen YYYY-MM-DD (optional)',observed_date,True),
-            Field('walk_minutes','Your walking time in minutes (optional)',walk,True,
+            Field('last_seen',screen.t('Last actually seen YYYY-MM-DD (optional)'),observed_date,True),
+            Field('walk_minutes',screen.t('Your walking time in minutes (optional)'),walk,True,
                   active=lambda d:d['route']=='cafeteria'),
-            Field('menu_text','Recorded menu description (optional)',menu_description,True)]
-    screen.say('\nSave something you could choose again.', 'title')
-    screen.say('/skip clears optional information; nothing is saved until you confirm.')
+            Field('menu_text',screen.t('Recorded menu description (optional)'),menu_description,True)]
+    screen.say(screen.t('\nSave something you could choose again.'), 'title')
+    screen.say(screen.t('/skip clears optional information; nothing is saved until you confirm.'))
     start=0
     while True:
         if not form_fields(screen,fields,draft,start,back_target=back_target):return None
@@ -68,10 +68,10 @@ def meal_form(screen, previous=None, route=None, draft=None, back_target='saved 
         if meal['route']!='cafeteria':meal['walk_minutes']=None
         validate_meal(meal)
         show_choice(screen,meal)
-        screen.say('Menu description: '+(meal['menu_text'] or 'not recorded'))
-        screen.say('/back: edit last answer · /home: table, keep draft · /cancel: discard draft')
+        screen.say(screen.t('Menu description: ')+(meal['menu_text'] or 'not recorded'))
+        screen.say(screen.t('/back: edit last answer · /home: table, keep draft · /cancel: discard draft'))
         try:
-            if choose(screen,'Save this choice? yes/no',{'yes':True,'no':False},'no'):return meal
+            if choose(screen,screen.t('Save this choice? yes/no'),{'yes':True,'no':False},'no'):return meal
             return None
         except BackRequested:start=len(fields)-1
         except CancelRequested:
@@ -89,7 +89,7 @@ def add_choice(screen, store, route=None, draft=None):
     if meal is not None:
         store.save(meal)
         if draft is not None:draft.clear()
-        screen.say('Saved. It will be here next time you need an idea.', 'ok')
+        screen.say(screen.t('Saved. It will be here next time you need an idea.'), 'ok')
     return meal
 
 
@@ -99,13 +99,13 @@ def manage_choices(screen, store, drafts=None):
         action = None
         try:
             rows = store.list()
-            screen.say('\nYour usuals', 'title')
+            screen.say(screen.t('\nYour usuals'), 'title')
             if not rows:
-                screen.say('No choices saved yet. Add a dish and a place; the rest can wait.')
+                screen.say(screen.t('No choices saved yet. Add a dish and a place; the rest can wait.'))
             for index, (meal, _) in enumerate(rows, 1):
                 screen.say(meal['route'], 'accent')
                 show_choice(screen, meal, index)
-            action = choose(screen, '1 Add / 2 Edit / 3 Delete / 0 Back to table / h Home', {'1':'add','2':'edit','3':'delete','add':'add','edit':'edit','delete':'delete'})
+            action = choose(screen, screen.t('1 Add / 2 Edit / 3 Delete / 0 Back to table / h Home'), {'1':'add','2':'edit','3':'delete','add':'add','edit':'edit','delete':'delete'})
             if action == 'add':
                 try:
                     add_choice(screen, store, draft=drafts.setdefault('new',{}))
@@ -113,19 +113,19 @@ def manage_choices(screen, store, drafts=None):
                     pass
                 continue
             if not rows:
-                screen.say('Add a choice first.', 'warn')
+                screen.say(screen.t('Add a choice first.'), 'warn')
                 continue
             def number(raw):
                 index = int(raw) - 1
                 if not 0 <= index < len(rows):
                     raise ValidationError('Choose a number from the list.')
                 return index
-            meal, revision = rows[ask(screen, 'Choice number', convert=number)]
+            meal, revision = rows[ask(screen, screen.t('Choice number'), convert=number)]
             if action == 'edit':
                 try:
                     draft=drafts.setdefault(meal['id'],{})
                     if draft and draft.get('_revision')!=revision:
-                        screen.say('This choice changed while you were editing. Discard the old draft to start again.', 'warn')
+                        screen.say(screen.t('This choice changed while you were editing. Discard the old draft to start again.'), 'warn')
                         if not discard_draft(screen,draft):continue
                     if not draft:draft.update(deepcopy(meal));draft['_revision']=revision
                     updated = meal_form(screen, meal, draft=draft)
@@ -134,10 +134,10 @@ def manage_choices(screen, store, drafts=None):
                 if updated:
                     store.save(updated, expected_revision=revision)
                     draft.clear()
-                    screen.say('Updated your saved choice.', 'ok')
-            elif choose(screen, 'Delete this saved choice? yes/no', {'yes':True,'no':False}, 'no'):
+                    screen.say(screen.t('Updated your saved choice.'), 'ok')
+            elif choose(screen, screen.t('Delete this saved choice? yes/no'), {'yes':True,'no':False}, 'no'):
                 store.delete(meal['id'], revision)
-                screen.say('Removed this saved choice.', 'ok')
+                screen.say(screen.t('Removed this saved choice.'), 'ok')
         except FlowCancelled:
             if action is None:return
             continue

@@ -210,3 +210,7 @@ C is implemented and verified. Before D, expand the attributed offline name pack
 add startup English/Simplified Chinese choice and reduce visible copy to actionable
 information. Keep ingredients/availability unknown and preserve safety reminders.
 Then complete D and E, with actual Harold feedback still supplied by the user.
+
+Expanded pack/language checkpoint: 3,535 name records now ship by default with v1/v2
+retained; interactive language selection and --language en/zh are implemented.
+142 tests and offline synthetic walkthroughs pass. Proceed with D.

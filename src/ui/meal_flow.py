@@ -19,48 +19,48 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
         if len(raw) > 160:
             raise ValidationError('Use up to 160 characters.')
         return raw
-    screen.say('\nHow are you doing today?', 'title')
+    screen.say(screen.t('\nHow are you doing today?'), 'title')
     for reminder in reminders:
-        screen.paragraph('A note to keep in mind: ' + reminder)
+        screen.paragraph(screen.t('A note to keep in mind: ') + screen.t(reminder))
     while True:
         draft.update(route=route,query=query,offset=offset,category=category,step=step)
         try:
             if step == 'route':
                 offset=0;category=None
-                screen.say('1  Too tired. Let\'s look at takeout.\n2  Up for a walk. Let\'s look at the cafeteria.')
-                route = choose(screen, '1 / 2 / 0 Back to table / h Home', {'1':'delivery','2':'cafeteria','delivery':'delivery','cafeteria':'cafeteria'},route)
+                screen.say(screen.t('1  Too tired. Let\'s look at takeout.\n2  Up for a walk. Let\'s look at the cafeteria.'))
+                route = choose(screen, screen.t('1 / 2 / 0 Back to table / h Home'), {'1':'delivery','2':'cafeteria','delivery':'delivery','cafeteria':'cafeteria'},route)
                 step='query'
                 draft.update(route=route,step=step)
             if step == 'query':
-                query = ask(screen, "Anything you’re craving? (Enter to browse; /back: route; /home: table)",query or None, optional=True, convert=keyword) or ''
+                query = ask(screen, screen.t("Anything you’re craving? (Enter to browse; /back: route; /home: table)"),query or None, optional=True, convert=keyword) or ''
                 step='browse'
                 offset=0;category=None
             draft.update(route=route,query=query,offset=offset,category=category,step=step)
             saved, ideas = discover(store, route, query, catalog, offset, category)
             rows = saved + ideas
-            screen.say('next / previous · categories · route · add · ai')
-            screen.say('\n' + ('Takeout ideas' if route == 'delivery' else 'A walk and something to eat'), 'title')
+            screen.say(screen.t('next / previous · categories · route · add · ai'))
+            screen.say('\n' + (screen.t('Takeout ideas') if route == 'delivery' else screen.t('A walk and something to eat')), 'title')
             if saved:
-                screen.paragraph('Your saved places. Check today’s price and ingredients before deciding.')
+                screen.paragraph(screen.t('Your saved places. Check today’s price and ingredients before deciding.'))
             if not saved and ideas:
-                screen.say('A few things you could look for today.')
+                screen.say(screen.t('A few things you could look for today.'))
             if ideas:
-                screen.paragraph('Food ideas, not live listings. Ingredients, availability and price are unknown. Check dietary notes against an actual menu.')
+                screen.paragraph(screen.t('Food ideas, not live listings. Ingredients, availability and price are unknown. Check dietary notes against an actual menu.'))
             if category:
-                screen.paragraph('Category: '+category+' (a reference category, not current stock)')
+                screen.paragraph(screen.t('Category: ')+category+screen.t(' (a reference category, not current stock)'))
             if offset:
-                screen.say('More food ideas — type previous to go back.')
+                screen.say(screen.t('More food ideas — type previous to go back.'))
             if not rows:
-                screen.say('No saved matches yet. Type another dish or place to search, or add one you know.')
+                screen.say(screen.t('No saved matches yet. Type another dish or place to search, or add one you know.'))
                 if catalog is not None:
-                    screen.paragraph('Try sandwich or 汤, or type ai to describe what sounds good.')
-                action = ask(screen, 'Food keyword / 0 Back to craving / h Home', optional=True)
+                    screen.paragraph(screen.t('Try sandwich or 汤, or type ai to describe what sounds good.'))
+                action = ask(screen, screen.t('Food keyword / 0 Back to craving / h Home'), optional=True)
                 action = (action or '').lower()
                 if action == '0':raise BackRequested
                 if action == 'h':
                     raise HomeRequested
                 if action=='next':
-                    screen.say('No more matches on this page. Try previous or a new food name.')
+                    screen.say(screen.t('No more matches on this page. Try previous or a new food name.'))
                 elif action=='previous':
                     offset=max(0,offset-3)
                 elif action=='categories' and catalog:
@@ -85,11 +85,11 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                 continue
             for index, (kind, meal) in enumerate(rows, 1):
                 if kind == 'saved':
-                    screen.say('Your saved choice', 'title')
+                    screen.say(screen.t('Your saved choice'), 'title')
                     show_choice(screen, meal, index)
                 else:
                     show_idea(screen, meal, index)
-            action = ask(screen, 'Number / food keyword / 0 Back to craving / h Home').lower()
+            action = ask(screen, screen.t('Number / food keyword / 0 Back to craving / h Home')).lower()
             if action == '0':raise BackRequested
             if action == 'h':
                 raise HomeRequested
@@ -107,7 +107,7 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                 edit_notes()
             elif action == 'refine':
                 try:
-                    query = ask(screen, "Anything you’re craving? (Enter to browse; /back: food ideas)", query or None, optional=True, convert=keyword) or ''
+                    query = ask(screen, screen.t("Anything you’re craving? (Enter to browse; /back: food ideas)"), query or None, optional=True, convert=keyword) or ''
                 except FlowCancelled:
                     continue
                 offset=0;category=None
@@ -126,9 +126,9 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     show_idea(screen, meal, detail=True)
                 try:
                     if meal.get('kind')=='ingredient':
-                        decision=choose(screen,'1 Prepared dishes / 2 Check / 0 Back to food ideas / h Home',{'1':'dishes','2':'review','dishes':'dishes','check':'review','review':'review'})
+                        decision=choose(screen,screen.t('1 Prepared dishes / 2 Check / 0 Back to food ideas / h Home'),{'1':'dishes','2':'review','dishes':'dishes','check':'review','review':'review'})
                     else:
-                        decision = choose(screen, '1 Pick / 2 Check ingredients / 0 Back to food ideas / h Home', {'1':'select','2':'review','pick':'select','select':'select','check':'review','review':'review','check ingredients':'review'})
+                        decision = choose(screen, screen.t('1 Pick / 2 Check ingredients / 0 Back to food ideas / h Home'), {'1':'select','2':'review','pick':'select','select':'select','check':'review','review':'review','check ingredients':'review'})
                 except FlowCancelled:
                     continue
                 if decision=='dishes':
@@ -136,12 +136,12 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     continue
                 if decision == 'review':
                     if kind == 'idea':
-                        screen.say('Use review at the table and paste the actual menu to check dietary notes. A dish name cannot establish ingredients.')
+                        screen.say(screen.t('Use review at the table and paste the actual menu to check dietary notes. A dish name cannot establish ingredients.'))
                     elif review:
                         review(meal)
                     continue
-                screen.say('Sounds good. Keep this idea for today; you can always change your mind.', 'ok')
-                screen.say('Nothing has been ordered or recorded as eaten.')
+                screen.say(screen.t('Sounds good. Keep this idea for today; you can always change your mind.'), 'ok')
+                screen.say(screen.t('Nothing has been ordered or recorded as eaten.'))
                 draft.clear()
                 return meal
             else:
@@ -159,19 +159,19 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
 def show_idea(screen, item, index=None, detail=False):
     prefix = str(index) + '. ' if index is not None else ''
     chinese = item['names'].get('zh-hans', item['names'].get('zh', ''))
-    screen.say(prefix + item['name'] + (' · ' + chinese if chinese else '') + (' [ingredient reference]' if item.get('kind')=='ingredient' else ' [food idea]') + (' [suggested match]' if item.get('match_kind')=='suggested' else ''), 'title')
+    screen.say(prefix + item['name'] + (screen.t(' · ') + chinese if chinese else '') + (screen.t(' [ingredient reference]') if item.get('kind')=='ingredient' else screen.t(' [food idea]')) + (screen.t(' [suggested match]') if item.get('match_kind')=='suggested' else ''), 'title')
     if detail:
         if item.get('kind')=='ingredient':
-            screen.paragraph('An ingredient reference, not a prepared meal. Search omelette or an egg sandwich for a dish idea.')
+            screen.paragraph(screen.t('An ingredient reference, not a prepared meal. Search omelette or an egg sandwich for a dish idea.'))
         if item.get('match_kind')=='suggested':
-            screen.paragraph('This spelling match is a suggestion. Pick only if it is the food you meant.')
-        screen.paragraph('Look for this on your menu. The recipe can vary; check the ingredients if needed.')
-        screen.paragraph('Source: ' + item['source']['url'] + ' (revision ' + str(item['source']['revision']) + ')')
+            screen.paragraph(screen.t('This spelling match is a suggestion. Pick only if it is the food you meant.'))
+        screen.paragraph(screen.t('Look for this on your menu. The recipe can vary; check the ingredients if needed.'))
+        screen.paragraph(screen.t('Source: ') + item['source']['url'] + screen.t(' (revision ') + str(item['source']['revision']) + screen.t(')'))
 
 
 def query_flow(screen, parser, previous, draft=None):
     if parser is None:
-        screen.say('Local AI sentence parsing is unavailable in this demo. Use a dish keyword.')
+        screen.say(screen.t('Local AI sentence parsing is unavailable in this demo. Use a dish keyword.'))
         return previous
     draft = {} if draft is None else draft
     state='sentence'
@@ -180,10 +180,10 @@ def query_flow(screen, parser, previous, draft=None):
     while True:
         try:
             if state=='sentence':
-                screen.say('Food ideas / Describe a craving — /back: food ideas · /home: table')
-                raw=ask(screen,'What sounds good? (up to 160 characters)',draft.get('raw'))
+                screen.say(screen.t('Food ideas / Describe a craving — /back: food ideas · /home: table'))
+                raw=ask(screen,screen.t('What sounds good? (up to 160 characters)'),draft.get('raw'))
                 if len(raw)>160:
-                    screen.say('Use up to 160 characters.','warn');continue
+                    screen.say(screen.t('Use up to 160 characters.'),'warn');continue
                 draft['raw']=raw
                 try:
                     if raw!=cached_raw:
@@ -194,20 +194,20 @@ def query_flow(screen, parser, previous, draft=None):
             if state=='interpretation':
                 wants=[s['quote'] for s in value['spans'] if s['kind']=='want']
                 for span in value['spans']:
-                    screen.paragraph(span['kind']+': '+span['quote'])
-                screen.paragraph('Only a dish keyword will be searched. Avoidances and budgets are unverified until you check an actual menu and price. Nothing is saved as a preference.')
+                    screen.paragraph(span['kind']+screen.t(': ')+span['quote'])
+                screen.paragraph(screen.t('Only a dish keyword will be searched. Avoidances and budgets are unverified until you check an actual menu and price. Nothing is saved as a preference.'))
                 if not wants:
                     state='literal'
                 else:
-                    for index,want in enumerate(wants,1):screen.say(str(index)+'. '+want)
-                    screen.say('/back: edit your sentence · /home: table')
-                    selected=choose(screen,'Confirm a food phrase by number / 0 Back / h Home',
+                    for index,want in enumerate(wants,1):screen.say(str(index)+screen.t('. ')+want)
+                    screen.say(screen.t('/back: edit your sentence · /home: table'))
+                    selected=choose(screen,screen.t('Confirm a food phrase by number / 0 Back / h Home'),
                                     {str(i):w for i,w in enumerate(wants,1)})
                     draft.clear()
                     return selected
             if state=='literal':
-                screen.say('/back: edit your sentence · /home: table')
-                result=ask(screen,'Literal dish keyword',optional=True) or ''
+                screen.say(screen.t('/back: edit your sentence · /home: table'))
+                result=ask(screen,screen.t('Literal dish keyword'),optional=True) or ''
                 draft.clear()
                 return result
         except BackRequested:
@@ -218,11 +218,11 @@ def query_flow(screen, parser, previous, draft=None):
 
 
 def category_flow(screen,catalog):
-    screen.say('Browse a food family', 'title')
+    screen.say(screen.t('Browse a food family'), 'title')
     categories=catalog.categories()
     if not categories:
-        screen.say('No categories in this catalog.');return None
-    for i,name in enumerate(categories,1):screen.paragraph(str(i)+'. '+name)
+        screen.say(screen.t('No categories in this catalog.'));return None
+    for i,name in enumerate(categories,1):screen.paragraph(str(i)+screen.t('. ')+name)
     try:
-        return choose(screen,'Category number / back',{str(i):name for i,name in enumerate(categories,1)})
+        return choose(screen,screen.t('Category number / back'),{str(i):name for i,name in enumerate(categories,1)})
     except FlowCancelled:return None

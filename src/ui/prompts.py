@@ -30,19 +30,21 @@ def ask(screen, label, default=None, *, optional=False, convert=None):
         if raw.lower() == '/skip' or (optional and not raw):
             if optional:
                 return None
-            screen.say('This field is needed for this action. /back returns without saving.', 'warn')
+            screen.say(screen.t('This field is needed for this action. /back returns without saving.'), 'warn')
             continue
         try:
             if not raw:
                 raise ValidationError('Enter a value, or /back to return.')
             return convert(raw) if convert else raw
         except (ValidationError, ValueError) as exc:
-            screen.say(str(exc), 'warn')
+            screen.say(screen.t(str(exc)), 'warn')
 
 
 def choose(screen, label, choices, default=None):
     def validate(raw):
         value = raw.lower().lstrip('/')
+        if 'yes' in choices and 'no' in choices:
+            value={'1':'yes','2':'no','是':'yes','否':'no','保存':'yes','不保存':'no'}.get(value,value)
         if value == '0' and value not in choices:
             raise BackRequested
         if value == 'h' and value not in choices:

@@ -24,7 +24,7 @@ revoked permission takes priority and withholds the record.
 ## A seat saved for a friend
 
 The app now starts with two choices: **too tired → takeout**, or **up for a walk →
-the cafeteria**. Search saved dishes/places and a bundled 1,603-record public food catalog with an
+the cafeteria**. Search saved dishes/places and a bundled 3,535-record public food catalog with an
 optional Chinese/English keyword, see up to three choices, and select an idea for this meal. Current availability is
 unknown; recorded prices show their dates. Choosing an idea never records it as
 ordered or eaten. You can start without a dietary profile.
@@ -39,7 +39,7 @@ four destinations and local information boundaries.
 
 ## Try it in one minute — no installation dependencies
 
-Requires Python 3.10+. The core uses only the Python standard library.
+Requires Python 3.10+. The core includes an attributed pure-Python MIT width helper; no package installer is needed.
 
 ```sh
 git clone https://github.com/Jesse-Zeng423/plate-memory.git
@@ -358,3 +358,18 @@ field provenance: `data/catalog/v2/manifest.json`. The v1 pack remains preserved
 and readable. Build script takes a separately downloaded official zip and writes
 a new directory; runtime never downloads it. Evidence: `docs/catalog-smoke-v2.json`
 and `docs/catalog-terminal-v2.txt`.
+
+### Language and terminal display
+
+Interactive startup offers **简体中文 / English**. Use `--language zh` or
+`--language en` to skip the question (scripts default to English). `More` →
+`language` changes it during a session. Translation affects interface prompts only;
+friend-authored words, input and original food-source labels stay unchanged.
+Chinese confirmations accept 是/否 or yes/no. Journal choices accept Chinese words
+and store the same canonical fields. `--plain` removes product emoji/art/color;
+`--no-color` or `NO_COLOR` preserves decoration without ANSI colors.
+
+The default catalog now contains **3,535 attributed reference records**, including
+meal variants, sides, breakfast, fruit and drinks. The retained v1/v2 packs remain
+readable. English source names and editorial Chinese lookup hints are distinguished;
+this is not a worldwide dish database, live restaurant list or nutrient calculator.

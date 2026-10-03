@@ -67,15 +67,15 @@ class Session:
     def review_saved(self, meal):
         self.last = None
         if self.synthetic:
-            self.screen.say('This synthetic browser does not run AI. Use demo at the table for a canned guard example.')
+            self.screen.say(self.screen.t('This synthetic browser does not run AI. Use demo at the table for a canned guard example.'))
             return
         if not self.profile:
-            self.screen.say('Add an actual dietary note in preferences first to check it against this choice.')
+            self.screen.say(self.screen.t('Add an actual dietary note in preferences first to check it against this choice.'))
             return
         if not meal['menu_text']:
-            self.screen.say('No menu text saved. Use review at the table to paste the current menu.')
+            self.screen.say(self.screen.t('No menu text saved. Use review at the table to paste the current menu.'))
             return
-        self.screen.paragraph("Reviewing your recorded menu text. This does not establish today's ingredients or preparation.")
+        self.screen.paragraph(self.screen.t("Reviewing your recorded menu text. This does not establish today's ingredients or preparation."))
         result = review_menu(recorded_menu_profile(self.profile), meal['menu_text'], self.meal_date, self.model,
                              cache_path=self.path.parent / 'food-cache',
                              progress=lambda n, total, msg: self.screen.say(f'{n}/{total} {msg}'))
@@ -90,37 +90,37 @@ class Session:
     def discovery_notes(self):
         self.preferences()
         for decision in guard_reminders(self.profile, self.meal_date):
-            self.screen.paragraph('A note to keep in mind: ' + headline(decision))
-        self.screen.say('Guard reminders recomputed. Food ideas remain unverified; review the actual menu for preference matching.')
+            self.screen.paragraph(self.screen.t('A note to keep in mind: ') + headline(decision))
+        self.screen.say(self.screen.t('Guard reminders recomputed. Food ideas remain unverified; review the actual menu for preference matching.'))
 
     def commit(self, profile):
         validate_profile(profile)
         if self.synthetic:
-            self.screen.say('Updated synthetic session only. No real profile was saved.')
+            self.screen.say(self.screen.t('Updated synthetic session only. No real profile was saved.'))
         else:
             save_profile(self.path, profile)
-            self.screen.say('Saved locally with a private revision history.', 'ok')
+            self.screen.say(self.screen.t('Saved locally with a private revision history.'), 'ok')
         self.profile = profile
         self.selected_meal = None
         if self.last:
             self.last = None
-            self.screen.say('Previous review cleared. Review the menu again with the updated notes.')
+            self.screen.say(self.screen.t('Previous review cleared. Review the menu again with the updated notes.'))
 
     def preferences(self):
         if self.profile:
-            self.screen.say('\nLocal notes (including records withheld from reviews)', 'title')
+            self.screen.say(self.screen.t('\nLocal notes (including records withheld from reviews)'), 'title')
             for i, f in enumerate(self.profile['memories'], 1):
                 self.screen.paragraph(f"{i}. {f['text']} | {f['permission']} | confirmed {f['confirmed_on'] or 'unknown'}")
-        choice = self.screen.ask('add / edit / confirm / revoke / allow / back', 'back').lower()
+        choice = self.screen.ask(self.screen.t('add / edit / confirm / revoke / allow / back'), 'back').lower()
         if choice == 'back':
             return
         if choice == 'add':
-            friend = self.profile['friend'] if self.profile else self.screen.ask('Friend name or alias', 'Harold')
+            friend = self.profile['friend'] if self.profile else self.screen.ask(self.screen.t('Friend name or alias'), 'Harold')
             new = deepcopy(self.profile) if self.profile else {'schema_version':1, 'friend':friend, 'memories':[]}
             new['memories'].append(record_form(self.screen))
         elif choice in ('edit', 'confirm', 'revoke', 'allow') and self.profile:
             try:
-                index = int(self.screen.ask('Note number')) - 1
+                index = int(self.screen.ask(self.screen.t('Note number'))) - 1
             except ValueError as exc:
                 raise ValidationError('Enter a note number from the list.') from exc
             if not 0 <= index < len(self.profile['memories']):
@@ -131,25 +131,25 @@ class Session:
                 new['memories'][index] = record_form(self.screen, fact)
             else:
                 if choice == 'confirm':
-                    self.screen.say('Confirm only after your friend says this still applies. Date uses today, not the meal date.')
+                    self.screen.say(self.screen.t('Confirm only after your friend says this still applies. Date uses today, not the meal date.'))
                 if choice == 'allow':
-                    self.screen.say('Allow only after your friend explicitly permits use of this note.')
-                if self.screen.ask('Apply this change? yes/no', 'no').lower() != 'yes':
+                    self.screen.say(self.screen.t('Allow only after your friend explicitly permits use of this note.'))
+                if self.screen.ask(self.screen.t('Apply this change? yes/no'), 'no').lower() != 'yes':
                     return
                 new = update_record(self.profile, fact['id'], choice)
         else:
             raise ValidationError('Choose add first, or use one of the listed actions.')
         validate_profile(new)
         if choice in ('add', 'edit'):
-            if self.screen.ask('Save this note? yes/no', 'no').lower() != 'yes':
+            if self.screen.ask(self.screen.t('Save this note? yes/no'), 'no').lower() != 'yes':
                 return
         self.commit(new)
 
     def review(self, demo=False):
         self.last = None
         if demo:
-            self.screen.say('Opening an independent synthetic example; your real profile is unchanged.')
-            scenario = self.screen.ask('Scenario: weekday / weekend / stale / allergy', 'weekend')
+            self.screen.say(self.screen.t('Opening an independent synthetic example; your real profile is unchanged.'))
+            scenario = self.screen.ask(self.screen.t('Scenario: weekday / weekend / stale / allergy'), 'weekend')
             if scenario not in ('weekday', 'weekend', 'stale', 'allergy'):
                 raise ValidationError('Choose one of the four listed scenarios.')
             result = review_demo(scenario)
@@ -159,7 +159,7 @@ class Session:
             if not self.profile:
                 raise ValidationError('Add an actual friend-authored note in preferences first, or choose demo.')
             profile, meal = self.profile, self.meal_date
-            self.screen.say('Paste one dish per line (up to 16). Finish with a line containing /done. /cancel cancels.')
+            self.screen.say(self.screen.t('Paste one dish per line (up to 16). Finish with a line containing /done. /cancel cancels.'))
             chunks = []
             while True:
                 line = input()
@@ -172,7 +172,7 @@ class Session:
                     raise ValidationError('Menu too long. Review at most 16 short dish lines at a time.')
             def progress(n, total, msg):
                 self.screen.say(f'  {n}/{total}  {msg}')
-            self.screen.say('Preparing local review. First extraction may take longer while weights load; Ctrl+C cancels.')
+            self.screen.say(self.screen.t('Preparing local review. First extraction may take longer while weights load; Ctrl+C cancels.'))
             result = review_menu(profile, '\n'.join(chunks), meal, self.model,
                                  cache_path=self.path.parent / 'food-cache', progress=progress)
         self.last = result.report
@@ -184,15 +184,19 @@ class Session:
         while True:
             home(self.screen, self.profile, self.meal_date, self.synthetic)
             if self.selected_meal:
-                self.screen.paragraph("This session's idea: " + self.selected_meal['name'])
+                self.screen.paragraph(self.screen.t("This session's idea: ") + self.selected_meal['name'])
             try:
-                command = self.screen.ask('Choose', 'today').lower().lstrip('/')
+                command = self.screen.ask(self.screen.t('Choose'), 'today').lower().lstrip('/')
                 command = {'1':'today', '2':'lunchbox', '3':'checkin', '4':'postcard','5':'usuals','6':'more','0':'quit'}.get(command, command)
                 if command == 'more':
-                    self.screen.say('More options', 'title')
-                    self.screen.say('review: check a menu · preferences: dietary notes · date: meal date\ndetails: last review rules · demo: guard example · language: language · 0: table')
-                    command=self.screen.ask('Choose an option', '0').lower().lstrip('/')
+                    self.screen.say(self.screen.t('More options'), 'title')
+                    self.screen.say(self.screen.t('review: check a menu · preferences: dietary notes · date: meal date\ndetails: last review rules · demo: guard example · language: language · 0: table'))
+                    command=self.screen.ask(self.screen.t('Choose an option'), '0').lower().lstrip('/')
                     if command in ('0','back','home'):continue
+                if command == 'language':
+                    value=self.screen.ask('1 简体中文 · 2 English','1' if self.screen.language=='zh' else '2')
+                    if value in ('1','zh','2','en'):self.screen.language='zh' if value in ('1','zh') else 'en'
+                    continue
                 if command == 'quit':
                     return 0
                 if command == 'today':
@@ -223,19 +227,19 @@ class Session:
                 elif command == 'preferences':
                     self.preferences()
                 elif command == 'date':
-                    self.meal_date = parse_date(self.screen.ask('Meal date YYYY-MM-DD', self.meal_date))
+                    self.meal_date = parse_date(self.screen.ask(self.screen.t('Meal date YYYY-MM-DD'), self.meal_date))
                     self.last = None
                     self.selected_meal = None
                 elif command == 'details':
                     if not self.last:
-                        self.screen.say('Review a menu first. Changing notes or date clears the old report.')
+                        self.screen.say(self.screen.t('Review a menu first. Changing notes or date clears the old report.'))
                     else:
                         self.screen.say(json.dumps(self.last, ensure_ascii=False, indent=2))
                 else:
-                    self.screen.say('Choose a command listed above.', 'warn')
+                    self.screen.say(self.screen.t('Choose a command listed above.'), 'warn')
             except HomeRequested:
-                self.screen.say('Back at the table.')
+                self.screen.say(self.screen.t('Back at the table.'))
             except KeyboardInterrupt:
-                self.screen.say('\nCurrent action cancelled. No partial review is shown.', 'warn')
+                self.screen.say(self.screen.t('\nCurrent action cancelled. No partial review is shown.'), 'warn')
             except (ValidationError, ExtractionError, JsonContractError, OSError, UnicodeError, json.JSONDecodeError, sqlite3.Error) as exc:
                 self.screen.say(str(exc), 'error')

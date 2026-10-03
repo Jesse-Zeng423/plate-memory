@@ -32,7 +32,7 @@ def run():
     try:
         with tempfile.TemporaryDirectory() as work:
             proc = subprocess.Popen(
-                [sys.executable,'-B',str(ROOT/'src/terminal.py'),'--demo','--plain',
+                [sys.executable,'-B',str(ROOT/'src/terminal.py'),'--demo','--plain','--language','en',
                  '--profile',str(Path(work)/'f.json')],
                 cwd=work,stdin=slave,stdout=slave,stderr=slave)
             os.close(slave);slave=None

@@ -284,3 +284,26 @@ Latest user scope adds broader offline data, a startup English/Simplified Chines
 choice and shorter key-information copy before final exports/handover. These are
 next, followed by D visual postcard/export and final walkthrough. Harold's trial
 and DEV factual placeholders remain outstanding.
+
+## Expanded catalog and bilingual interface checkpoint
+
+Default offline snapshot v3 contains 3,535 records, retaining every v2 source ID
+and adding sourced categories for sides, breakfast, fruit, vegetables, drinks and
+more cafeteria/takeout references. Names only: no nutrient estimates or dietary
+clearance. CC0 FNDDS archive/release/category selection/hash and editorial Chinese
+hints are in the new manifest. Builder --extended creates a new snapshot; old
+snapshots are not overwritten. Source archive still has 5,432 records. Fruit
+references can be selected as ideas; raw egg remains an ingredient reference.
+
+Interactive startup offers Simplified Chinese/English; --language supports scripts
+and direct launches, with English default for noninteractive stdin. Session language
+can change in More. Explicit translation wraps presentation strings, never user
+input, stored notes, model outputs or source names. Common confirmations and journal
+choices accept Chinese aliases while storage/guard decisions keep canonical values.
+Source labels remain in their published language and are searchable by marked
+editorial hints. Decoration/width work applies to both languages.
+
+142 unittest/pytest tests pass, including interactive selection, offline Chinese
+meal path, canonical journal fields, untranslated user-authored content and added
+catalog coverage. Repository verification, four mocks and the actual navigation replay also pass.
+Synthetic bilingual walkthroughs are in language-preview-en/zh.txt. Next: visual postcard/export.

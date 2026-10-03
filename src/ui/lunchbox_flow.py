@@ -7,23 +7,23 @@ from ..domain.friend_pack import validate_friend_pack
 
 
 def preview_pack(screen,pack):
-    screen.say('\nA corner of the cafeteria', 'title')
+    screen.say(screen.t('\nA corner of the cafeteria'), 'title')
     if screen.decor:
-        screen.say('   +----------------------+\n   |  a little lunchbox   |\n   +----------------------+', 'accent')
-    screen.paragraph('From ' + pack['sender'] + ' to ' + pack['recipient'] + ' (sender label supplied in the file)')
+        screen.say(screen.t('   +----------------------+\n   |  a little lunchbox   |\n   +----------------------+'), 'accent')
+    screen.paragraph(screen.t('From ') + pack['sender'] + screen.t(' to ') + pack['recipient'] + screen.t(' (sender label supplied in the file)'))
     for message in pack['messages']:
         screen.paragraph(message)
     for dish in pack['shared_dishes']:
-        screen.paragraph(dish['name'] + ' — ' + dish['note'])
-    screen.paragraph('These words are a gift. Shared dishes are memories; dietary notes are managed separately.')
+        screen.paragraph(dish['name'] + screen.t(' — ') + dish['note'])
+    screen.paragraph(screen.t('These words are a gift. Shared dishes are memories; dietary notes are managed separately.'))
 
 
 def write_lunchbox(screen,draft):
-    fields = [Field('sender','Your name or nickname',short_text(80)),
-              Field('recipient','Your friend’s name or nickname',short_text(80)),
-              Field('message','A little message for your friend',short_text(1000)),
-              Field('dish','A shared dish? (Enter to skip)',short_text(160),True),
-              Field('note','What do you remember about it?',short_text(600),active=lambda d:bool(d.get('dish')))]
+    fields = [Field('sender',screen.t('Your name or nickname'),short_text(80)),
+              Field('recipient',screen.t('Your friend’s name or nickname'),short_text(80)),
+              Field('message',screen.t('A little message for your friend'),short_text(1000)),
+              Field('dish',screen.t('A shared dish? (Enter to skip)'),short_text(160),True),
+              Field('note',screen.t('What do you remember about it?'),short_text(600),active=lambda d:bool(d.get('dish')))]
     start = 0
     while True:
         if not form_fields(screen,fields,draft,start,back_target='your lunchbox'):
@@ -34,9 +34,9 @@ def write_lunchbox(screen,draft):
             pack['shared_dishes'] = [{'name':draft['dish'],'note':draft['note']}]
         validate_friend_pack(pack)
         preview_pack(screen,pack)
-        screen.say('/back: edit last answer · /home: table, keep draft · /cancel: discard draft')
+        screen.say(screen.t('/back: edit last answer · /home: table, keep draft · /cancel: discard draft'))
         try:
-            if choose(screen,'Keep these words? yes/no',{'yes':True,'no':False},'no'):
+            if choose(screen,screen.t('Keep these words? yes/no'),{'yes':True,'no':False},'no'):
                 return pack
             return None
         except BackRequested:
@@ -49,28 +49,28 @@ def write_lunchbox(screen,draft):
 def export_lunchbox(screen,current,synthetic):
     preview_pack(screen,current)
     if synthetic:
-        screen.say('Synthetic preview only. No file exported.');return
+        screen.say(screen.t('Synthetic preview only. No file exported.'));return
     state = 'path'
     path = None
     while True:
         try:
             if state == 'path':
-                screen.say('/back: lunchbox · /home: table')
-                path=Path(ask(screen,'Save lunchbox JSON path',path)).expanduser()
+                screen.say(screen.t('/back: lunchbox · /home: table'))
+                path=Path(ask(screen,screen.t('Save lunchbox JSON path'),path)).expanduser()
                 state='replace' if path.exists() else 'confirm'
             if state == 'replace':
-                screen.say('/back: choose another path · /home: table')
-                if not choose(screen,'Replace this existing file? yes/no',{'yes':True,'no':False},'no'):return
+                screen.say(screen.t('/back: choose another path · /home: table'))
+                if not choose(screen,screen.t('Replace this existing file? yes/no'),{'yes':True,'no':False},'no'):return
                 state='confirm'
             if state == 'confirm':
                 preview_pack(screen,current)
-                screen.say('/back: choose another path · /home: table')
-                if not choose(screen,'Export exactly these words? yes/no',{'yes':True,'no':False},'no'):return
+                screen.say(screen.t('/back: choose another path · /home: table'))
+                if not choose(screen,screen.t('Export exactly these words? yes/no'),{'yes':True,'no':False},'no'):return
                 try:
                     save_friend_pack(path,current)
                 except OSError as exc:
-                    screen.say('Could not save: '+str(exc),'warn');state='path';continue
-                screen.say('Saved to '+str(path)+'. Send this file yourself; your friend can open it in lunchbox.')
+                    screen.say(screen.t('Could not save: ')+str(exc),'warn');state='path';continue
+                screen.say(screen.t('Saved to ')+str(path)+screen.t('. Send this file yourself; your friend can open it in lunchbox.'))
                 return
         except BackRequested:
             if state == 'path':return
@@ -81,20 +81,20 @@ def export_lunchbox(screen,current,synthetic):
 def import_lunchbox(screen,save):
     path = None
     while True:
-        screen.say('/back: lunchbox · /home: table')
+        screen.say(screen.t('/back: lunchbox · /home: table'))
         try:
-            path=Path(ask(screen,'Local friend-pack JSON path',path)).expanduser()
+            path=Path(ask(screen,screen.t('Local friend-pack JSON path'),path)).expanduser()
         except FlowCancelled:return None
         try:
             pack=load_friend_pack(path)
         except (OSError,ValueError) as exc:
-            screen.say('Could not open: '+str(exc),'warn');continue
+            screen.say(screen.t('Could not open: ')+str(exc),'warn');continue
         preview_pack(screen,pack)
-        screen.say('/back: choose another file · /home: table')
+        screen.say(screen.t('/back: choose another file · /home: table'))
         try:
-            if choose(screen,'Keep this lunchbox locally? yes/no',{'yes':True,'no':False},'no'):
+            if choose(screen,screen.t('Keep this lunchbox locally? yes/no'),{'yes':True,'no':False},'no'):
                 save(pack)
-                screen.say('Lunchbox saved locally. No dietary note was created.', 'ok')
+                screen.say(screen.t('Lunchbox saved locally. No dietary note was created.'), 'ok')
                 return pack
             return None
         except BackRequested:continue
@@ -107,10 +107,10 @@ def lunchbox_flow(screen,current,save,synthetic=False,draft=None):
         if current:
             preview_pack(screen,current)
         else:
-            screen.paragraph('Your lunchbox is waiting for a note from a friend. Open a local JSON pack, or write one here.')
-        screen.say('1 Open file · 2 Write · 3 Export · 0 Back to table')
+            screen.paragraph(screen.t('Your lunchbox is waiting for a note from a friend. Open a local JSON pack, or write one here.'))
+        screen.say(screen.t('1 Open file · 2 Write · 3 Export · 0 Back to table'))
         try:
-            action=choose(screen,'Choose',{'1':'import','2':'write','3':'export','0':'back',
+            action=choose(screen,screen.t('Choose'),{'1':'import','2':'write','3':'export','0':'back',
                           'import':'import','open':'import','open file':'import','write':'write','export':'export'})
             if action == 'back':return
             if action == 'write':
@@ -119,10 +119,10 @@ def lunchbox_flow(screen,current,save,synthetic=False,draft=None):
                     save(pack);current=pack;draft.clear()
             elif action == 'export':
                 if not current:
-                    screen.say('Write a note first, then export it.');continue
+                    screen.say(screen.t('Write a note first, then export it.'));continue
                 export_lunchbox(screen,current,synthetic)
             elif synthetic:
-                screen.say('Demo keeps its synthetic lunchbox in memory. Import real words after restarting without --demo.')
+                screen.say(screen.t('Demo keeps its synthetic lunchbox in memory. Import real words after restarting without --demo.'))
             else:
                 imported=import_lunchbox(screen,save)
                 if imported:current=imported

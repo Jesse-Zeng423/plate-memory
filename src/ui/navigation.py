@@ -27,7 +27,7 @@ def discard_draft(screen, draft):
     if not draft:
         return True
     try:
-        discard = choose(screen, 'Discard this draft? yes / no (keep editing)',
+        discard = choose(screen, screen.t('Discard this draft? yes / no (keep editing)'),
                          {'yes': True, 'no': False}, 'no')
     except (BackRequested, CancelRequested):
         return False
@@ -49,7 +49,7 @@ def form_fields(screen, fields, draft, start=0, back_target='the table'):
     while 0 <= index < len(fields) and not active(index):
         index -= 1
     index = max(0, index)
-    screen.say('/back: previous field · /home: table, keep draft · /cancel: discard draft')
+    screen.say(screen.t('/back: previous field · /home: table, keep draft · /cancel: discard draft'))
     while index < len(fields):
         field = fields[index]
         if not active(index):
@@ -57,14 +57,14 @@ def form_fields(screen, fields, draft, start=0, back_target='the table'):
             continue
         try:
             default = field.default(draft) if field.default else draft.get(field.key)
-            draft[field.key] = ask(screen, field.label, default, optional=field.optional, convert=field.convert)
+            draft[field.key] = ask(screen, screen.t(field.label), default, optional=field.optional, convert=field.convert)
             index += 1
         except BackRequested:
             previous = index - 1
             while previous >= 0 and not active(previous):
                 previous -= 1
             if previous < 0:
-                screen.say('Back to ' + back_target + '. Your draft is kept for this session.')
+                screen.say(screen.t('Back to ') + screen.t(back_target) + screen.t('. Your draft is kept for this session.'))
                 return False
             index = previous
         except CancelRequested:
