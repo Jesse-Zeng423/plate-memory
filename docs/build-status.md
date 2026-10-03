@@ -223,3 +223,43 @@ Phase B is NOT complete: lunchbox, saved-choice and check-in forms still need th
 same previous-field/draft behavior; meal route/list states and numbered navigation
 need completion. Narrow input prompts can still exceed the width, to be addressed
 in phase C. Next run continues these B acceptance gaps before visual/export work.
+
+## Phase B completed — companion form and route navigation
+
+Migrated lunchbox writing, meal journal and saved-choice forms to shared conditional
+field states. Back edits the previous active field; preview returns to the last
+active answer. Home retains drafts only in the current Session; confirmed discard
+clears them. Declining discard stays at the preview or current field. Drafts are
+never written or sent to a model. Successful explicit save clears its draft.
+Retained edit drafts carry their original revision, preventing a resumed edit from
+overwriting newer stored data; stale drafts require discard before reloading.
+
+Optional feelings, shared dishes, price dates and walk times are projected only
+when enabled. Clearing price removes its date; changing to delivery removes the
+walk time. Future observation dates and bounded text errors retry in place.
+Import preview returns to file selection; export confirmation/overwrite returns
+to destination. Failed export permits a different destination. File selection back
+returns to the lunchbox, without altering the existing gift. Numbered companion
+menus and choice-detail actions expose 0 Back/h Home without reserving these as
+navigation in ordinary text fields.
+
+Food navigation now has route, craving and results states. Back returns one level;
+Home retains route/query/page/category in memory. Query interpretation returns to
+the original sentence, with unchanged text reusing its validated extraction for
+this invocation. Confirmed keyword search remains unpersonalized. Original menu
+review and dietary-profile contracts are unchanged; no guard changes.
+
+Validation: 135 unittest tests; 135 pytest tests/108 subtests; verify_project and
+four mock scenarios pass. Tests cover retained drafts, conditional-field back,
+local invalid-date retry, skipping old hidden answers, preview cancellation,
+route/query return and no accidental consumption/profile updates. Two pre-existing
+journeys now explicitly distinguish Home from Back. A failed new saved-form test
+was corrected to press Back at the intended field rather than the price field.
+
+Real 40-column synthetic pseudo-terminal replay covers lunchbox home/resume/edit,
+meal-journal preview edit/history, saved-choice preview edit and meal route returns,
+exits 0 and creates no real demo files. Reproduce with
+`python3 scripts/run_navigation_smoke.py`; evidence in navigation-terminal-v2.txt.
+This checks navigation, not real Harold usability or visual polish. The Phase B
+companion gate is met. Next: C emoji identity, proper grapheme width and narrow
+input prompts; then D visual/export artifacts and E final copy/real trial.

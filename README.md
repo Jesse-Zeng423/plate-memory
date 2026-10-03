@@ -67,7 +67,12 @@ No UI packages are required. `today` (or `1`) opens the two-route meal flow;
 `usuals` opens add/edit/delete for your saved places and dishes. You can
 skip prices, last-seen dates, walk times and menu descriptions. A known price needs
 its recorded date. A choice is saved only after an explicit preview/confirmation.
-Use `/back` to return or `/skip` to leave an optional field unknown.
+In companion forms, `/back` edits the preceding field; from a preview it edits
+the last answer. `/home` returns to the table and keeps the draft for this session.
+`/cancel` asks before discarding a populated draft. `/skip` clears an optional
+answer; Enter keeps a shown default. Drafts disappear when the app closes and are
+never automatically saved. Numbered action menus also accept `0` for Back and
+`h` for Home. In food discovery, Back walks through ideas → craving → route → table.
 
 Saved choices persist next to the selected profile as `<profile-stem>-meals.sqlite3`
 (default `private/friend-meals.sqlite3`). This database is separate from dietary

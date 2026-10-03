@@ -39,6 +39,10 @@ class Session:
         self.lines = []
         self.selected_meal = None
         self.postcard_draft = {}
+        self.checkin_drafts = {}
+        self.lunchbox_draft = {}
+        self.saved_drafts = {}
+        self.meal_draft = {}
         self.meals = MealStore(None if demo else path.with_name(path.stem + '-meals.sqlite3'))
         self.journal = JournalStore(None if demo else path.with_name(path.stem + '-journal.sqlite3'))
         self.demo_meals_loaded = False
@@ -194,19 +198,19 @@ class Session:
                         reminders=[headline(d) for d in guard_reminders(self.profile, self.meal_date)],
                         catalog=self.catalog,
                         query_parser=None if self.synthetic else lambda q: parse_query(q, self.model),
-                        edit_notes=self.discovery_notes)
+                        edit_notes=self.discovery_notes, draft=self.meal_draft, saved_drafts=self.saved_drafts)
                     if self.selected_meal:
                         self.last = None
                 elif command == 'postcard':
                     postcard_flow(self.screen, self.path.parent/'postcards', self.selected_meal, self.synthetic, self.postcard_draft)
                 elif command == 'checkin':
-                    checkin_flow(self.screen, self.journal, self.selected_meal)
+                    checkin_flow(self.screen, self.journal, self.selected_meal, self.checkin_drafts)
                 elif command == 'lunchbox':
-                    lunchbox_flow(self.screen, self.lunchbox, self.save_lunchbox, self.synthetic)
+                    lunchbox_flow(self.screen, self.lunchbox, self.save_lunchbox, self.synthetic, self.lunchbox_draft)
                 elif command == 'usuals':
                     self.last = None
                     self.selected_meal = None
-                    manage_choices(self.screen, self.meal_store())
+                    manage_choices(self.screen, self.meal_store(), self.saved_drafts)
                 elif command == 'review':
                     self.review()
                 elif command == 'demo':

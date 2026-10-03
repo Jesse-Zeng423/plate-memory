@@ -1,0 +1,468 @@
+SYNTHETIC demo; 40-column pseudo-terminal; unrelated cwd; exit 0; no files written.
+2
+2
+Demo Jesse
+/home
+2
+2
+
+Demo Bro
+Remember lunch?
+Soup
+At school
+/back
+/back
+/skip
+yes
+3
+0
+3
+1
+Synthetic soup
+
+yes
+cafeteria
+enjoyed
+satisfied
+comfortable
+
+/back
+A good lunch
+yes
+2
+0
+usuals
+1
+delivery
+Synthetic noodles
+
+
+
+
+/back
+Recorded synthetic noodle description
+yes
+0
+1
+2
+pizza
+0
+/back
+1
+
+1
+back
+h
+quit
+Plate Memory  |  Saved you a seat.
+That bro who ate with you every day
+back in high school.
+Different campuses. Still a place for
+you at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+A corner of the cafeteria
+From Example friend (synthetic) to
+Example roommate (synthetic) (sender
+label supplied in the file)
+Synthetic example: Different campuses,
+same seat saved for you. Hope you find
+something you enjoy today.
+Synthetic example: Next time we meet,
+let's have lunch together.
+Soup and bread — synthetic — Example
+shared dish only; replace with your
+own words and real memory.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+1 Open file · 2 Write · 3 Export · 0
+Back to table
+Choose: /back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Your name or nickname: Your friend’s name or nickname: Back at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+A corner of the cafeteria
+From Example friend (synthetic) to
+Example roommate (synthetic) (sender
+label supplied in the file)
+Synthetic example: Different campuses,
+same seat saved for you. Hope you find
+something you enjoy today.
+Synthetic example: Next time we meet,
+let's have lunch together.
+Soup and bread — synthetic — Example
+shared dish only; replace with your
+own words and real memory.
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+1 Open file · 2 Write · 3 Export · 0
+Back to table
+Choose: /back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Your name or nickname [Demo Jesse]: Your friend’s name or nickname: A little message for your friend: A shared dish? (Enter to skip): What do you remember about it?: 
+A corner of the cafeteria
+From Demo Jesse to Demo Bro (sender
+label supplied in the file)
+Remember lunch?
+Soup — At school
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Keep these words? yes/no [no]: /back: previous field · /home: table,
+keep draft · /cancel: discard draft
+What do you remember about it? [At school]: A shared dish? (Enter to skip) [Soup]: 
+A corner of the cafeteria
+From Demo Jesse to Demo Bro (sender
+label supplied in the file)
+Remember lunch?
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Keep these words? yes/no [no]: 
+A corner of the cafeteria
+From Demo Jesse to Demo Bro (sender
+label supplied in the file)
+Remember lunch?
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+1 Open file · 2 Write · 3 Export · 0
+Back to table
+Choose: 
+A corner of the cafeteria
+From Demo Jesse to Demo Bro (sender
+label supplied in the file)
+Remember lunch?
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+Synthetic preview only. No file
+exported.
+
+A corner of the cafeteria
+From Demo Jesse to Demo Bro (sender
+label supplied in the file)
+Remember lunch?
+These words are a gift. Shared dishes
+are memories; dietary notes are
+managed separately.
+1 Open file · 2 Write · 3 Export · 0
+Back to table
+Choose: 
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+1 Log · 2 History · 3 Edit · 4 Delete
+· 0 Back to table · h Home
+Choose: Only save a meal you actually ate.
+Feelings are optional. /skip clears an
+optional answer.
+/back: previous field · /home: table,
+keep draft · /cancel: discard draft
+What did you eat? []: Date YYYY-MM-DD [2026-10-03]: Add how it felt? yes / no [no]: delivery / cafeteria (optional): taste — enjoyed / okay / disappointing (optional): fullness — still hungry / satisfied / too full (optional): comfort — comfortable / unsure / uncomfortable (optional): Anything to remember? (Enter to skip): 2026-10-03 · Synthetic soup
+route: cafeteria
+taste: enjoyed
+fullness: satisfied
+comfort: comfortable
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Save as an actual meal? yes / no [no]: /back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Anything to remember? (Enter to skip): 2026-10-03 · Synthetic soup
+route: cafeteria
+taste: enjoyed
+fullness: satisfied
+comfort: comfortable
+note: A good lunch
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Save as an actual meal? yes / no [no]: Saved just to your meal journal.
+
+How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+1 Log · 2 History · 3 Edit · 4 Delete
+· 0 Back to table · h Home
+Choose: 1 meals you chose to record. This may
+not be every meal.
+1. 2026-10-03 · Synthetic soup
+route: cafeteria
+taste: enjoyed
+fullness: satisfied
+comfort: comfortable
+note: A good lunch
+
+How was your meal?
+A little space to remember how eating
+felt. You can skip this completely.
+1 Log · 2 History · 3 Edit · 4 Delete
+· 0 Back to table · h Home
+Choose: 
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+Your usuals
+cafeteria
+1. Vegetable rice — synthetic |
+Example Campus Cafeteria
+   CAD 7.50 recorded 2026-10-01 (check
+current price)
+   Your walk estimate: 8 min
+   Last seen: 2026-10-01; current
+availability unknown
+cafeteria
+2. Soup and bread — synthetic |
+Example Campus Cafeteria
+   Price unknown
+   Your walk estimate: 8 min
+   Last seen: not recorded; current
+availability unknown
+delivery
+3. Vegetable noodles — synthetic |
+Example Takeout B
+   Price unknown
+   Last seen: not recorded; current
+availability unknown
+delivery
+4. Chicken rice bowl — synthetic |
+Example Takeout A
+   CAD 12.00 recorded 2026-10-01
+(check current price)
+   Last seen: 2026-10-01; current
+availability unknown
+1 Add / 2 Edit / 3 Delete / 0 Back to table / h Home: 
+Save something you could choose again.
+/skip clears optional information;
+nothing is saved until you confirm.
+/back: previous field · /home: table,
+keep draft · /cancel: discard draft
+delivery / cafeteria [delivery]: Dish name []: Place (optional) []: CAD price (optional): Last actually seen YYYY-MM-DD (optional): Recorded menu description (optional) []: Synthetic noodles | Place not recorded
+   Price unknown
+   Last seen: not recorded; current
+availability unknown
+Menu description: not recorded
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Save this choice? yes/no [no]: /back: previous field · /home: table,
+keep draft · /cancel: discard draft
+Recorded menu description (optional): Synthetic noodles | Place not recorded
+   Price unknown
+   Last seen: not recorded; current
+availability unknown
+Menu description: Recorded synthetic
+noodle description
+/back: edit last answer · /home:
+table, keep draft · /cancel: discard
+draft
+Save this choice? yes/no [no]: Saved. It will be here next time you
+need an idea.
+
+Your usuals
+delivery
+1. Synthetic noodles | Place not
+recorded
+   Price unknown
+   Last seen: not recorded; current
+availability unknown
+cafeteria
+2. Vegetable rice — synthetic |
+Example Campus Cafeteria
+   CAD 7.50 recorded 2026-10-01 (check
+current price)
+   Your walk estimate: 8 min
+   Last seen: 2026-10-01; current
+availability unknown
+cafeteria
+3. Soup and bread — synthetic |
+Example Campus Cafeteria
+   Price unknown
+   Your walk estimate: 8 min
+   Last seen: not recorded; current
+availability unknown
+delivery
+4. Vegetable noodles — synthetic |
+Example Takeout B
+   Price unknown
+   Last seen: not recorded; current
+availability unknown
+delivery
+5. Chicken rice bowl — synthetic |
+Example Takeout A
+   CAD 12.00 recorded 2026-10-01
+(check current price)
+   Last seen: 2026-10-01; current
+availability unknown
+1 Add / 2 Edit / 3 Delete / 0 Back to table / h Home: 
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 
+How are you doing today?
+A note to keep in mind: Allergy:
+confirm ingredients and cross-contact
+with the preparer
+1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the
+cafeteria.
+1 / 2 / 0 Back to table / h Home: Anything you’re craving? (Enter to browse; /back: route; /home: table): More options: next / previous /
+categories / route / add / notes / ai
+
+A walk and something to eat
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea]
+2. Pizza rolls [food idea]
+3. Mexican pizza [food idea]
+Number / food keyword / 0 Back to craving / h Home: Anything you’re craving? (Enter to browse; /back: route; /home: table) [pizza]: 1  Too tired. Let's look at takeout.
+2  Up for a walk. Let's look at the
+cafeteria.
+1 / 2 / 0 Back to table / h Home [cafeteria]: Anything you’re craving? (Enter to browse; /back: route; /home: table) [pizza]: More options: next / previous /
+categories / route / add / notes / ai
+
+Takeout ideas
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea]
+2. Pizza rolls [food idea]
+3. Mexican pizza [food idea]
+Number / food keyword / 0 Back to craving / h Home: pizza · 比萨饼 [food idea]
+Look for this on your menu. The recipe
+can vary; check the ingredients if
+needed.
+Source:
+https://www.wikidata.org/wiki/Q177
+(revision 2547259198)
+1 Pick / 2 Check ingredients / 0 Back to food ideas / h Home: More options: next / previous /
+categories / route / add / notes / ai
+
+Takeout ideas
+No saved matches yet. Here are a few
+things you could look for.
+Food ideas, not live listings.
+Ingredients, availability and price
+are unknown. These ideas have not been
+personalized.
+1. pizza · 比萨饼 [food idea]
+2. Pizza rolls [food idea]
+3. Mexican pizza [food idea]
+Number / food keyword / 0 Back to craving / h Home: Back at the table.
+
+Synthetic example — not Harold’s
+actual preferences | 2026-10-03
+Synthetic demo: sample places, prices
+and preferences; changes stay in this
+session.
+1  today        Let’s find you
+something to eat
+2  lunchbox     Open a little note
+from your friend
+3  checkin      Already ate? How did
+it feel?
+4  postcard     Until our next meal
+usuals          Your saved places and
+dishes
+More: review (check ingredients) /
+preferences (dietary notes) / date /
+details / demo / quit
+Choose [today]: 

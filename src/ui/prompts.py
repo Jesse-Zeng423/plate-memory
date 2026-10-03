@@ -43,6 +43,10 @@ def ask(screen, label, default=None, *, optional=False, convert=None):
 def choose(screen, label, choices, default=None):
     def validate(raw):
         value = raw.lower().lstrip('/')
+        if value == '0' and value not in choices:
+            raise BackRequested
+        if value == 'h' and value not in choices:
+            raise HomeRequested
         if value not in choices:
             raise ValidationError('Choose ' + ', '.join(choices) + ', or /back.')
         return choices[value]

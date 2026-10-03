@@ -222,3 +222,8 @@ Latest follow-up: navigation checkpoint B1 in next-phase-plan/build-status adds
 session-only postcard drafts and distinct home/back/discard requests. The original
 statement that every cancel returns home is superseded by explicit per-screen
 navigation in the v2 plan. Other forms have not yet been migrated.
+
+Navigation follow-up B2: all companion forms now share conditional previous-field
+navigation and session drafts. Food results/craving/route have explicit return
+states. B acceptance and reproducible synthetic terminal evidence are in
+build-status.md. Continue with terminal visual identity in next-phase-plan.md C.

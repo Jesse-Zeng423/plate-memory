@@ -194,3 +194,12 @@ implemented; session-only postcard drafts survive home. Nested query/category/re
 cancellation preserves food results. See build-status and navigation-terminal-v1.txt.
 B gate remains open for lunchbox/check-in/saved-choice fields, route/list state and
 numbered navigation. Do not advance to C yet.
+
+## Phase B outcome
+
+Companion forms and food route states now implement previous-field/previous-screen
+returns, Home with session-only drafts, explicit discard, conditional fields and
+numbered actions. File preview/destination returns are separated. 135 tests and
+synthetic real-terminal replay are recorded in build-status. B is complete within
+the companion scope; original dietary-note/menu-review contracts are preserved.
+Next checkpoint is C; no visual postcard or HTML/PNG export is claimed yet.

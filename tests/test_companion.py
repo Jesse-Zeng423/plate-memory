@@ -78,7 +78,7 @@ class JournalTests(unittest.TestCase):
             store=JournalStore(path.with_name('friend-journal.sqlite3'))
             self.assertEqual(store.list()[0][0]['comfort'],None);store.close()
         with tempfile.TemporaryDirectory() as work:
-            with patch('builtins.input',side_effect=['checkin','log','back','quit']),redirect_stdout(StringIO()):
+            with patch('builtins.input',side_effect=['checkin','log','back','back','quit']),redirect_stdout(StringIO()):
                 main(['--profile',str(Path(work)/'f.json'),'--plain'])
             self.assertEqual(list(Path(work).iterdir()),[])
 

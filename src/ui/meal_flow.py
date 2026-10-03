@@ -2,15 +2,19 @@
 from ..food_adapter import ValidationError
 from ..extraction import ExtractionError
 from ..services.search import discover
-from .prompts import FlowCancelled, ask, choose
+from .prompts import FlowCancelled, BackRequested, CancelRequested, HomeRequested, ask, choose
+from .navigation import discard_draft
 from .saved_flow import add_choice, show_choice
 
 
-def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_parser=None, edit_notes=None):
-    route = None
-    query = ''
-    offset = 0
-    category = None
+def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_parser=None, edit_notes=None, draft=None, saved_drafts=None):
+    draft = {} if draft is None else draft
+    saved_drafts = {} if saved_drafts is None else saved_drafts
+    route = draft.get('route')
+    query = draft.get('query','')
+    offset = draft.get('offset',0)
+    category = draft.get('category')
+    step = draft.get('step','route')
     def keyword(raw):
         if len(raw) > 160:
             raise ValidationError('Use up to 160 characters.')
@@ -19,12 +23,19 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
     for reminder in reminders:
         screen.paragraph('A note to keep in mind: ' + reminder)
     while True:
+        draft.update(route=route,query=query,offset=offset,category=category,step=step)
         try:
-            if route is None:
+            if step == 'route':
                 offset=0;category=None
                 screen.say('1  Too tired. Let\'s look at takeout.\n2  Up for a walk. Let\'s look at the cafeteria.')
-                route = choose(screen, '1 / 2 / back', {'1':'delivery','2':'cafeteria','delivery':'delivery','cafeteria':'cafeteria'})
-                query = ask(screen, "Anything you’re craving? (Enter to browse)", optional=True, convert=keyword) or ''
+                route = choose(screen, '1 / 2 / 0 Back to table / h Home', {'1':'delivery','2':'cafeteria','delivery':'delivery','cafeteria':'cafeteria'},route)
+                step='query'
+                draft.update(route=route,step=step)
+            if step == 'query':
+                query = ask(screen, "Anything you’re craving? (Enter to browse; /back: route; /home: table)",query or None, optional=True, convert=keyword) or ''
+                step='browse'
+                offset=0;category=None
+            draft.update(route=route,query=query,offset=offset,category=category,step=step)
             saved, ideas = discover(store, route, query, catalog, offset, category)
             rows = saved + ideas
             screen.say('More options: next / previous / categories / route / add / notes / ai')
@@ -43,8 +54,11 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                 screen.say('No saved matches yet. Type another dish or place to search, or add one you know.')
                 if catalog is not None:
                     screen.paragraph('Try a simple food name, like sandwich or 汤. For a sentence, type ai. The starter catalog is still small.')
-                action = ask(screen, 'Food keyword / back to table', optional=True)
+                action = ask(screen, 'Food keyword / 0 Back to craving / h Home', optional=True)
                 action = (action or '').lower()
+                if action == '0':raise BackRequested
+                if action == 'h':
+                    raise HomeRequested
                 if action=='next':
                     screen.say('No more matches on this page. Try previous or a new food name.')
                 elif action=='previous':
@@ -54,16 +68,16 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     if chosen_category is not None:
                         category=chosen_category;offset=0;query=''
                 elif action == 'ai':
-                    query = query_flow(screen, query_parser, query);offset=0;category=None
+                    query = query_flow(screen, query_parser, query, draft.setdefault('sentence',{}));offset=0;category=None
                 elif action == 'notes' and edit_notes:
                     edit_notes()
                 elif action == 'add':
                     try:
-                        add_choice(screen, store, route)
+                        add_choice(screen, store, route, draft=saved_drafts.setdefault('new',{}))
                     except FlowCancelled:
                         pass
                 elif action == 'route':
-                    route = None
+                    step = 'route'
                 elif action:
                     query = keyword(action); offset=0;category=None
                 else:
@@ -75,7 +89,10 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     show_choice(screen, meal, index)
                 else:
                     show_idea(screen, meal, index)
-            action = ask(screen, 'Number / food keyword / back to table').lower()
+            action = ask(screen, 'Number / food keyword / 0 Back to craving / h Home').lower()
+            if action == '0':raise BackRequested
+            if action == 'h':
+                raise HomeRequested
             if action=='next' and catalog:
                 offset += 3
             elif action=='previous':
@@ -85,7 +102,7 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                 if chosen_category is not None:
                     category=chosen_category;offset=0;query=''
             elif action == 'ai':
-                query = query_flow(screen, query_parser, query);offset=0;category=None
+                query = query_flow(screen, query_parser, query, draft.setdefault('sentence',{}));offset=0;category=None
             elif action == 'notes' and edit_notes:
                 edit_notes()
             elif action == 'refine':
@@ -95,10 +112,10 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     continue
                 offset=0;category=None
             elif action == 'route':
-                route = None
+                step = 'route'
             elif action == 'add':
                 try:
-                    add_choice(screen, store, route)
+                    add_choice(screen, store, route, draft=saved_drafts.setdefault('new',{}))
                 except FlowCancelled:
                     pass
             elif action.isdigit() and 1 <= int(action) <= len(rows):
@@ -109,9 +126,9 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     show_idea(screen, meal, detail=True)
                 try:
                     if meal.get('kind')=='ingredient':
-                        decision=choose(screen,'dishes (prepared egg ideas) / check / back',{'dishes':'dishes','check':'review','review':'review'})
+                        decision=choose(screen,'1 Prepared dishes / 2 Check / 0 Back to food ideas / h Home',{'1':'dishes','2':'review','dishes':'dishes','check':'review','review':'review'})
                     else:
-                        decision = choose(screen, 'pick / check ingredients / back', {'pick':'select','select':'select','check':'review','review':'review','check ingredients':'review'})
+                        decision = choose(screen, '1 Pick / 2 Check ingredients / 0 Back to food ideas / h Home', {'1':'select','2':'review','pick':'select','select':'select','check':'review','review':'review','check ingredients':'review'})
                 except FlowCancelled:
                     continue
                 if decision=='dishes':
@@ -125,11 +142,15 @@ def choose_meal(screen, store, review=None, reminders=(), catalog=None, query_pa
                     continue
                 screen.say('Sounds good. Keep this idea for today; you can always change your mind.', 'ok')
                 screen.say('Nothing has been ordered or recorded as eaten.')
+                draft.clear()
                 return meal
             else:
                 query = keyword(action);offset=0;category=None
-        except FlowCancelled:
-            return None
+        except BackRequested:
+            if step == 'route':return None
+            step = 'route' if step == 'query' else 'query'
+        except CancelRequested:
+            if discard_draft(screen,draft):return None
         except ValidationError as exc:
             screen.say(str(exc), 'warn')
             continue
@@ -148,34 +169,52 @@ def show_idea(screen, item, index=None, detail=False):
         screen.paragraph('Source: ' + item['source']['url'] + ' (revision ' + str(item['source']['revision']) + ')')
 
 
-def query_flow(screen, parser, previous):
-    screen.say('/back: food ideas · /home: table')
-    try:
-        return _query_flow(screen, parser, previous)
-    except FlowCancelled:
-        return previous
-
-
-def _query_flow(screen, parser, previous):
+def query_flow(screen, parser, previous, draft=None):
     if parser is None:
         screen.say('Local AI sentence parsing is unavailable in this demo. Use a dish keyword.')
         return previous
-    raw = ask(screen, 'What sounds good? (up to 160 characters)')
-    try:
-        value = parser(raw)
-    except (ExtractionError, ValidationError) as exc:
-        screen.say(str(exc), 'warn')
-        return ask(screen, 'Literal dish keyword / back', optional=True) or ''
-    wants = [s['quote'] for s in value['spans'] if s['kind'] == 'want']
-    for span in value['spans']:
-        screen.paragraph(span['kind'] + ': ' + span['quote'])
-    screen.paragraph('Only a dish keyword will be searched. Avoidances and budgets are unverified until you check an actual menu and price. Nothing is saved as a preference.')
-    if not wants:
-        return ask(screen, 'Literal dish keyword / back', optional=True) or ''
-    for index, want in enumerate(wants, 1):
-        screen.say(str(index) + '. ' + want)
-    selected = choose(screen, 'Confirm a food phrase by number / back', {str(i):w for i,w in enumerate(wants,1)})
-    return selected
+    draft = {} if draft is None else draft
+    state='sentence'
+    cached_raw=None
+    value=None
+    while True:
+        try:
+            if state=='sentence':
+                screen.say('Food ideas / Describe a craving — /back: food ideas · /home: table')
+                raw=ask(screen,'What sounds good? (up to 160 characters)',draft.get('raw'))
+                if len(raw)>160:
+                    screen.say('Use up to 160 characters.','warn');continue
+                draft['raw']=raw
+                try:
+                    if raw!=cached_raw:
+                        value=parser(raw);cached_raw=raw
+                    state='interpretation'
+                except (ExtractionError,ValidationError) as exc:
+                    screen.say(str(exc),'warn');state='literal'
+            if state=='interpretation':
+                wants=[s['quote'] for s in value['spans'] if s['kind']=='want']
+                for span in value['spans']:
+                    screen.paragraph(span['kind']+': '+span['quote'])
+                screen.paragraph('Only a dish keyword will be searched. Avoidances and budgets are unverified until you check an actual menu and price. Nothing is saved as a preference.')
+                if not wants:
+                    state='literal'
+                else:
+                    for index,want in enumerate(wants,1):screen.say(str(index)+'. '+want)
+                    screen.say('/back: edit your sentence · /home: table')
+                    selected=choose(screen,'Confirm a food phrase by number / 0 Back / h Home',
+                                    {str(i):w for i,w in enumerate(wants,1)})
+                    draft.clear()
+                    return selected
+            if state=='literal':
+                screen.say('/back: edit your sentence · /home: table')
+                result=ask(screen,'Literal dish keyword',optional=True) or ''
+                draft.clear()
+                return result
+        except BackRequested:
+            if state=='sentence':return previous
+            state='sentence'
+        except CancelRequested:
+            if discard_draft(screen,draft):return previous
 
 
 def category_flow(screen,catalog):

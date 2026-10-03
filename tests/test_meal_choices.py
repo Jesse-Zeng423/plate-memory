@@ -137,7 +137,7 @@ class MealFlowTests(unittest.TestCase):
 
     def test_empty_real_session_and_cancel_do_not_create_database(self):
         with tempfile.TemporaryDirectory() as work:
-            with patch('builtins.input',side_effect=['today','2','','back','quit']), redirect_stdout(StringIO()) as out:
+            with patch('builtins.input',side_effect=['today','2','','/home','quit']), redirect_stdout(StringIO()) as out:
                 main(['--profile',str(Path(work)/'friend.json'),'--plain'])
             self.assertIn('No saved matches yet',out.getvalue())
             self.assertEqual(list(Path(work).iterdir()), [])
@@ -161,7 +161,7 @@ class MealFlowTests(unittest.TestCase):
 
     def test_cancelled_form_does_not_persist(self):
         with tempfile.TemporaryDirectory() as work:
-            with patch('builtins.input',side_effect=['usuals','add','delivery','/back','back','quit']), redirect_stdout(StringIO()):
+            with patch('builtins.input',side_effect=['usuals','add','delivery','/back','/back','back','quit']), redirect_stdout(StringIO()):
                 main(['--profile',str(Path(work)/'friend.json'),'--plain'])
             self.assertEqual(list(Path(work).iterdir()), [])
 
@@ -195,7 +195,7 @@ class MealFlowTests(unittest.TestCase):
 
     def test_absolute_launch_has_warm_home_and_plain_mode(self):
         with tempfile.TemporaryDirectory() as work:
-            result=subprocess.run([sys.executable,'-B',str(ROOT/'src/terminal.py'),'--demo','--plain'],input='today\n2\n\nback\nquit\n',cwd=work,text=True,capture_output=True)
+            result=subprocess.run([sys.executable,'-B',str(ROOT/'src/terminal.py'),'--demo','--plain'],input='today\n2\n\n/home\nquit\n',cwd=work,text=True,capture_output=True)
         self.assertEqual(result.returncode,0,result.stderr)
         self.assertIn('Saved you a seat.', result.stdout)
         self.assertNotIn('\x1b', result.stdout)
