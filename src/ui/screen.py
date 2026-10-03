@@ -44,6 +44,9 @@ class Screen:
             clean='\033['+colors[tone]+'m'+clean+'\033[0m'
         print(clean)
 
+    def divider(self):
+        if self.decor:self.say('─' * min(self.columns,24), 'accent')
+
     def paragraph(self, text):
         self.say(text)
 

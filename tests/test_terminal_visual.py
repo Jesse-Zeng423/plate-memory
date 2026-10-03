@@ -6,6 +6,8 @@ import unittest
 from unittest.mock import patch
 from src.ui.screen import Screen
 from src.ui.home import welcome,home
+from src.ui.meal_flow import show_idea
+from src.catalog.index import Catalog
 from src._vendor.wcwidth import wcswidth,iter_graphemes
 
 
@@ -16,6 +18,7 @@ class TerminalVisualTests(unittest.TestCase):
             with self.subTest(columns=columns),patch('src.ui.screen.shutil.get_terminal_size',return_value=os.terminal_size((columns,24))),patch('builtins.input',return_value=''),redirect_stdout(StringIO()) as out:
                 screen=Screen(False)
                 welcome(screen);home(screen,None,__import__('datetime').date(2026,10,3),True)
+                show_idea(screen,Catalog().search('pizza')[0],detail=True)
                 screen.say(phrase*9)
                 screen.ask('Your friend’s name or nickname '+phrase,'A very long default name '+phrase)
             for line in out.getvalue().splitlines():

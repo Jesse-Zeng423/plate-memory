@@ -325,7 +325,7 @@ relicense the model weights. No paid API or API key is needed for this applicati
    never records a meal. Journal lives beside the profile as `*-journal.sqlite3`.
 4. **Postcard:** write names and a message, optionally include today’s food idea,
    preview, choose a style and export HTML, text, importable lunchbox JSON or optional PNG. No symptoms or dietary permissions enter
-   the card. Demo offers preview only. You decide whether and how to send it.
+   the card. Demo can export a postcard after you explicitly choose its format and destination. You decide whether and how to send it.
 
 Lunchbox files persist as `*-lunchbox.json`; all private companion files are
 owner-only on POSIX and local, not encrypted. Changing the profile path changes
@@ -335,8 +335,8 @@ values unknown; `/back` edits the previous active field. Existing edits retain d
 explicitly skipped. `--plain` removes decorations; `--no-color` retains the bowls.
 Narrow output wraps Chinese names and long source links.
 
-Validation: 150 tests and 132 subtests, original guard fingerprint/four mock reports,
-40-column pseudo-terminal walkthrough outside the repo and no-file demo isolation.
+Validation: 154 tests and 145 subtests, original guard fingerprint/four mock reports,
+40-column pseudo-terminal walkthrough outside the repo and in-memory demo records; explicit postcard export is supported.
 Two new synthetic queries were also run through actual local Gemma; evidence is in
 `docs/query-smoke-v1.json` and `docs/companion-smoke-v2.json`. This does not substitute
 for Harold’s real trial, which is still pending.
@@ -361,7 +361,7 @@ and `docs/catalog-terminal-v2.txt`.
 
 ### Language and terminal display
 
-Interactive startup offers **简体中文 / English**. Use `--language zh` or
+Interactive startup offers **1 English / 2 简体中文**, with English selected by Enter. Use `--language zh` or
 `--language en` to skip the question (scripts default to English). `More` →
 `language` changes it during a session. Translation affects interface prompts only;
 friend-authored words, input and original food-source labels stay unchanged.
@@ -390,3 +390,23 @@ confirmation. Export is explicit and nothing is sent. [Recipient guide](docs/sta
 [Synthetic postcard preview](examples/postcards/synthetic-table/postcard.html)
 and [phone-sized Chinese preview](examples/postcards/synthetic-phone.png) show the
 implemented rendering, not a real message or trial reaction from Harold.
+
+
+### From a craving to something you can look for
+
+Try `something warm`, `I want noodles`, `I feel like rice`, `想吃点热的` or
+`想吃三明治`. Recognized loose directions show clearly labeled nearby ideas from
+published food categories. Exact food searches still show named matches first.
+Directions are editorial browsing aids, not a model verdict, health ranking or
+claims about a particular restaurant. Exclusions, health requirements and budget
+constraints are never silently relaxed by this fallback.
+
+A detail screen offers the food family, a short menu checklist and **4 Similar
+ideas**. `n`/`p` page, `c` browses families, `a` saves a place and `d` invokes the
+existing optional local AI query flow. After choosing an idea, the next step is to
+check your delivery app or cafeteria board. No order or consumption is recorded.
+
+Demo postcard export now writes real files after explicit confirmation. Choose
+**4 Until our next meal → write note → 1 Export → 1 Share folder** (or PNG/HTML).
+Accept the default private path or enter your own destination. Optional PNG needs
+an installed local Chrome/Chromium; HTML and text need no renderer.

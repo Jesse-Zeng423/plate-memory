@@ -10,7 +10,7 @@ Requires Python 3.10+. Download this repository, open its folder in Terminal:
 python3 -m src.terminal
 ```
 
-Choose **1 简体中文** or **2 English**. Try **1 Find something to eat**:
+Choose **1 English** (Enter is enough) or **2 简体中文**. Try **1 Find something to eat**:
 too tired → takeout; up for a walk → cafeteria. Enter a food name, or press Enter
 to browse. Pick a shown number, then **1 Pick**. Nothing is ordered or logged.
 The app suggests reference foods; check your actual menu for price and ingredients.
@@ -70,3 +70,14 @@ against a pasted menu with local Gemma, follow the [README setup](../README.md#r
 Model output only extracts candidates. Python rules decide whether a remembered
 note can apply. No cloud inference or API keys. Allergy/cross-contact verification
 still requires the preparer. No restaurant search, health score or delivery ordering.
+
+
+## A rough craving is enough
+
+Try `something warm` or `I want noodles`. A recognized direction offers nearby
+food ideas; pick a number for its family and menu checklist, or **4 Similar ideas**.
+These are references to look for, not live shops, prices or nutritional rankings.
+`n` more · `p` previous · `c` families · `a` save a place · `d` local AI description.
+
+Demo postcards can now be exported too: **4 → write → 1 Export → choose format**.
+The note is saved only at the chosen path; demo meal/profile records stay in memory.

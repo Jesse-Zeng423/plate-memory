@@ -96,3 +96,18 @@ class ExportTests(unittest.TestCase):
                 postcard_flow(Screen(False),Path(work))
             self.assertFalse(image.exists());self.assertTrue(html.exists())
             self.assertEqual(list(Path(work).iterdir()),[html])
+
+    def test_demo_can_explicitly_export_without_creating_profile_or_meal_records(self):
+        from contextlib import redirect_stdout
+        from io import StringIO
+        from src.terminal import main
+        with tempfile.TemporaryDirectory() as work:
+            folder=Path(work)/'actual-demo-export'
+            answers=['4','Synthetic Jesse','Synthetic Bro','Synthetic: saved you a seat.',
+                     '1','1','yes',str(folder),'0']
+            with patch('builtins.input',side_effect=answers),patch('socket.socket',side_effect=AssertionError('No network')),redirect_stdout(StringIO()) as out:
+                self.assertEqual(main(['--demo','--profile',str(Path(work)/'f.json'),'--language','en','--plain']),0)
+            self.assertIn('Saved locally',out.getvalue())
+            self.assertIn(APP_URL,(folder/'postcard.html').read_text())
+            self.assertEqual(list(Path(work).iterdir()),[folder])
+            self.assertTrue(load_friend_pack(folder/'lunchbox.json')['messages'][0].startswith('Synthetic:'))

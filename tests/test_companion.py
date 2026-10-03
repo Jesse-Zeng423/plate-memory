@@ -103,19 +103,19 @@ class PostcardTests(unittest.TestCase):
             with patch('builtins.input',side_effect=['postcard','Me','Bro','Hello','yes','3','no',str(target),'no','quit']),redirect_stdout(StringIO()):
                 main(['--profile',str(profile),'--plain'])
             self.assertEqual(target.read_text(),'original')
-            for args,answers in [([],['postcard','Me','Bro','Hello','no','quit']),(['--demo'],['postcard','Me','Bro','Hello','yes','quit'])]:
+            for args,answers in [([],['postcard','Me','Bro','Hello','no','quit']),(['--demo'],['postcard','Me','Bro','Hello','no','quit'])]:
                 with patch('builtins.input',side_effect=answers),redirect_stdout(StringIO()):
                     main(['--profile',str(profile),'--plain',*args])
             self.assertEqual(list(Path(work).iterdir()),[target])
 
 class WalkthroughTests(unittest.TestCase):
     def test_complete_demo_visits_four_parallel_destinations_without_writes(self):
-        answers=['1','2','pizza','1','pick','2','back','3','log','Pizza','','no','','yes','history','back','4','Me','Bro','Lunch next week?','yes','yes','quit']
+        answers=['1','2','pizza','1','pick','2','back','3','log','Pizza','','no','','yes','history','back','4','Me','Bro','Lunch next week?','yes','no','quit']
         with tempfile.TemporaryDirectory() as work:
             with patch('builtins.input',side_effect=answers), patch('socket.socket',side_effect=AssertionError('No network')),redirect_stdout(StringIO()) as out:
                 self.assertEqual(main(['--profile',str(Path(work)/'f.json'),'--demo','--plain']),0)
             output=out.getvalue()
-            for phrase in ('pizza','A corner of the cafeteria','How was your meal?','Until our next meal','Synthetic preview only'):
+            for phrase in ('pizza','A corner of the cafeteria','How was your meal?','Until our next meal','Postcard / Preview'):
                 self.assertIn(phrase,output)
             self.assertEqual(list(Path(work).iterdir()),[])
 

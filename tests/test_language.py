@@ -13,10 +13,10 @@ from src.ui.checkin_flow import checkin_form
 
 class LanguageTests(unittest.TestCase):
     def test_interactive_startup_asks_and_accepts_both_languages(self):
-        for language,expected in [('1','给你留了个座'),('2','Saved you a seat')]:
+        for language,expected in [('2','给你留了个座'),('1','Saved you a seat'),('','Saved you a seat')]:
             with tempfile.TemporaryDirectory() as work,patch('sys.stdin.isatty',return_value=True),patch('builtins.input',side_effect=[language,'0']),redirect_stdout(StringIO()) as out:
                 self.assertEqual(main(['--demo','--plain','--profile',str(Path(work)/'f.json')]),0)
-                self.assertIn('简体中文 / English',out.getvalue())
+                self.assertIn('English / 简体中文',out.getvalue())
                 self.assertIn(expected,out.getvalue())
                 self.assertEqual(list(Path(work).iterdir()),[])
 

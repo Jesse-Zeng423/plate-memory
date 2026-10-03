@@ -1,5 +1,5 @@
 SYNTHETIC real-terminal walkthrough
-2
+1
 1
 2
 pizza
@@ -37,8 +37,8 @@ yes
 yes
 <synthetic temporary folder>/share
 0
-🌏  简体中文 / English
-1 简体中文 · 2 English [2]
+🌏  English / 简体中文
+1 English · 2 简体中文 [1]
 ›   🥣     🥣
   ─────────────
   a seat saved for you
@@ -49,12 +49,14 @@ Different campuses. Still a place for
 you at the table.
 
 Your table | 2026-10-03
+────────────────────────
 1  🍽️  Find something to eat
 2  🎒  A note from your friend
 3  📝  Already ate? How was it?
 4  💌  Until our next meal
 5  📍  Your saved places
 6  More options   ·   0  Close
+────────────────────────
 Choose [1]
 › 
 🍽️  How are you doing today?
@@ -64,8 +66,8 @@ cafeteria.
 1 / 2 / 0 Back to table / h Home
 › Anything you’re craving? (Enter to
 browse; /back: route; /home: table)
-› next: more ideas · categories · add a
-place · describe
+› n More · p Previous · c Food families
+· a Save place · d Describe
 
 🚶  A walk and something to eat
 A few things you could look for today.
@@ -73,29 +75,40 @@ Food ideas, not live listings.
 Ingredients, availability and price
 are unknown. Check dietary notes
 against an actual menu.
-1. pizza · 比萨饼 [food idea]
-2. Pizza rolls [food idea]
-3. Mexican pizza [food idea]
+1. 🍕 pizza · 比萨饼 [food idea]
+2. 🍕 Pizza rolls [food idea]
+Food family: Pizza
+3. 🍕 Mexican pizza [food idea]
+Food family: Other Mexican mixed
+dishes
 Number / food keyword / 0 Back to
 craving / h Home
-› pizza · 比萨饼 [food idea]
+› 🍕 pizza · 比萨饼 [food idea]
 Look for this on your menu. The recipe
 can vary; check the ingredients if
 needed.
+On the menu: Check slice or whole-
+pizza size and toppings.
+  🧾  →  🍽️  →  🥣
 1 Pick / 2 Check ingredients / 3
-Source / 0 Back / h Home
+Source / 4 Similar ideas / 0 Back / h
+Home
 › Sounds good. Keep this idea for today;
 you can always change your mind.
 Nothing has been ordered or recorded
 as eaten.
+Next: check the cafeteria board for
+it. Ask what comes with the meal.
 
 Your table | 2026-10-03
+────────────────────────
 1  🍽️  Find something to eat
 2  🎒  A note from your friend
 3  📝  Already ate? How was it?
 4  💌  Until our next meal
 5  📍  Your saved places
 6  More options   ·   0  Close
+────────────────────────
 This session's idea: pizza
 Choose [1]
 › Your lunchbox is waiting for a note
@@ -168,10 +181,10 @@ table
 Export exactly these words? yes/no
 [no]
 › Saved to /var/folders/12/wyzv4_wj5d3gx
-j6rdbrj5plr0000gn/T/plate-
-synthetic-6mwdvadi/gift.json. Send
-this file yourself; your friend can
-open it in lunchbox.
+j6rdbrj5plr0000gn/T/plate-synthetic-
+icjm_352/gift.json. Send this file
+yourself; your friend can open it in
+lunchbox.
 
 🎒  A corner of the cafeteria
    +----------------------+
@@ -188,12 +201,14 @@ Back to table
 Choose
 › 
 Your table | 2026-10-03
+────────────────────────
 1  🍽️  Find something to eat
 2  🎒  A note from your friend
 3  📝  Already ate? How was it?
 4  💌  Until our next meal
 5  📍  Your saved places
 6  More options   ·   0  Close
+────────────────────────
 This session's idea: pizza
 Choose [1]
 › 
@@ -237,12 +252,14 @@ felt. You can skip this completely.
 Choose
 › 
 Your table | 2026-10-03
+────────────────────────
 1  🍽️  Find something to eat
 2  🎒  A note from your friend
 3  📝  Already ate? How was it?
 4  💌  Until our next meal
 5  📍  Your saved places
 6  More options   ·   0  Close
+────────────────────────
 This session's idea: pizza
 Choose [1]
 › 
@@ -259,6 +276,7 @@ Your name or nickname
 no [no]
 › 
 💌  Postcard / Preview
+────────────────────────
 A seat saved for you
 2026-10-03
 
@@ -272,6 +290,7 @@ For our next meal: pizza
 Different campuses. Still a place for
 you at the table.
 
+────────────────────────
 Only the names, message and optional
 dish shown above will be shared.
 1 Export / 2 Edit note / 3 Style / 0
@@ -283,6 +302,7 @@ Export this note locally? yes / no
 [table]
 › 
 💌  Postcard / Preview
+────────────────────────
 A seat saved for you
 2026-10-03
 
@@ -296,6 +316,7 @@ For our next meal: pizza
 Different campuses. Still a place for
 you at the table.
 
+────────────────────────
 Only the names, message and optional
 dish shown above will be shared.
 1 Export / 2 Edit note / 3 Style / 0
@@ -313,6 +334,7 @@ Include the link to try Plate Memory?
 yes / no [no]
 › 
 💌  Postcard / Preview
+────────────────────────
 A seat saved for you
 2026-10-03
 
@@ -334,37 +356,40 @@ minute--no-installation-dependencies
 Open the project quick-start. Runs on
 your own computer.
 
+────────────────────────
 Only the names, message and optional
 dish shown above will be shared.
 Postcard / Save file — /back: preview
 · /home: table, keep draft
 Save path [/var/folders/12/wyzv4_wj5d3
 gxj6rdbrj5plr0000gn/T/plate-synthetic-
-6mwdvadi/postcards/postcard-
-8f62c2abc4eb]
+icjm_352/postcards/postcard-
+1446bc07e788]
 › Saved locally. Nothing was sent.
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-6mwdvadi/share/postcard.html
+lr0000gn/T/plate-synthetic-
+icjm_352/share/postcard.html
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-6mwdvadi/share/postcard.txt
+lr0000gn/T/plate-synthetic-
+icjm_352/share/postcard.txt
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-6mwdvadi/share/lunchbox.json
+lr0000gn/T/plate-synthetic-
+icjm_352/share/lunchbox.json
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-6mwdvadi/share/manifest.json
+lr0000gn/T/plate-synthetic-
+icjm_352/share/manifest.json
 Open postcard.html to view; import
 lunchbox.json in Lunchbox.
 
 Your table | 2026-10-03
+────────────────────────
 1  🍽️  Find something to eat
 2  🎒  A note from your friend
 3  📝  Already ate? How was it?
 4  💌  Until our next meal
 5  📍  Your saved places
 6  More options   ·   0  Close
+────────────────────────
 This session's idea: pizza
 Choose [1]
 › 

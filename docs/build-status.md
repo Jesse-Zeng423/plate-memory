@@ -361,3 +361,31 @@ Final release checks repeated successfully: 150 unittest tests; 150 pytest tests
 and 132 subtests; verify_project; four mock scenarios; navigation replay; English
 and Chinese 40-column friend-ready replay with application sockets forbidden.
 No new model inference was required for these presentation/export changes.
+
+## Practical follow-up completed — English default and usable discovery
+
+Startup language now lists English first and Enter selects it; Simplified Chinese
+remains available as 2 or --language zh. Demo postcard export is explicitly allowed
+after format/path confirmation, while profile, meal and preference records remain
+in memory. A real synthetic demo journey generated a share folder and local PNG
+in ignored private/postcards; actual resulting PNG was visually inspected.
+
+A separate editorial food_ideas service recognizes bounded loose directions such
+as something warm/I want noodles/想吃点热的, groups existing sourced categories and
+labels nearby matches. Exact lookup remains first. Exclusions, numeric budgets,
+health/dietary constraints and ambiguous multi-family requests are not relaxed by
+this fallback. Details include source food family, editorial menu checklist and
+selectable related references. Related-list Back restores the original search.
+Picking gives a route-specific delivery-app/cafeteria-board next step, never an
+order, consumption record, live price or dietary clearance. No guard/model change.
+
+Terminal uses food-specific emoji, table separators and a compact menu→plate→bowl
+motif. Keyboard n/p/c/a/d shortcuts retain earlier full commands. Narrow-width
+checks now include food detail rendering. A real navigation replay caught a return
+state regression during implementation; it was fixed before handoff. A stale
+smoke expectation was updated for the new Similar ideas option.
+
+154 unittest tests and 154 pytest tests/145 subtests passed; guard fingerprint, four
+mocks, actual navigation replay and bilingual 40-column journeys passed. See
+practical-review.md for what the tool achieves and the remaining need for actual
+Harold trial and dated campus choices. No feedback or nutritional ranking invented.

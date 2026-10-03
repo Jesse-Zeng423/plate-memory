@@ -147,3 +147,12 @@ manifest hashes, Unicode paths, permissions, collisions, rollback and missing-PN
 renderer recovery. No real model rerun was necessary for presentation/export-only
 changes; existing local-smoke-v11/query-smoke-v1 remain explicitly small earlier
 synthetic inference checks, not a new quality claim.
+
+## Practical usability follow-up
+
+154 unittest tests; 154 pytest tests and 145 subtests; verify_project, all four mock
+scenarios, navigation and bilingual real-terminal replays pass. Tests cover default
+English, demo real exports without profile/meal writes, loose craving directions,
+constraint refusal, source-preserving related ideas and return/selection semantics.
+Actual synthetic demo export and installed local Chrome PNG render were inspected.
+No new model inference was run; extraction and generic guard stayed unchanged.

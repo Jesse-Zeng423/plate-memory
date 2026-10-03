@@ -223,3 +223,12 @@ are in build-status and friend-ready-smoke.json. Earlier steps are historical.
 The remaining handover/real reaction belongs to Harold and Jesse; it cannot be
 synthesized. Pause automation after final verification and checkpoint save; resume
 only for new work or actual trial feedback. No DEV publication is authorized.
+
+## Usability follow-up — October 3
+
+English first/default; explicitly authorized real postcard exports in demo mode;
+editorial loose-craving directions, source categories, menu checklists, related
+food discovery and compact terminal tray/separator decoration. Preserve exact
+search precedence and never relax constraints into dietary/budget clearance.
+Verify demo export without profile/meal writes, related-list Back, canonical
+language selection and full required checks before saving this checkpoint.

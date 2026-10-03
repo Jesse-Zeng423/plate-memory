@@ -1,5 +1,5 @@
 SYNTHETIC real-terminal walkthrough
-1
+2
 1
 2
 披萨
@@ -37,8 +37,8 @@ yes
 yes
 <synthetic temporary folder>/share
 0
-🌏  简体中文 / English
-1 简体中文 · 2 English [2]
+🌏  English / 简体中文
+1 English · 2 简体中文 [1]
 ›   🥣     🥣
   ─────────────
   给你留了个座。
@@ -47,12 +47,14 @@ Plate Memory  |  给你留了个座。
 大学不在一起，饭桌上还是给你留着位置。
 
 你的饭桌 | 2026-10-03
+────────────────────────
 1  🍽️  找点好吃的
 2  🎒  朋友的小饭盒
 3  📝  吃过啦？吃得还好吗？
 4  💌  下次，再一起吃
 5  📍  常去的店和常吃的菜
 6  更多选项   ·   0  退出
+────────────────────────
 选一项 [1]
 › 
 🍽️  今天怎么样？
@@ -61,31 +63,41 @@ Plate Memory  |  给你留了个座。
 1 / 2 / 0 返回饭桌 / h 主界面
 › 想吃什么？回车随便看看；/back
 返回；/home 饭桌
-› 下一页 · 分类 · 收藏 · 描述想吃什么
+› n 更多 · p 上一页 · c 食物分类 · a
+收藏店 · d 描述
 
 🚶  走走，去吃点好的
 看看今天想找哪样。
 这些是食物参考。当天供应、价格和配料需
 确认；饮食限制请核对实际菜单。
-1. pizza · 比萨饼 [食物参考]
-2. Pizza rolls [食物参考]
-3. Mexican pizza [食物参考]
+1. 🍕 pizza · 比萨饼 [食物参考]
+2. 🍕 Pizza rolls [食物参考]
+食物分类： Pizza
+3. 🍕 Mexican pizza [食物参考]
+食物分类： Other Mexican mixed dishes
 选编号或输入食物 / 0 返回 / h 饭桌
-› pizza · 比萨饼 [食物参考]
+› 🍕 pizza · 比萨饼 [食物参考]
 可以在菜单上找找这道菜。做法可能不同，
 需要时请确认配料。
-1 就选这个 / 2 核对配料 / 3 来源 / 0
-返回 / h 饭桌
+看菜单时：
+看看是单片还是整张、大小和配料。
+  🧾  →  🍽️  →  🥣
+1 就选这个 / 2 核对配料 / 3 来源 / 4
+相近选择 / 0 返回 / h 饭桌
 › 行，那就先想好吃这个，随时可以换。
 只是选好了，还没有下单或记为吃过。
+接下来，看看食堂菜单有没有它，问问这一
+份包含什么。
 
 你的饭桌 | 2026-10-03
+────────────────────────
 1  🍽️  找点好吃的
 2  🎒  朋友的小饭盒
 3  📝  吃过啦？吃得还好吗？
 4  💌  下次，再一起吃
 5  📍  常去的店和常吃的菜
 6  更多选项   ·   0  退出
+────────────────────────
 这次想吃： pizza
 选一项 [1]
 › 饭盒里可以放朋友的一句话。打开收到的文
@@ -151,9 +163,9 @@ Plate Memory  |  给你留了个座。
 导出预览中的这些话？yes 是 / no 否
 [no]
 › 已保存到 /var/folders/12/wyzv4_wj5d3gx
-j6rdbrj5plr0000gn/T/plate-synthetic-
-8au7o70q/gift.json。你可以亲自分享文件
-；朋友在饭盒里打开即可。
+j6rdbrj5plr0000gn/T/plate-synthetic-ey
+j7m7h8/gift.json。你可以亲自分享文件；
+朋友在饭盒里打开即可。
 
 🎒  食堂一角
    +----------------------+
@@ -169,12 +181,14 @@ j6rdbrj5plr0000gn/T/plate-synthetic-
 选一项
 › 
 你的饭桌 | 2026-10-03
+────────────────────────
 1  🍽️  找点好吃的
 2  🎒  朋友的小饭盒
 3  📝  吃过啦？吃得还好吗？
 4  💌  下次，再一起吃
 5  📍  常去的店和常吃的菜
 6  更多选项   ·   0  退出
+────────────────────────
 这次想吃： pizza
 选一项 [1]
 › 
@@ -217,12 +231,14 @@ j6rdbrj5plr0000gn/T/plate-synthetic-
 选一项
 › 
 你的饭桌 | 2026-10-03
+────────────────────────
 1  🍽️  找点好吃的
 2  🎒  朋友的小饭盒
 3  📝  吃过啦？吃得还好吗？
 4  💌  下次，再一起吃
 5  📍  常去的店和常吃的菜
 6  更多选项   ·   0  退出
+────────────────────────
 这次想吃： pizza
 选一项 [1]
 › 
@@ -238,6 +254,7 @@ j6rdbrj5plr0000gn/T/plate-synthetic-
 [no]
 › 
 💌  明信片 / 预览
+────────────────────────
 给你留了个座
 2026-10-03
 
@@ -250,6 +267,7 @@ Bro
 
 大学不在一起，饭桌上还是有你的位置。
 
+────────────────────────
 只分享上面的名字、留言和你勾选的食物。
 1 导出 / 2 修改留言 / 3 样式 / 0 返回
 / h 饭桌
@@ -258,6 +276,7 @@ Bro
 0 预览 [table]
 › 
 💌  明信片 / 预览
+────────────────────────
 给你留了个座
 2026-10-03
 
@@ -270,6 +289,7 @@ Bro
 
 大学不在一起，饭桌上还是有你的位置。
 
+────────────────────────
 只分享上面的名字、留言和你勾选的食物。
 1 导出 / 2 修改留言 / 3 样式 / 0 返回
 / h 饭桌
@@ -284,6 +304,7 @@ Bro
 [no]
 › 
 💌  明信片 / 预览
+────────────────────────
 给你留了个座
 2026-10-03
 
@@ -302,36 +323,39 @@ Zeng423/plate-memory#try-it-in-one-
 minute--no-installation-dependencies
 打开项目里的启动说明，在自己电脑上用。
 
+────────────────────────
 只分享上面的名字、留言和你勾选的食物。
 明信片 / 保存 — /back 预览 · /home
 饭桌并保留草稿
 保存位置 [/var/folders/12/wyzv4_wj5d3g
-xj6rdbrj5plr0000gn/T/plate-synthetic-
-8au7o70q/postcards/postcard-
-559a844301b2]
+xj6rdbrj5plr0000gn/T/plate-synthetic-e
+yj7m7h8/postcards/postcard-
+41733771773a]
 › 已保存在本地，还没有发送。
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-8au7o70q/share/postcard.html
+lr0000gn/T/plate-synthetic-
+eyj7m7h8/share/postcard.html
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-8au7o70q/share/postcard.txt
+lr0000gn/T/plate-synthetic-
+eyj7m7h8/share/postcard.txt
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-8au7o70q/share/lunchbox.json
+lr0000gn/T/plate-synthetic-
+eyj7m7h8/share/lunchbox.json
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-
-synthetic-8au7o70q/share/manifest.json
+lr0000gn/T/plate-synthetic-
+eyj7m7h8/share/manifest.json
 打开 postcard.html
 看明信片；在饭盒中导入 lunchbox.json。
 
 你的饭桌 | 2026-10-03
+────────────────────────
 1  🍽️  找点好吃的
 2  🎒  朋友的小饭盒
 3  📝  吃过啦？吃得还好吗？
 4  💌  下次，再一起吃
 5  📍  常去的店和常吃的菜
 6  更多选项   ·   0  退出
+────────────────────────
 这次想吃： pizza
 选一项 [1]
 › 

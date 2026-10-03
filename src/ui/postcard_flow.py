@@ -23,7 +23,9 @@ def postcard_flow(screen,directory,selected=None,synthetic=False,draft=None):
             'created_on':date.today().isoformat(),'app_url':APP_URL if draft.get('link') else None})
     def preview():
         screen.say(screen.t('\nPostcard / Preview'),'title')
+        screen.divider()
         screen.paragraph(render_text(card()))
+        screen.divider()
         screen.say(screen.t('Only the names, message and optional dish shown above will be shared.'))
     while True:
         try:
@@ -43,7 +45,7 @@ def postcard_flow(screen,directory,selected=None,synthetic=False,draft=None):
                 if result=='edit':state='fields';start=len(fields)-1;continue
                 if result=='theme':state='theme';continue
                 if synthetic:
-                    screen.say(screen.t('Synthetic preview only. No file exported.'));draft.clear();return
+                    screen.say(screen.t('Demo records stay in memory. This note will be exported only to the path you choose.'))
                 state='format'
             if state=='theme':
                 draft['theme']=choose(screen,screen.t('1 Cafeteria table / 2 Takeout receipt / 3 Next lunch invitation / 0 Preview'),

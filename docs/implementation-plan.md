@@ -236,3 +236,12 @@ Final follow-up: visual local postcards, mature export, recipient guide and a
 complete bilingual synthetic walkthrough are implemented. See build-status for
 acceptance failures fixed and actual visual evidence. Real Harold trial and final
 publishing instruction remain human steps, with article placeholders retained.
+
+## Usability follow-up — October 3
+
+English first/default; explicitly authorized real postcard exports in demo mode;
+editorial loose-craving directions, source categories, menu checklists, related
+food discovery and compact terminal tray/separator decoration. Preserve exact
+search precedence and never relax constraints into dietary/budget clearance.
+Verify demo export without profile/meal writes, related-list Back, canonical
+language selection and full required checks before saving this checkpoint.

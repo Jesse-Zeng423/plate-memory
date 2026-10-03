@@ -25,7 +25,7 @@ def run(language):
     try:
         with tempfile.TemporaryDirectory(prefix='plate-synthetic-') as work:
             folder=Path(work)
-            answers=['1' if language=='zh' else '2',
+            answers=['2' if language=='zh' else '1',
                 '1','2','披萨' if language=='zh' else 'pizza','1','1',
                 '2','2','Synthetic Jesse','Synthetic Bro',
                 '合成示例：给你留了个座。' if language=='zh' else 'Synthetic: a seat saved for you.',

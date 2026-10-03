@@ -33,11 +33,11 @@ def main(argv=None):
     try:
         screen=Screen(not (args.no_color or args.plain), decor=not args.plain, language=args.language or 'en')
         if args.language is None and sys.stdin.isatty():
-            screen.say('🌏  简体中文 / English' if screen.decor else '简体中文 / English')
+            screen.say('🌏  English / 简体中文' if screen.decor else 'English / 简体中文')
             while True:
-                language=screen.ask('1 简体中文 · 2 English','2').lower()
+                language=screen.ask('1 English · 2 简体中文','1').lower()
                 if language in ('1','zh','2','en'):
-                    screen.language='zh' if language in ('1','zh') else 'en'
+                    screen.language='zh' if language in ('2','zh') else 'en'
                     break
                 screen.say('请选择 1 或 2 / Choose 1 or 2.')
         session = Session(screen, args.profile, args.model, args.demo)

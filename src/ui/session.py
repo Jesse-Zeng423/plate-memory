@@ -194,8 +194,8 @@ class Session:
                     command=self.screen.ask(self.screen.t('Choose an option'), '0').lower().lstrip('/')
                     if command in ('0','back','home'):continue
                 if command == 'language':
-                    value=self.screen.ask('1 简体中文 · 2 English','1' if self.screen.language=='zh' else '2')
-                    if value in ('1','zh','2','en'):self.screen.language='zh' if value in ('1','zh') else 'en'
+                    value=self.screen.ask('1 English · 2 简体中文','2' if self.screen.language=='zh' else '1')
+                    if value in ('1','zh','2','en'):self.screen.language='zh' if value in ('2','zh') else 'en'
                     continue
                 if command == 'quit':
                     return 0
