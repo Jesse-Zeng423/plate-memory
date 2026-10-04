@@ -232,3 +232,11 @@ food discovery and compact terminal tray/separator decoration. Preserve exact
 search precedence and never relax constraints into dietary/budget clearance.
 Verify demo export without profile/meal writes, related-list Back, canonical
 language selection and full required checks before saving this checkpoint.
+
+## Formal local release
+
+v1.0.0 includes the normal-mode launcher, direct version identification, plain
+recipient instructions, committed-ref release packaging and fresh-archive checks.
+The README primary path is normal use; demo remains an explicit testing option.
+Publish the verified archive/checksum as a stable GitHub release. No DEV post or
+real Harold feedback is generated as part of the software release.

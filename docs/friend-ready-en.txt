@@ -181,10 +181,10 @@ table
 Export exactly these words? yes/no
 [no]
 › Saved to /var/folders/12/wyzv4_wj5d3gx
-j6rdbrj5plr0000gn/T/plate-synthetic-
-oym6fplb/gift.json. Send this file
-yourself; your friend can open it in
-lunchbox.
+j6rdbrj5plr0000gn/T/plate-
+synthetic-2x1bfj82/gift.json. Send
+this file yourself; your friend can
+open it in lunchbox.
 
 🎒  A corner of the cafeteria
    +----------------------+
@@ -353,21 +353,21 @@ Postcard / Save file — /back: preview
 · /home: table, keep draft
 Save path [/var/folders/12/wyzv4_wj5d3
 gxj6rdbrj5plr0000gn/T/plate-synthetic-
-oym6fplb/postcards/postcard-
-dd5bc41ff29d]
+2x1bfj82/postcards/postcard-
+05e9d0e67d4d]
 › Saved locally. Nothing was sent.
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-synthetic-
-oym6fplb/share/postcard.html
+lr0000gn/T/plate-
+synthetic-2x1bfj82/share/postcard.html
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-synthetic-
-oym6fplb/share/postcard.txt
+lr0000gn/T/plate-
+synthetic-2x1bfj82/share/postcard.txt
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-synthetic-
-oym6fplb/share/lunchbox.json
+lr0000gn/T/plate-
+synthetic-2x1bfj82/share/lunchbox.json
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
-lr0000gn/T/plate-synthetic-
-oym6fplb/share/manifest.json
+lr0000gn/T/plate-
+synthetic-2x1bfj82/share/manifest.json
 Open postcard.html to view; import
 lunchbox.json in Lunchbox.
 

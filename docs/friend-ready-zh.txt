@@ -163,8 +163,8 @@ Plate Memory  |  给你留了个座。
 导出预览中的这些话？yes 是 / no 否
 [no]
 › 已保存到 /var/folders/12/wyzv4_wj5d3gx
-j6rdbrj5plr0000gn/T/plate-synthetic-s_
-mgcwkk/gift.json。你可以亲自分享文件；
+j6rdbrj5plr0000gn/T/plate-synthetic-rs
+ha41we/gift.json。你可以亲自分享文件；
 朋友在饭盒里打开即可。
 
 🎒  食堂一角
@@ -322,22 +322,22 @@ minute--no-installation-dependencies
 明信片 / 保存 — /back 预览 · /home
 饭桌并保留草稿
 保存位置 [/var/folders/12/wyzv4_wj5d3g
-xj6rdbrj5plr0000gn/T/plate-synthetic-s
-_mgcwkk/postcards/postcard-
-47ab2448136b]
+xj6rdbrj5plr0000gn/T/plate-synthetic-r
+sha41we/postcards/postcard-
+f6ace6ca2c05]
 › 已保存在本地，还没有发送。
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-s_mgcwkk/share/postcard.html
+rsha41we/share/postcard.html
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-s_mgcwkk/share/postcard.txt
+rsha41we/share/postcard.txt
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-s_mgcwkk/share/lunchbox.json
+rsha41we/share/lunchbox.json
 /var/folders/12/wyzv4_wj5d3gxj6rdbrj5p
 lr0000gn/T/plate-synthetic-
-s_mgcwkk/share/manifest.json
+rsha41we/share/manifest.json
 打开 postcard.html
 看明信片；在饭盒中导入 lunchbox.json。
 

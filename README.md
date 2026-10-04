@@ -1,5 +1,7 @@
 # Plate Memory
 
+**v1.0.0 · usable local release** — [Download](https://github.com/Jesse-Zeng423/plate-memory/releases/latest) · [Start here](docs/start-here.md)
+
 [![Tests](https://github.com/Jesse-Zeng423/plate-memory/actions/workflows/tests.yml/badge.svg)](https://github.com/Jesse-Zeng423/plate-memory/actions/workflows/tests.yml)
 
 **That bro who ate with you every day back in high school.**
@@ -23,13 +25,13 @@ revoked permission takes priority and withholds the record.
 
 ## A seat saved for a friend
 
-The app now starts with two choices: **too tired → takeout**, or **up for a walk →
+Food discovery starts with two choices: **too tired → takeout**, or **up for a walk →
 the cafeteria**. Search saved dishes/places and a bundled 3,535-record public food catalog with an
 optional Chinese/English keyword, see up to three choices, and select an idea for this meal. Current availability is
 unknown; recorded prices show their dates. Choosing an idea never records it as
 ordered or eaten. You can start without a dietary profile.
 
-The four home destinations are now available: today’s meal, a text-only lunchbox
+The four home destinations are: today’s meal, a text-only lunchbox
 from a friend, an optional after-meal journal and a postcard for your next meal
 together. Cooking instructions
 and kitchen equipment are outside this product scope. The [implementation plan](docs/implementation-plan.md)
@@ -44,12 +46,14 @@ Requires Python 3.10+. The core includes an attributed pure-Python MIT width hel
 ```sh
 git clone https://github.com/Jesse-Zeng423/plate-memory.git
 cd plate-memory
-python3 -m src.terminal --demo
+python3 plate-memory.py
+# This is normal mode: confirmed notes and records persist locally.
 # Choose today, then 1 (takeout) or 2 (cafeteria).
 # Leave the keyword blank to browse; choose a number, then select.
-# The demo command still opens weekday / weekend / stale / allergy guard examples.
+# English is the default; choose 2 for Simplified Chinese.
 ```
 
+For a separate synthetic walkthrough, run `python3 plate-memory.py --demo`.
 Demo mode uses clearly labeled synthetic places, prices and dietary notes. Edits
 to demo saved choices stay in memory and never create a real database. No AI runs
 when browsing these references. The separate `demo` command uses fingerprint-bound
@@ -335,7 +339,7 @@ values unknown; `/back` edits the previous active field. Existing edits retain d
 explicitly skipped. `--plain` removes decorations; `--no-color` retains the bowls.
 Narrow output wraps Chinese names and long source links.
 
-Validation: 154 tests and 145 subtests, original guard fingerprint/four mock reports,
+Validation: 155 tests and 145 subtests, original guard fingerprint/four mock reports,
 40-column pseudo-terminal walkthrough outside the repo and in-memory demo records; explicit postcard export is supported.
 Two new synthetic queries were also run through actual local Gemma; evidence is in
 `docs/query-smoke-v1.json` and `docs/companion-smoke-v2.json`. This does not substitute

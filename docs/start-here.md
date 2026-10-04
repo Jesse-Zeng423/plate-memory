@@ -4,11 +4,18 @@ You can be hungry first. Everything else is optional.
 
 ## Start / 启动
 
-Requires Python 3.10+. Download this repository, open its folder in Terminal:
+This is the v1.0.0 local release. Requires Python 3.10+. Download and unzip the
+[release package](https://github.com/Jesse-Zeng423/plate-memory/releases/latest), then open its folder in Terminal:
 
 ```sh
-python3 -m src.terminal
+python3 plate-memory.py
 ```
+
+On macOS you can also double-click `start.command`; if permissions block it, use
+the Python command above. On macOS/Linux, `sh start.sh` works too. `--version`
+shows the installed version. Normal mode uses your own empty local records; it
+does not load the synthetic profile. Confirmed data stays in `private/` next to the
+app. Keep that folder when moving or replacing the app; back it up privately.
 
 Choose **1 English** (Enter is enough) or **2 简体中文**. Try **1 Find something to eat**:
 too tired → takeout; up for a walk → cafeteria. Enter a food name, or press Enter

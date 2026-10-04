@@ -10,6 +10,7 @@ if __package__ in (None, ''):
     __package__ = 'src'
 
 from .paths import ROOT
+from .version import VERSION
 from .extraction import model_name
 from .food_adapter import ValidationError
 from .json_contract import JsonContractError
@@ -21,7 +22,8 @@ from .ui.forms import record_form
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description='Guided local terminal menu review.')
+    parser = argparse.ArgumentParser(description='Plate Memory: a private food companion and a seat saved for your bro.')
+    parser.add_argument('--version', action='version', version='Plate Memory '+VERSION)
     parser.add_argument('--profile', type=Path, default=ROOT / 'private/friend.json')
     parser.add_argument('--model', type=model_name, default='gemma3:4b')
     parser.add_argument('--demo', action='store_true', help='Synthetic in-memory session, no real profile writes.')

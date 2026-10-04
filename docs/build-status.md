@@ -408,3 +408,22 @@ contracts preserved. Full release tests and real-terminal replay repeated below.
 Crayon checkpoint verified: 154 unittest/pytest tests, 145 subtests, repository
 provenance verification, all four mocks and bilingual real-terminal export replay
 pass. Actual desktop and 390px Chinese PNGs were visually inspected.
+
+## v1.0.0 release preparation
+
+Normal mode is now the primary README/download path. New plate-memory.py entry,
+macOS start.command and portable start.sh launch without package installation and
+without depending on shell working directory. --version reports 1.0.0. Unsupported
+Python exits before importing app code; Python 3.10+ is required. Existing personal
+records are retained; no demo profile is loaded unless --demo is explicitly chosen.
+
+Release tooling archives committed public Git content, not the working/private
+tree. Fresh-archive verification rejects private/unsafe paths, checks version and
+provenance, launches real normal mode outside its directory, and runs bilingual
+normal-mode synthetic export journeys with app sockets forbidden. Release notes
+and a download/backup guide are included. Real Harold trial and DEV publication
+remain separate human steps, not prerequisites for using this local app.
+
+Pre-package checks pass: 155 unittest/pytest tests, 145 subtests, unchanged guard
+fingerprint, all four mocks, navigation and bilingual actual-terminal replay.
+Archive verification and public release publication follow after saving this ref.

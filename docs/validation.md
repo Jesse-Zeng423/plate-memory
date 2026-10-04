@@ -156,3 +156,11 @@ English, demo real exports without profile/meal writes, loose craving directions
 constraint refusal, source-preserving related ideas and return/selection semantics.
 Actual synthetic demo export and installed local Chrome PNG render were inspected.
 No new model inference was run; extraction and generic guard stayed unchanged.
+
+## v1.0.0 launcher and distribution checks
+
+155 unittest tests; 155 pytest tests/145 subtests; guard verification, all four
+mocks and bilingual real-terminal/navigation replay pass. New entry-point test
+launches from an unrelated directory, checks version and confirms normal mode
+opens/closes without creating records. Fresh-archive verification is separately
+produced as a downloadable release artifact.
