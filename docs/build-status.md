@@ -427,3 +427,15 @@ remain separate human steps, not prerequisites for using this local app.
 Pre-package checks pass: 155 unittest/pytest tests, 145 subtests, unchanged guard
 fingerprint, all four mocks, navigation and bilingual actual-terminal replay.
 Archive verification and public release publication follow after saving this ref.
+
+## v1.0.0 published
+
+Stable release: https://github.com/Jesse-Zeng423/plate-memory/releases/tag/v1.0.0
+Source commit: 96ace12a04c68e109846d5aeac65685e9f1160cf. Public API confirms
+isDraft=false and isPrerelease=false; ZIP/checksum/verification assets uploaded.
+The ZIP is 9,487,996 bytes and its hosted digest matches the locally verified
+SHA-256 4e0d2dd3bfb5a21f9f0d2a0ead23170e514bbf3e493640cfcdcc9cc044fe3b12.
+Fresh-archive launch/export verification passed. Both actual shell launchers
+report Plate Memory 1.0.0. CI run 37166548415 passed on 3.10/3.12/3.14.
+Normal use is the default. No existing private records were reset or packaged.
+No DEV publication or real Harold trial has occurred.
