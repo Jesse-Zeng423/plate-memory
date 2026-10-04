@@ -52,8 +52,8 @@ meal date and applies the rule. The difference in the decision comes from the
 guard's context, not from asking the model to change its mind.
 
 ```sh
-git clone https://github.com/Jesse-Zeng423/plate-memory.git
-cd plate-memory
+git clone https://github.com/Jesse-Zeng423/that-bro-who-ate-with-you-everyday-back-in-highschool.git
+cd that-bro-who-ate-with-you-everyday-back-in-highschool
 python3 -m src.terminal --demo
 # Choose demo, then weekend.
 ```
@@ -68,17 +68,17 @@ ollama pull gemma3:4b
 python3 -m src.cli --menu examples/weekend.txt --date 2026-10-03
 ```
 
-![Actual local Gemma run with a synthetic profile](https://raw.githubusercontent.com/Jesse-Zeng423/plate-memory/main/docs/demo.png)
+![Actual local Gemma run with a synthetic profile](https://raw.githubusercontent.com/Jesse-Zeng423/that-bro-who-ate-with-you-everyday-back-in-highschool/main/docs/demo.png)
 
 The image renders an actual CLI transcript. The final local smoke run used Gemma
 3 4B on an 8 GB Apple Silicon Mac. All four synthetic scenarios produced the
 expected guard actions; the trace is in
-[local-smoke-v11.json](https://github.com/Jesse-Zeng423/plate-memory/blob/main/docs/local-smoke-v11.json).
+[local-smoke-v11.json](https://github.com/Jesse-Zeng423/that-bro-who-ate-with-you-everyday-back-in-highschool/blob/main/docs/local-smoke-v11.json).
 That is a small integration check, not an accuracy benchmark.
 
 ## Code
 
-{% github Jesse-Zeng423/plate-memory %}
+{% github Jesse-Zeng423/that-bro-who-ate-with-you-everyday-back-in-highschool %}
 
 I started this new project during the challenge window. The generic guard is
 reused from my earlier [Memory Applicability Guard](https://github.com/Jesse-Zeng423/memory-applicability-guard)
@@ -152,7 +152,7 @@ the recipient can import. An opt-in link opens the public project quick-start.
 There are no external fonts, scripts or analytics in the card. Optional PNG export
 uses a local browser rather than a hosted image service.
 
-![Synthetic postcard, not Harold's actual note](https://raw.githubusercontent.com/Jesse-Zeng423/plate-memory/main/examples/postcards/synthetic-table.png)
+![Synthetic postcard, not Harold's actual note](https://raw.githubusercontent.com/Jesse-Zeng423/that-bro-who-ate-with-you-everyday-back-in-highschool/main/examples/postcards/synthetic-table.png)
 
 The friend can confirm, edit or revoke a note through the same interface. Every
 saved change keeps a private revision, and changing a note or meal date clears
@@ -165,7 +165,7 @@ model response trying to inject a guard verdict. The canned examples also run
 from an unrelated working directory. The initial CLI passed 69 unittest tests and 43 pytest subtests.
 The expanded terminal checks are recorded separately in the validation document. The package fingerprint check
 and all four canned examples also passed. CI status is linked in the repository's
-[validation record](https://github.com/Jesse-Zeng423/plate-memory/blob/main/docs/validation.md).
+[validation record](https://github.com/Jesse-Zeng423/that-bro-who-ate-with-you-everyday-back-in-highschool/blob/main/docs/validation.md).
 These checks establish the behavior
 of the rules and integration. They do not measure real-world extraction accuracy.
 
